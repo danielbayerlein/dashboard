@@ -1,0 +1,44 @@
+{
+  "name": "dashboard",
+  "version": "1.0.0",
+  "description": "Your Team Dashboard",
+  "main": "pages/index.js",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "lint": "standard --verbose | snazzy",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielbayerlein/dashboard.git"
+  },
+  "keywords": [
+    "tv",
+    "dashboard"
+  ],
+  "author": "Daniel Bayerlein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielbayerlein/dashboard/issues"
+  },
+  "homepage": "https://github.com/danielbayerlein/dashboard#readme",
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^2.2.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "styled-components": "^1.4.5",
+    "tinytime": "^0.2.5"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2"
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  }
+}
