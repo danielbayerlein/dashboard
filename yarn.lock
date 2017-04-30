@@ -3109,6 +3109,12 @@ process@~0.5.1:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/process/-/process-0.5.2.tgz#1638d8a8e34c2f440a91db95ab9aeb677fc185cf"
 
+progress-arc-component@^2.2.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/progress-arc-component/-/progress-arc-component-2.3.0.tgz#a62a00b85a2114b519d01f73321e0a538604873a"
+  dependencies:
+    styled-components "^1.4.5"
+
 progress@^1.1.8:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/progress/-/progress-1.1.8.tgz#e260c78f6161cdd9b0e56cc3e0a85de17c7a57be"

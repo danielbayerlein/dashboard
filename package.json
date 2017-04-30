@@ -29,6 +29,7 @@
     "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.17.4",
     "next": "^2.2.0",
+    "progress-arc-component": "^2.2.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-tap-event-plugin": "^2.0.1",
