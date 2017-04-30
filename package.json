@@ -34,7 +34,8 @@
     "react-dom": "^15.5.4",
     "react-tap-event-plugin": "^2.0.1",
     "styled-components": "^1.4.5",
-    "tinytime": "^0.2.5"
+    "tinytime": "^0.2.5",
+    "universal-url": "^1.0.0-alpha"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

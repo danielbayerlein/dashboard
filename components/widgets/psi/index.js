@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import { URL } from 'universal-url'
 import 'isomorphic-fetch'
 import Progress from '../../progress'
 import Widget from '../../widget'
@@ -17,15 +18,13 @@ export default class PageSpeedInsights extends Component {
   async componentDidMount () {
     const { url, filter_third_party_resources, locale, strategy } = this.props
 
-    let requestUrl = 'https://www.googleapis.com/pagespeedonline/v2/runPagespeed'
-    requestUrl += `?url=${url}`
-    // eslint-disable-next-line camelcase
-    requestUrl += `&filter_third_party_resources=${filter_third_party_resources}`
-    requestUrl += `&locale=${locale}`
-    requestUrl += `&strategy=${strategy}`
+    const urlObj = new URL('https://www.googleapis.com/pagespeedonline/v2/runPagespeed')
+    urlObj.searchParams.append('url', url)
+    urlObj.searchParams.append('filter_third_party_resources', filter_third_party_resources)
+    urlObj.searchParams.append('locale', locale)
+    urlObj.searchParams.append('strategy', strategy)
 
-    // eslint-disable-next-line no-undef
-    const res = await fetch(requestUrl)
+    const res = await fetch(urlObj.toString()) // eslint-disable-line no-undef
     const json = await res.json()
 
     this.setState({ score: json.ruleGroups.SPEED.score })
