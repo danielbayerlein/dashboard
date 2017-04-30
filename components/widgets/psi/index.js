@@ -1,5 +1,7 @@
 import { Component } from 'react'
 import 'isomorphic-fetch'
+import Progress from '../../progress'
+import Widget from '../../widget'
 
 export default class PageSpeedInsights extends Component {
   static defaultProps = {
@@ -13,24 +15,28 @@ export default class PageSpeedInsights extends Component {
   }
 
   async componentDidMount () {
-    let url = 'https://www.googleapis.com/pagespeedonline/v2/runPagespeed'
-    url += `?url=${this.props.url}`
-    url += `&filter_third_party_resources=${this.props.filter_third_party_resources}`
-    url += `&locale=${this.props.locale}`
-    url += `&strategy=${this.props.strategy}`
+    const { url, filter_third_party_resources, locale, strategy } = this.props
 
-    const res = await fetch(url) // eslint-disable-line no-undef
+    let requestUrl = 'https://www.googleapis.com/pagespeedonline/v2/runPagespeed'
+    requestUrl += `?url=${url}`
+    // eslint-disable-next-line camelcase
+    requestUrl += `&filter_third_party_resources=${filter_third_party_resources}`
+    requestUrl += `&locale=${locale}`
+    requestUrl += `&strategy=${strategy}`
+
+    // eslint-disable-next-line no-undef
+    const res = await fetch(requestUrl)
     const json = await res.json()
 
     this.setState({ score: json.ruleGroups.SPEED.score })
   }
 
   render () {
+    const { score } = this.state
     return (
-      <div>
-        <h3>PageSpeed Score</h3>
-        <p>{this.state.score}</p>
-      </div>
+      <Widget title='PageSpeed Score'>
+        <Progress value={score} />
+      </Widget>
     )
   }
 }
