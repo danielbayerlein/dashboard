@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { URL } from 'universal-url'
-import 'isomorphic-fetch'
+import fetch from 'isomorphic-unfetch'
 import Progress from '../../progress'
 import Widget from '../../widget'
 
