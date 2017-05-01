@@ -1,15 +1,16 @@
 import { Component } from 'react'
 import tinytime from 'tinytime'
 import styled from 'styled-components'
-import Paper from 'material-ui/Paper'
+import Widget from '../../widget'
 
-const Circle = styled(Paper)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 10em;
-  width: 10em;
+const TimeItem = styled.div`
+  font-size: 4em;
+  text-align: center;
+`
+
+const DateItem = styled.div`
+  font-size: 1.5em;
+  text-align: center;
 `
 
 export default class DateTime extends Component {
@@ -32,12 +33,11 @@ export default class DateTime extends Component {
 
   render () {
     const { date } = this.state
-
     return (
-      <Circle circle>
-        <h1>{tinytime('{H}:{mm}').render(date)}</h1>
-        <span>{tinytime('{DD}.{Mo}.{YYYY}').render(date)}</span>
-      </Circle>
+      <Widget>
+        <TimeItem>{tinytime('{H}:{mm}').render(date)}</TimeItem>
+        <DateItem>{tinytime('{DD}.{Mo}.{YYYY}').render(date)}</DateItem>
+      </Widget>
     )
   }
 }
