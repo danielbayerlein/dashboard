@@ -1,7 +1,5 @@
 import { Component } from 'react'
 
-import { name } from '../package.json'
-import Header from '../components/header'
 import DateTime from '../components/widgets/datetime'
 import PageSpeedScore from '../components/widgets/psi'
 
@@ -13,6 +11,14 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   font-family: 'Roboto', sans-serif;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 3em;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 `
 
 export default class Index extends Component {
@@ -35,7 +41,6 @@ export default class Index extends Component {
           <Head>
             <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' />
           </Head>
-          <Header title={name} />
           <DateTime />
           <PageSpeedScore url='https://github.com/' />
         </Container>
