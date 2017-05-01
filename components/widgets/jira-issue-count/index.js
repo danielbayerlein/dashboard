@@ -6,7 +6,7 @@ import Widget from '../../widget'
 
 const Count = styled.div`
   font-size: 4em;
-  text-align: center;
+  color: ${props => props.theme.palette.accentColor};
 `
 
 export default class JiraIssueCount extends Component {
