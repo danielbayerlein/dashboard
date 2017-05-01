@@ -2,6 +2,7 @@ import { Component } from 'react'
 
 import DateTime from '../components/widgets/datetime'
 import PageSpeedScore from '../components/widgets/psi'
+import JiraIssueCount from '../components/widgets/jira-issue-count'
 
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -43,6 +44,11 @@ export default class Index extends Component {
           </Head>
           <DateTime />
           <PageSpeedScore url='https://github.com/' />
+          <JiraIssueCount
+            title='JIRA Open Bugs'
+            url='https://crossorigin.me/https://jira.atlassian.com/'
+            query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
+          />
         </Container>
       </MuiThemeProvider>
     )
