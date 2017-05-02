@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <title>{name}</title>
+          <link rel='icon' href='/static/favicon.png' />
         </Head>
         <body>
           <Main />
