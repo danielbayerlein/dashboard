@@ -7,6 +7,18 @@
 
 ## Install
 
+1. [Download](../../archive/master.zip) or clone the repository:
+
+  ```bash
+  git clone https://github.com/danielbayerlein/dashboard.git
+  ```
+
+2. Install the dependencies:
+
+  ```bash
+  npm install
+  ```
+
 ## Usage
 
 ## License
