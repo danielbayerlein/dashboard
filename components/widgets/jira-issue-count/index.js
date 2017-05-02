@@ -1,13 +1,8 @@
 import { Component } from 'react'
 import { URL } from 'universal-url'
 import fetch from 'isomorphic-unfetch'
-import styled from 'styled-components'
 import Widget from '../../widget'
-
-const Count = styled.div`
-  font-size: 4em;
-  color: ${props => props.theme.palette.accentColor};
-`
+import Counter from '../../counter'
 
 export default class JiraIssueCount extends Component {
   static defaultProps = {
@@ -37,7 +32,7 @@ export default class JiraIssueCount extends Component {
 
     return (
       <Widget title={title}>
-        <Count>{count}</Count>
+        <Counter value={count} />
       </Widget>
     )
   }
