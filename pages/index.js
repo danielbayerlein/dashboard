@@ -5,6 +5,7 @@ import DateTime from '../components/widgets/datetime'
 import PageSpeedScore from '../components/widgets/psi'
 import JiraIssueCount from '../components/widgets/jira-issue-count'
 import SonarQube from '../components/widgets/sonarqube'
+import BitbucketPullrequestsCount from '../components/widgets/bitbucket-pullrequest-count'
 
 // Theme
 import lightTheme from '../styles/light-theme'
@@ -15,6 +16,10 @@ export default () => (
     <DateTime />
 
     <PageSpeedScore url='https://github.com/' />
+
+    <BitbucketPullrequestsCount
+      url='https://api.bitbucket.org/'
+    />
 
     <JiraIssueCount
       title='JIRA Open Bugs'
