@@ -11,27 +11,45 @@ export default class JiraIssueCount extends Component {
   }
 
   state = {
-    count: 0
+    count: 0,
+    loading: true,
+    error: null
   }
 
-  async componentDidMount () {
+  componentDidMount () {
+    this.loadInformation()
+  }
+
+  async loadInformation () {
+    this.setState({ loading: true, error: null })
+
     const { url, query } = this.props
 
     const urlObj = new URL('rest/api/2/search', url)
     urlObj.searchParams.append('jql', query)
 
-    const res = await fetch(urlObj.toString()) // eslint-disable-line no-undef
-    const json = await res.json()
+    try {
+      const res = await fetch(urlObj.toString())
+      const json = await res.json()
 
-    this.setState({ count: json.total })
+      this.setState({
+        loading: false,
+        count: json.total
+      })
+    } catch (_) {
+      this.setState({
+        loading: false,
+        error: 'failed to load information'
+      })
+    }
   }
 
   render () {
-    const { count } = this.state
+    const { count, error, loading } = this.state
     const { title } = this.props
 
     return (
-      <Widget title={title}>
+      <Widget title={title} loading={loading} error={error}>
         <Counter value={count} />
       </Widget>
     )
