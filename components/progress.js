@@ -1,3 +1,4 @@
+import { Component } from 'react'
 import styled from 'styled-components'
 import { size } from 'polished'
 
@@ -26,13 +27,30 @@ const Progress = styled.svg`
   }
 `
 
-const p = 2 * 90 * Math.PI
-const max = 100
+export default class CircleProgress extends Component {
+  static defaultProps = {
+    radius: 90,
+    max: 100,
+    unit: ''
+  }
 
-export default ({ value, unit = '' }) => (
-  <Progress viewBox='0 0 200 200'>
-    <circle r='90' className='background' />
-    <circle r='90' className='progress' strokeDasharray={p} strokeDashoffset={((max - value) / max) * p} />
-    <text x='100' y='120'>{value}{unit}</text>
-  </Progress>
-)
+  render () {
+    const { radius, max, unit, value } = this.props
+
+    const strokeDasharray = 2 * radius * Math.PI
+    const strokeDashoffset = ((max - value) / max) * strokeDasharray
+
+    return (
+      <Progress viewBox='0 0 200 200'>
+        <circle r={radius} className='background' />
+        <circle
+          r={radius}
+          className='progress'
+          strokeDasharray={strokeDasharray}
+          strokeDashoffset={strokeDashoffset}
+        />
+        <text x='100' y='120'>{value}{unit}</text>
+      </Progress>
+    )
+  }
+}
