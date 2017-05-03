@@ -3046,9 +3046,9 @@ pluralize@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-1.2.1.tgz#d1a21483fd22bb41e58a12fa3421823140897c45"
 
-polished@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/polished/-/polished-1.1.0.tgz#848348e092fa89f11752e2746525f383d57a6cf7"
+polished@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-1.1.1.tgz#44493e22a8947781799a7565230dfb5c95cf7215"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
