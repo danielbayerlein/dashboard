@@ -9,10 +9,17 @@ export default class SonarQube extends Component {
   }
 
   state = {
-    measures: []
+    measures: [],
+    loading: true,
   }
 
-  async componentDidMount () {
+  componentDidMount () {
+    this.loadInformation()
+  }
+
+  async loadInformation() {
+    this.setState({ loading: true, error: null })
+
     const { url, componentKey } = this.props
 
     // https://docs.sonarqube.org/display/SONAR/Metric+Definitions
@@ -26,9 +33,20 @@ export default class SonarQube extends Component {
     urlObj.searchParams.append('componentKey', componentKey)
     urlObj.searchParams.append('metricKeys', metricKeys.join(','))
 
-    const res = await fetch(urlObj.toString()) // eslint-disable-line no-undef
-    const json = await res.json()
-    this.setState({ measures: json.component.measures })
+    try {
+      const res = await fetch(urlObj.toString()) // eslint-disable-line no-undef
+      const json = await res.json()
+
+      this.setState({
+        loading: false,
+        measures: json.component.measures
+      })
+    } catch (err) {
+      this.setState({
+        loading: false,
+        error: 'failed to load information'
+      })
+    }
   }
 
   getMetricValue = (measures, metricKey) => {
@@ -56,7 +74,7 @@ export default class SonarQube extends Component {
   }
 
   render () {
-    const { measures } = this.state
+    const { measures, loading, error } = this.state
     const { title } = this.props
 
     const alertStatus = this.getMetricValue(measures, 'alert_status')
@@ -75,7 +93,7 @@ export default class SonarQube extends Component {
     const duplicatedLinesDensity = this.getMetricValue(measures, 'duplicated_lines_density')
 
     return (
-      <Widget title={title}>
+      <Widget title={title} loading={loading} error={error}>
         <p>Quality Gate: {alertStatus}</p>
         <p>Reliability: {reliabilityRating} ({bugs})</p>
         <p>Security: {securityRating} ({vulnerabilities})</p>
