@@ -1,7 +1,59 @@
 import { Component } from 'react'
+import styled from 'styled-components'
 import { URL } from 'universal-url'
 import fetch from 'isomorphic-unfetch'
 import Widget from '../../widget'
+
+const Table = styled.table`
+  border-color: transparent
+  border-spacing: 5px
+  text-align: left
+`
+
+const Td = styled.td`
+  padding: 5px
+`
+
+const Th = Td
+
+const Badge = styled.span`
+  background: ${props => {
+    switch (props.children) {
+      case 'A':
+        return '#8BC34A'
+      case 'B':
+        return '#CDDC39'
+      case 'C':
+        return '#FFEB3B'
+      case 'D':
+        return '#FF5722'
+      default:
+        return '#F44336'
+    }
+  }}
+  border-radius: 50%
+  box-sizing: border-box
+  display: inline-block
+  height: 30px
+  line-height: 30px
+  text-align: center
+  width: 30px
+`
+
+const Alert = styled.span`
+  color: ${props => {
+    if (props.children === 'ERROR') {
+      return '#F44336'
+    }
+
+    if (props.children === 'WARN') {
+      return '#FFEB3B'
+    }
+
+    // OK
+    return '#8BC34A'
+  }}
+`
 
 export default class SonarQube extends Component {
   static defaultProps = {
@@ -94,12 +146,43 @@ export default class SonarQube extends Component {
 
     return (
       <Widget title={title} loading={loading} error={error}>
-        <p>Quality Gate: {alertStatus}</p>
-        <p>Reliability: {reliabilityRating} ({bugs})</p>
-        <p>Security: {securityRating} ({vulnerabilities})</p>
-        <p>Maintainability: {sqaleRating} ({codeSmells})</p>
-        <p>Coverage: {coverage}%</p>
-        <p>Duplications: {duplicatedLinesDensity}%</p>
+        <Table>
+          <tr>
+            <Th>Quality Gate:</Th>
+            <Td><Alert>{alertStatus}</Alert></Td>
+          </tr>
+
+          <tr>
+            <Th>Reliability:</Th>
+            <Td>
+              <Badge>{reliabilityRating}</Badge> <small>({bugs})</small>
+            </Td>
+          </tr>
+
+          <tr>
+            <Th>Security:</Th>
+            <Td>
+              <Badge>{securityRating}</Badge> <small>({vulnerabilities})</small>
+            </Td>
+          </tr>
+
+          <tr>
+            <Th>Maintainability:</Th>
+            <Td>
+              <Badge>{sqaleRating}</Badge> <small>({codeSmells})</small>
+            </Td>
+          </tr>
+
+          <tr>
+            <Th>Coverage:</Th>
+            <Td>{coverage} %</Td>
+          </tr>
+
+          <tr>
+            <Th>Duplications:</Th>
+            <Td>{duplicatedLinesDensity} %</Td>
+          </tr>
+        </Table>
       </Widget>
     )
   }
