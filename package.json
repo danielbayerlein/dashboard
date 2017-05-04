@@ -33,8 +33,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "styled-components": "^1.4.6",
-    "tinytime": "^0.2.5",
-    "universal-url": "^1.0.0-alpha"
+    "tinytime": "^0.2.5"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
