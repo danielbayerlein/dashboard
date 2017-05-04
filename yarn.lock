@@ -3042,7 +3042,7 @@ pluralize@^1.2.1:
   version "1.2.1"
   resolved "http://artifactory.witt-gruppe.eu/artifactory/api/npm/npm-virtual/pluralize/-/pluralize-1.2.1.tgz#d1a21483fd22bb41e58a12fa3421823140897c45"
 
-polished@^1.1.0:
+polished@^1.1.1:
   version "1.1.1"
   resolved "http://artifactory.witt-gruppe.eu/artifactory/api/npm/npm-virtual/polished/-/polished-1.1.1.tgz#44493e22a8947781799a7565230dfb5c95cf7215"
 
