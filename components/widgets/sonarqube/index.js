@@ -62,13 +62,14 @@ export default class SonarQube extends Component {
   state = {
     measures: [],
     loading: true,
+    error: null
   }
 
   componentDidMount () {
     this.loadInformation()
   }
 
-  async loadInformation() {
+  async loadInformation () {
     this.setState({ loading: true, error: null })
 
     const { url, componentKey } = this.props
@@ -88,7 +89,7 @@ export default class SonarQube extends Component {
         loading: false,
         measures: json.component.measures
       })
-    } catch (err) {
+    } catch (_) {
       this.setState({
         loading: false,
         error: 'failed to load information'
@@ -121,7 +122,7 @@ export default class SonarQube extends Component {
   }
 
   render () {
-    const { measures, loading, error } = this.state
+    const { error, loading, measures } = this.state
     const { title } = this.props
 
     const alertStatus = this.getMetricValue(measures, 'alert_status')
@@ -142,41 +143,43 @@ export default class SonarQube extends Component {
     return (
       <Widget title={title} loading={loading} error={error}>
         <Table>
-          <tr>
-            <Th>Quality Gate:</Th>
-            <Td><Alert>{alertStatus}</Alert></Td>
-          </tr>
+          <tbody>
+            <tr>
+              <Th>Quality Gate:</Th>
+              <Td><Alert>{alertStatus}</Alert></Td>
+            </tr>
 
-          <tr>
-            <Th>Reliability:</Th>
-            <Td>
-              <Badge>{reliabilityRating}</Badge> <small>({bugs})</small>
-            </Td>
-          </tr>
+            <tr>
+              <Th>Reliability:</Th>
+              <Td>
+                <Badge>{reliabilityRating}</Badge> <small>({bugs})</small>
+              </Td>
+            </tr>
 
-          <tr>
-            <Th>Security:</Th>
-            <Td>
-              <Badge>{securityRating}</Badge> <small>({vulnerabilities})</small>
-            </Td>
-          </tr>
+            <tr>
+              <Th>Security:</Th>
+              <Td>
+                <Badge>{securityRating}</Badge> <small>({vulnerabilities})</small>
+              </Td>
+            </tr>
 
-          <tr>
-            <Th>Maintainability:</Th>
-            <Td>
-              <Badge>{sqaleRating}</Badge> <small>({codeSmells})</small>
-            </Td>
-          </tr>
+            <tr>
+              <Th>Maintainability:</Th>
+              <Td>
+                <Badge>{sqaleRating}</Badge> <small>({codeSmells})</small>
+              </Td>
+            </tr>
 
-          <tr>
-            <Th>Coverage:</Th>
-            <Td>{coverage} %</Td>
-          </tr>
+            <tr>
+              <Th>Coverage:</Th>
+              <Td>{coverage} %</Td>
+            </tr>
 
-          <tr>
-            <Th>Duplications:</Th>
-            <Td>{duplicatedLinesDensity} %</Td>
-          </tr>
+            <tr>
+              <Th>Duplications:</Th>
+              <Td>{duplicatedLinesDensity} %</Td>
+            </tr>
+          </tbody>
         </Table>
       </Widget>
     )
