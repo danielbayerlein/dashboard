@@ -27,7 +27,7 @@
   "homepage": "https://github.com/danielbayerlein/dashboard#readme",
   "dependencies": {
     "isomorphic-unfetch": "^1.0.0",
-    "next": "^2.2.0",
+    "next": "^2.3.0",
     "polished": "^1.1.1",
     "progress-arc-component": "^2.3.0",
     "react": "^15.5.4",
