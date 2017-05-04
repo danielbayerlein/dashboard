@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import { URL } from 'universal-url'
 import fetch from 'isomorphic-unfetch'
 import Widget from '../../widget'
 import Counter from '../../counter'
@@ -17,10 +16,7 @@ export default class JiraIssueCount extends Component {
   async componentDidMount () {
     const { url, query } = this.props
 
-    const urlObj = new URL('rest/api/2/search', url)
-    urlObj.searchParams.append('jql', query)
-
-    const res = await fetch(urlObj.toString()) // eslint-disable-line no-undef
+    const res = await fetch(`${url}rest/api/2/search?jql=${query}`)
     const json = await res.json()
 
     this.setState({ count: json.total })
