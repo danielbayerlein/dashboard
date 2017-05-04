@@ -16,7 +16,7 @@ export default class JiraIssueCount extends Component {
   async componentDidMount () {
     const { url, query } = this.props
 
-    const res = await fetch(`${url}/rest/api/2/search?jql=${query}`)
+    const res = await fetch(`${url}rest/api/2/search?jql=${query}`)
     const json = await res.json()
 
     this.setState({ count: json.total })
