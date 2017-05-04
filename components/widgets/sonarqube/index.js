@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import styled from 'styled-components'
-import { URL } from 'universal-url'
 import fetch from 'isomorphic-unfetch'
 import Widget from '../../widget'
 
@@ -81,12 +80,8 @@ export default class SonarQube extends Component {
       'duplicated_lines_density'
     ]
 
-    const urlObj = new URL('api/measures/component', url)
-    urlObj.searchParams.append('componentKey', componentKey)
-    urlObj.searchParams.append('metricKeys', metricKeys.join(','))
-
     try {
-      const res = await fetch(urlObj.toString()) // eslint-disable-line no-undef
+      const res = await fetch(`${url}/api/measures/component?componentKey=${componentKey}&metricKeys=${metricKeys.join(',')}`)
       const json = await res.json()
 
       this.setState({
