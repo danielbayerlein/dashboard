@@ -1,11 +1,11 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
-import Progress from '../../progress'
+import CircleProgress from '../../circle-progress'
 import Widget from '../../widget'
 
 export default class PageSpeedInsights extends Component {
   static defaultProps = {
-    filter_third_party_resources: true,
+    filterThirdPartyResources: true,
     locale: 'de_DE',
     strategy: 'desktop'
   }
@@ -23,13 +23,13 @@ export default class PageSpeedInsights extends Component {
   async loadInformation () {
     this.setState({ loading: true, error: null })
 
-    const { url, filter_third_party_resources, locale, strategy } = this.props
+    const { url, filterThirdPartyResources, locale, strategy } = this.props
 
     const searchParams = [
       `url=${url}`,
-      `filter_third_party_resources=${filter_third_party_resources}`,
+      `filter_third_party_resources=${filterThirdPartyResources}`,
       `locale=${locale}`,
-      `strategy=${strategy}`,
+      `strategy=${strategy}`
     ]
 
     try {
@@ -52,7 +52,7 @@ export default class PageSpeedInsights extends Component {
     const { error, loading, score } = this.state
     return (
       <Widget title='PageSpeed Score' loading={loading} error={error}>
-        <Progress value={score} />
+        <CircleProgress value={score} />
       </Widget>
     )
   }
