@@ -29,7 +29,6 @@
     "isomorphic-unfetch": "^1.0.0",
     "next": "^2.3.1",
     "polished": "^1.1.1",
-    "progress-arc-component": "^2.3.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "styled-components": "^1.4.6",
