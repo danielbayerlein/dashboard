@@ -1775,7 +1775,7 @@ find-up@^1.0.0:
     path-exists "^2.0.0"
     pinkie-promise "^2.0.0"
 
-find-up@^2.0.0:
+find-up@^2.0.0, find-up@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-2.1.0.tgz#45d1b7e506c717ddd482775a2b77920a3c0c57a7"
   dependencies:
@@ -2663,9 +2663,9 @@ nearley@^2.7.7:
     railroad-diagrams "^1.0.0"
     randexp "^0.4.2"
 
-next@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/next/-/next-2.3.0.tgz#4d2496c0bd152b6dabf2c8cb694d8a76a7961a0b"
+next@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/next/-/next-2.3.1.tgz#12090e4d37222b1fc80ef09389ce884ffdd7e927"
   dependencies:
     ansi-html "0.0.7"
     babel-core "6.24.0"
@@ -2702,7 +2702,7 @@ next@^2.3.0:
     mv "2.1.1"
     mz "2.6.0"
     path-match "1.2.4"
-    pkg-up "1.0.0"
+    pkg-up "2.0.0"
     prop-types "15.5.7"
     react-hot-loader "3.0.0-beta.6"
     send "0.15.2"
@@ -3034,7 +3034,13 @@ pkg-dir@^1.0.0:
   dependencies:
     find-up "^1.0.0"
 
-pkg-up@1.0.0, pkg-up@^1.0.0:
+pkg-up@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/pkg-up/-/pkg-up-2.0.0.tgz#c819ac728059a461cab1c3889a2be3c49a004d7f"
+  dependencies:
+    find-up "^2.1.0"
+
+pkg-up@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/pkg-up/-/pkg-up-1.0.0.tgz#3e08fb461525c4421624a33b9f7e6d0af5b05a26"
   dependencies:
