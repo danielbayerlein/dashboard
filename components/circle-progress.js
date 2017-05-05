@@ -3,22 +3,24 @@ import styled from 'styled-components'
 import { size } from 'polished'
 
 const Progress = styled.svg`
-  fill: transparent;
-  margin: auto;
   ${size('14em')}
 
+  fill: transparent;
+
   circle {
-    stroke-width: 10;
     stroke-linecap: round;
+    stroke-width: 10;
     transform: translate(100px, 100px) rotate(-89.9deg);
     transition: stroke-dashoffset 0.3s linear;
-    &.progress {
-      stroke: ${props => props.theme.palette.primaryColor};
-    }
     &.background {
       stroke: ${props => props.theme.palette.borderColor};
     }
+    &.progress {
+      stroke: ${props => props.theme.palette.primaryColor};
+    }
   }
+
+  margin: auto;
 
   text {
     fill: ${props => props.theme.palette.textColor};
@@ -29,13 +31,13 @@ const Progress = styled.svg`
 
 export default class CircleProgress extends Component {
   static defaultProps = {
-    radius: 90,
     max: 100,
+    radius: 90,
     unit: ''
   }
 
   render () {
-    const { radius, max, unit, value } = this.props
+    const { max, radius, unit, value } = this.props
 
     const strokeDasharray = 2 * radius * Math.PI
     const strokeDashoffset = ((max - value) / max) * strokeDasharray
