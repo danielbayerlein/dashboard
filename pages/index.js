@@ -4,6 +4,7 @@ import Dashboard from '../components/dashboard'
 import DateTime from '../components/widgets/datetime'
 import PageSpeedScore from '../components/widgets/psi'
 import JiraIssueCount from '../components/widgets/jira-issue-count'
+import Jenkins from '../components/widgets/jenkins'
 
 // Theme
 import lightTheme from '../styles/light-theme'
@@ -19,6 +20,14 @@ export default () => (
       title='JIRA Open Bugs'
       url='https://crossorigin.me/https://jira.atlassian.com/'
       query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
+    />
+
+    <Jenkins
+      url="https://crossorigin.me/http://ci.jenkins-ci.org"
+      jobs={[
+        { label: 'jenkins master', path: 'Core/job/jenkins/job/master/' },
+        { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7/'}
+      ]}
     />
   </Dashboard>
 )
