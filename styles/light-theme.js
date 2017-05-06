@@ -4,7 +4,8 @@ const colors = {
   grey900: '#212121',
   white: '#ffffff',
   cyan500: '#00bcd4',
-  pinkA200: '#ff4081'
+  pinkA200: '#ff4081',
+  redA700: '#d50000'
 }
 
 export default {
@@ -14,6 +15,7 @@ export default {
     textColor: colors.grey900,
     canvasColor: colors.white,
     primaryColor: colors.cyan500,
-    accentColor: colors.pinkA200
+    accentColor: colors.pinkA200,
+    errorColor: colors.redA700
   }
 }
