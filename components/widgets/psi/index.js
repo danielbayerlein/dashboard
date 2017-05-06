@@ -13,16 +13,10 @@ export default class PageSpeedInsights extends Component {
   state = {
     score: 0,
     loading: true,
-    error: null
+    error: false
   }
 
-  componentDidMount () {
-    this.loadInformation()
-  }
-
-  async loadInformation () {
-    this.setState({ loading: true, error: null })
-
+  async componentDidMount () {
     const { url, filterThirdPartyResources, locale, strategy } = this.props
 
     const searchParams = [
@@ -30,21 +24,15 @@ export default class PageSpeedInsights extends Component {
       `filter_third_party_resources=${filterThirdPartyResources}`,
       `locale=${locale}`,
       `strategy=${strategy}`
-    ]
+    ].join('&')
 
     try {
-      const res = await fetch(`https://www.googleapis.com/pagespeedonline/v2/runPagespeed?${searchParams.join('&')}`)
+      const res = await fetch(`https://www.googleapis.com/pagespeedonline/v2/runPagespeed?${searchParams}`)
       const json = await res.json()
 
-      this.setState({
-        loading: false,
-        score: json.ruleGroups.SPEED.score
-      })
-    } catch (_) {
-      this.setState({
-        loading: false,
-        error: 'failed to load information'
-      })
+      this.setState({ loading: false, score: json.ruleGroups.SPEED.score })
+    } catch (error) {
+      this.setState({ loading: false, error: true })
     }
   }
 
