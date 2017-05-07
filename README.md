@@ -34,6 +34,9 @@
   * [PageSpeed Insights](#pagespeed-insights)
     * [Example](#example-2)
     * [props](#props-2)
+  * [SonarQube](#sonarqube)
+    * [Example](#example-3)
+    * [props](#props-3)
 * [Available Themes](#available-themes)
   * [light](#light)
   * [dark](#dark)
@@ -130,6 +133,25 @@ import PageSpeedScore from '../components/widgets/psi'
 * `strategy`: Analysis strategy (Default: `desktop`)
   * Acceptable values: `desktop` | `mobile`
 * `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `true`)
+
+### [SonarQube](./components/widgets/sonarqube/index.js)
+
+#### Example
+
+```javascript
+import SonarQube from '../components/widgets/sonarqube'
+
+<SonarQube
+  url='https://sonarqube.com/'
+  componentKey='com.icegreen:greenmail-parent'
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `SonarQube`)
+* `url`: SonarQube URL
+* `componentKey`: SonarQube project key
 
 ## Available Themes
 
