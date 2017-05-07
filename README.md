@@ -31,12 +31,15 @@
   * [JIRA Issue Count](#jira-issue-count)
     * [Example](#example-1)
     * [props](#props-1)
-  * [PageSpeed Insights](#pagespeed-insights)
+  * [Bitbucket PullRequest Count](#bitbucket-pullrequest-count)
     * [Example](#example-2)
     * [props](#props-2)
-  * [SonarQube](#sonarqube)
+  * [PageSpeed Insights](#pagespeed-insights)
     * [Example](#example-3)
     * [props](#props-3)
+  * [SonarQube](#sonarqube)
+    * [Example](#example-4)
+    * [props](#props-4)
 * [Available Themes](#available-themes)
   * [light](#light)
   * [dark](#dark)
@@ -112,8 +115,30 @@ import JiraIssueCount from '../components/widgets/jira-issue-count'
 #### props
 
 * `title`: Widget title (Default: `JIRA Issue Count`)
-* `url`: JIRA URL
+* `url`: JIRA Server URL
 * `query`: JIRA search query (`jql`)
+
+### [Bitbucket PullRequest Count](./components/widgets/bitbucket-pullrequest-count/index.js)
+
+#### Example
+
+```javascript
+import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullrequest-count'
+
+<BitbucketPullRequestCount
+  title='Bitbucket Open PR'
+  url='https://bitbucket.typo3.com/'
+  project='EXT'
+  repository='blog'
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `Bitbucket PR Count`)
+* `url`: Bitbucket Server URL
+* `project`: Bitbucket project key
+* `repository`: Bitbucket repository slug
 
 ### [PageSpeed Insights](./components/widgets/psi/index.js)
 

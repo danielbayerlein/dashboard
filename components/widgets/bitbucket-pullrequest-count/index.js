@@ -1,47 +1,38 @@
 import { Component } from 'react'
-import { URL } from 'universal-url'
 import fetch from 'isomorphic-unfetch'
 import Widget from '../../widget'
 import Counter from '../../counter'
-import styled from 'styled-components'
 
-const Listelement = styled.div`
-  font-size: 1em;
-  text-align: center;
-`
-
-export default class BitbucketPullrequestsCount extends Component {
+export default class BitbucketPullRequestCount extends Component {
   static defaultProps = {
-    title: 'Open PullRequests'
+    title: 'Bitbucket PR Count'
   }
 
   state = {
     count: 0,
-    values: []
+    error: false,
+    loading: true
   }
 
   async componentDidMount () {
-    const { url } = this.props
+    const { url, project, repository } = this.props
 
-    const urlObj = new URL('2.0/repositories/marsn88/dashboard-demo/pullrequests', url)
-    const res = await fetch(urlObj.toString()) // eslint-disable-line no-undef
+    try {
+      const res = await fetch(`${url}rest/api/1.0/projects/${project}/repos/${repository}/pull-requests`)
+      const json = await res.json()
 
-    const json = await res.json()
-
-    this.setState({ count: json.size })
-    this.setState({ values: json.values })
+      this.setState({ loading: false, count: json.size })
+    } catch (error) {
+      this.setState({ loading: false, error: true })
+    }
   }
 
   render () {
-    const { count, values } = this.state
+    const { count, error, loading } = this.state
     const { title } = this.props
-
     return (
-      <Widget title={title}>
+      <Widget title={title} loading={loading} error={error}>
         <Counter value={count} />
-        {values.map((el) =>
-            <Listelement>{el.title}</Listelement>
-        )}
       </Widget>
     )
   }
