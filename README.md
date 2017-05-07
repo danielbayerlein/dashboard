@@ -19,8 +19,6 @@
   </a>
 </p>
 
----
-
 * [Installation](#installation)
 * [Server](#server)
   * [Development](#development)
