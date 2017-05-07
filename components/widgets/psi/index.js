@@ -7,7 +7,8 @@ export default class PageSpeedInsights extends Component {
   static defaultProps = {
     filterThirdPartyResources: true,
     locale: 'de_DE',
-    strategy: 'desktop'
+    strategy: 'desktop',
+    title: 'PageSpeed Score'
   }
 
   state = {
@@ -38,6 +39,7 @@ export default class PageSpeedInsights extends Component {
 
   render () {
     const { error, loading, score } = this.state
+    const { title } = this.props
     return (
       <Widget title='PageSpeed Score' loading={loading} error={error}>
         <CircleProgress value={score} />
