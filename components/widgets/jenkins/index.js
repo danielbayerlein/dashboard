@@ -27,7 +27,7 @@ export default class Jenkins extends Component {
   }
 
   state = {
-    loading: false,
+    loading: true,
     error: false
   }
 
