@@ -11,6 +11,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 1em;
+  padding: 1em;
 `
 
 export default ({ children, error = false, loading = false, title = '' }) => {
