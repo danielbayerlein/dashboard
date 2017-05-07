@@ -36,8 +36,6 @@ export default class Jenkins extends Component {
   }
 
   async loadInformation () {
-    this.setState({ loading: true, error: false })
-
     const { jobs, url } = this.props
 
     try {
