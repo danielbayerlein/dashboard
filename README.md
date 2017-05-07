@@ -114,7 +114,7 @@ import Jenkins from '../components/widgets/jenkins'
 />
 ```
 
-### props
+#### props
 * `title`: Widget title (Default: `Jenkins`)
 * `url`: Jenkins URL
 * `jobs`: List of all jobs
