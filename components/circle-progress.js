@@ -1,4 +1,3 @@
-import { Component } from 'react'
 import styled from 'styled-components'
 import { size } from 'polished'
 
@@ -27,30 +26,20 @@ const Text = styled.text`
   text-anchor: middle;
 `
 
-export default class CircleProgress extends Component {
-  static defaultProps = {
-    max: 100,
-    radius: 90,
-    unit: ''
-  }
+export default ({ max = 100, radius = 90, unit = '', value }) => {
+  const strokeDasharray = 2 * radius * Math.PI
+  const strokeDashoffset = ((max - value) / max) * strokeDasharray
 
-  render () {
-    const { max, radius, unit, value } = this.props
-
-    const strokeDasharray = 2 * radius * Math.PI
-    const strokeDashoffset = ((max - value) / max) * strokeDasharray
-
-    return (
-      <Svg viewBox='0 0 200 200'>
-        <Circle r={radius} className='background' />
-        <Circle
-          r={radius}
-          className='progress'
-          strokeDasharray={strokeDasharray}
-          strokeDashoffset={strokeDashoffset}
-        />
-        <Text x='100' y='120'>{value}{unit}</Text>
-      </Svg>
-    )
-  }
+  return (
+    <Svg viewBox='0 0 200 200'>
+      <Circle r={radius} className='background' />
+      <Circle
+        r={radius}
+        className='progress'
+        strokeDasharray={strokeDasharray}
+        strokeDashoffset={strokeDashoffset}
+      />
+      <Text x='100' y='120'>{value}{unit}</Text>
+    </Svg>
+  )
 }

@@ -12,7 +12,9 @@ export default class PageSpeedInsights extends Component {
   }
 
   state = {
-    score: 0
+    score: 0,
+    loading: true,
+    error: false
   }
 
   async componentDidMount () {
@@ -23,19 +25,23 @@ export default class PageSpeedInsights extends Component {
       `filter_third_party_resources=${filterThirdPartyResources}`,
       `locale=${locale}`,
       `strategy=${strategy}`
-    ]
+    ].join('&')
 
-    const res = await fetch(`https://www.googleapis.com/pagespeedonline/v2/runPagespeed?${searchParams.join('&')}`)
-    const json = await res.json()
+    try {
+      const res = await fetch(`https://www.googleapis.com/pagespeedonline/v2/runPagespeed?${searchParams}`)
+      const json = await res.json()
 
-    this.setState({ score: json.ruleGroups.SPEED.score })
+      this.setState({ loading: false, score: json.ruleGroups.SPEED.score })
+    } catch (error) {
+      this.setState({ loading: false, error: true })
+    }
   }
 
   render () {
-    const { score } = this.state
+    const { error, loading, score } = this.state
     const { title } = this.props
     return (
-      <Widget title={title}>
+      <Widget title='PageSpeed Score' loading={loading} error={error}>
         <CircleProgress value={score} />
       </Widget>
     )
