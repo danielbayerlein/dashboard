@@ -32,7 +32,8 @@ export default () => (
       url="https://crossorigin.me/http://ci.jenkins-ci.org"
       jobs={[
         { label: 'jenkins master', path: 'Core/job/jenkins/job/master/' },
-        { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7/'}
+        { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7/'},
+        { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master/' },
       ]}
     />
   </Dashboard>

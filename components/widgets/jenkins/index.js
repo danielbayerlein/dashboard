@@ -1,8 +1,26 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
+import styled from 'styled-components'
 import Widget from '../../widget'
+import Table, { Th, Td } from '../../table'
+import Badge from '../../badge'
 
-export default class JiraIssueCount extends Component {
+const JenkinsBadge = styled(Badge)`
+  background-color: ${props => {
+    switch (props.status) {
+      case 'FAILURE':
+        return props.theme.palette.errorColor
+      case 'UNSTABLE':
+        return props.theme.palette.warnColor
+      case 'SUCCESS':
+        return props.theme.palette.successColor
+      default:
+        return props.theme.palette.grey200
+    }
+  }}
+`
+
+export default class Jenkins extends Component {
   static defaultProps = {
     jobs: [],
     title: 'Jenkins'
@@ -41,7 +59,6 @@ export default class JiraIssueCount extends Component {
         builds
       })
     } catch (_) {
-      console.log(_)
       this.setState({
         loading: false,
         error: 'failed to load information'
@@ -54,17 +71,21 @@ export default class JiraIssueCount extends Component {
     const { title } = this.props
 
     return (
-      <Widget title={title}>
-        <table>
+      <Widget title={title} error={error} loading={loading}>
+        <Table>
           <tbody>
             {builds && builds.map(build => (
               <tr key={`jenkins-${build.name}`}>
-                <th>{build.name}</th>
-                <td><a href={build.url}>{build.result}</a></td>
+                <Th>{build.name}</Th>
+                <Td>
+                  <a href={build.url} title={build.result}>
+                    <JenkinsBadge status={build.result} />
+                  </a>
+                </Td>
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       </Widget>
     )
   }
