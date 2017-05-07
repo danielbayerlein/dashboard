@@ -5,7 +5,6 @@ import Counter from '../../counter'
 
 export default class JiraIssueCount extends Component {
   static defaultProps = {
-    query: '',
     title: 'JIRA Issue Count'
   }
 
