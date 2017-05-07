@@ -22,7 +22,6 @@ const JenkinsBadge = styled(Badge)`
 
 export default class Jenkins extends Component {
   static defaultProps = {
-    jobs: [],
     title: 'Jenkins'
   }
 
