@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { size } from 'polished'
 
-const Badge = styled.span`
+export default styled.span`
   ${size('1.75em')}
   background-color: transparent
   border-radius: 50%;
@@ -10,5 +10,3 @@ const Badge = styled.span`
   line-height: 1.75em;
   text-align: center;
 `
-
-export default Badge

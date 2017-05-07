@@ -15,7 +15,7 @@ const JenkinsBadge = styled(Badge)`
       case 'SUCCESS':
         return props.theme.palette.successColor
       default:
-        return props.theme.palette.grey200
+        return 'transparent'
     }
   }}
 `
@@ -28,7 +28,7 @@ export default class Jenkins extends Component {
 
   state = {
     loading: false,
-    error: null
+    error: false
   }
 
   componentDidMount () {
@@ -36,7 +36,7 @@ export default class Jenkins extends Component {
   }
 
   async loadInformation () {
-    this.setState({ loading: true, error: null })
+    this.setState({ loading: true, error: false })
 
     const { jobs, url } = this.props
 
@@ -54,15 +54,9 @@ export default class Jenkins extends Component {
         })
       )
 
-      this.setState({
-        loading: false,
-        builds
-      })
-    } catch (_) {
-      this.setState({
-        loading: false,
-        error: 'failed to load information'
-      })
+      this.setState({ loading: false, builds })
+    } catch (error) {
+      this.setState({ loading: false, error: true })
     }
   }
 
