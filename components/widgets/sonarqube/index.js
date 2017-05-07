@@ -1,57 +1,57 @@
 import { Component } from 'react'
 import styled from 'styled-components'
 import fetch from 'isomorphic-unfetch'
+import { size } from 'polished'
 import Widget from '../../widget'
 
 const Table = styled.table`
-  border-color: transparent
-  border-spacing: 5px
-  text-align: left
+  border-spacing: 0.75em;
+`
+
+const Th = styled.th`
+  text-align: right;
 `
 
 const Td = styled.td`
-  padding: 5px
-`
-
-const Th = Td
-
-const Badge = styled.span`
-  background: ${props => {
-    switch (props.children) {
-      case 'A':
-        return '#8BC34A'
-      case 'B':
-        return '#CDDC39'
-      case 'C':
-        return '#FFEB3B'
-      case 'D':
-        return '#FF5722'
-      default:
-        return '#F44336'
-    }
-  }}
-  border-radius: 50%
-  box-sizing: border-box
-  display: inline-block
-  height: 30px
-  line-height: 30px
-  text-align: center
-  width: 30px
+  text-align: left;
 `
 
 const Alert = styled.span`
   color: ${props => {
-    if (props.children === 'ERROR') {
-      return '#F44336'
+    switch (props.children) {
+      case 'ERROR':
+        return props.theme.palette.errorColor
+      case 'WARN':
+        return props.theme.palette.warnColor
+      default: // OK
+        return props.theme.palette.successColor
     }
-
-    if (props.children === 'WARN') {
-      return '#FFEB3B'
-    }
-
-    // OK
-    return '#8BC34A'
   }}
+`
+
+const Badge = styled.span`
+  ${size('1.75em')}
+  background-color: ${props => {
+    switch (props.children) {
+      case 'A':
+        return props.theme.palette.successColor
+      case 'B':
+        return props.theme.palette.successSecondaryColor
+      case 'C':
+        return props.theme.palette.warnColor
+      case 'D':
+        return props.theme.palette.warnSecondaryColor
+      case 'E':
+        return props.theme.palette.errorColor
+      default:
+        return 'transparent'
+    }
+  }}
+  border-radius: 50%;
+  color: ${props => props.theme.palette.textInvertColor};
+  display: inline-block;
+  line-height: 1.75em;
+  text-align: center;
 `
 
 export default class SonarQube extends Component {
@@ -62,16 +62,10 @@ export default class SonarQube extends Component {
   state = {
     measures: [],
     loading: true,
-    error: null
+    error: false
   }
 
-  componentDidMount () {
-    this.loadInformation()
-  }
-
-  async loadInformation () {
-    this.setState({ loading: true, error: null })
-
+  async componentDidMount () {
     const { url, componentKey } = this.props
 
     // https://docs.sonarqube.org/display/SONAR/Metric+Definitions
@@ -79,21 +73,15 @@ export default class SonarQube extends Component {
       'alert_status', 'reliability_rating', 'bugs', 'security_rating',
       'vulnerabilities', 'sqale_rating', 'code_smells', 'coverage',
       'duplicated_lines_density'
-    ]
+    ].join(',')
 
     try {
-      const res = await fetch(`${url}/api/measures/component?componentKey=${componentKey}&metricKeys=${metricKeys.join(',')}`)
+      const res = await fetch(`${url}/api/measures/component?componentKey=${componentKey}&metricKeys=${metricKeys}`)
       const json = await res.json()
 
-      this.setState({
-        loading: false,
-        measures: json.component.measures
-      })
-    } catch (_) {
-      this.setState({
-        loading: false,
-        error: 'failed to load information'
-      })
+      this.setState({ loading: false, measures: json.component.measures })
+    } catch (error) {
+      this.setState({ loading: false, error: true })
     }
   }
 
@@ -126,18 +114,13 @@ export default class SonarQube extends Component {
     const { title } = this.props
 
     const alertStatus = this.getMetricValue(measures, 'alert_status')
-
     const reliabilityRating = this.getRatingValue(measures, 'reliability_rating')
     const bugs = this.getMetricValue(measures, 'bugs')
-
     const securityRating = this.getRatingValue(measures, 'security_rating')
     const vulnerabilities = this.getMetricValue(measures, 'vulnerabilities')
-
     const sqaleRating = this.getRatingValue(measures, 'sqale_rating')
     const codeSmells = this.getMetricValue(measures, 'code_smells')
-
     const coverage = this.getMetricValue(measures, 'coverage')
-
     const duplicatedLinesDensity = this.getMetricValue(measures, 'duplicated_lines_density')
 
     return (
@@ -172,12 +155,12 @@ export default class SonarQube extends Component {
 
             <tr>
               <Th>Coverage:</Th>
-              <Td>{coverage} %</Td>
+              <Td>{coverage}%</Td>
             </tr>
 
             <tr>
               <Th>Duplications:</Th>
-              <Td>{duplicatedLinesDensity} %</Td>
+              <Td>{duplicatedLinesDensity}%</Td>
             </tr>
           </tbody>
         </Table>
