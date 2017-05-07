@@ -1,25 +1,159 @@
-# Dashboard
+<p align="center">
+  <img src="" width="250" alt="Dashboard">
+</p>
 
-> Create your own team dashboard with custom widgets.
+<h1 align="center">
+  Dashboard
+</h1>
 
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![Greenkeeper badge](https://badges.greenkeeper.io/danielbayerlein/dashboard.svg)](https://greenkeeper.io/)
+<p align="center">
+  Create your own team dashboard with custom widgets.
+</p>
 
-## Install
+<p align="center">
+  <a href="https://standardjs.com">
+    <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg">
+  </a>
+  <a href="https://greenkeeper.io/">
+    <img alt="Greenkeeper badge" src="https://badges.greenkeeper.io/danielbayerlein/dashboard.svg">
+  </a>
+</p>
 
-1. [Download](../../archive/master.zip) or clone the repository:
+---
 
-  ```bash
-  git clone https://github.com/danielbayerlein/dashboard.git
-  ```
+* [Installation](#installation)
+* [Server](#server)
+  * [Development](#development)
+  * [Production](#production)
+* [Create a Dashboard](#create-a-dashboard)
+* [Available Widgets](#available-widgets)
+  * [DateTime](#datetime)
+    * [Example](#example)
+    * [props](#props)
+  * [JIRA Issue Count](#jira-issue-count)
+    * [Example](#example-1)
+    * [props](#props-1)
+  * [PageSpeed Insights](#pagespeed-insights)
+    * [Example](#example-2)
+    * [props](#props-2)
+* [Available Themes](#available-themes)
+  * [light](#light)
+  * [dark](#dark)
+* [License](#license)
 
-2. Install the dependencies:
+## Installation
 
-  ```bash
-  npm install
-  ```
+1. [Download](../../archive/master.zip) or clone the repository.
+2. Install the dependencies with `npm install`.
 
-## Usage
+## Server
+
+### Development
+
+Run `npm run dev` and go to http://localhost:3000.
+
+### Production
+
+Build your dashboard for production with `npm run build` and then start the
+server with `npm start`.
+
+## Create a Dashboard
+
+You can create multiple dashboards.
+For example populate `pages/team-unicorn.js` inside your project:
+
+```javascript
+import Dashboard from '../components/dashboard'
+import DateTime from '../components/widgets/datetime'
+import lightTheme from '../styles/light-theme'
+
+export default () => (
+  <Dashboard theme={lightTheme}>
+    <DateTime />
+  </Dashboard>
+)
+```
+
+This dashboard is available at http://localhost:3000/team-unicorn.
+
+For an example, see [pages/index.js](./pages/index.js).
+
+## Available Widgets
+
+### [DateTime](./components/widgets/datetime/index.js)
+
+#### Example
+
+```javascript
+import DateTime from '../components/widgets/datetime'
+
+<DateTime interval={10000} />
+```
+
+#### props
+
+* `interval`: Refresh interval in milliseconds (Default: `10000`)
+
+### [JIRA Issue Count](./components/widgets/jira-issue-count/index.js)
+
+#### Example
+
+```javascript
+import JiraIssueCount from '../components/widgets/jira-issue-count'
+
+<JiraIssueCount
+  title='JIRA Open Bugs'
+  url='https://jira.atlassian.com/'
+  query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `JIRA Issue Count`)
+* `url`: JIRA URL
+* `query`: JIRA search query (`jql`)
+
+### [PageSpeed Insights](./components/widgets/psi/index.js)
+
+#### Example
+
+```javascript
+import PageSpeedScore from '../components/widgets/psi'
+
+<PageSpeedScore url='https://github.com/' />
+```
+
+#### props
+
+* `title`: Widget title (Default: `PageSpeed Score`)
+* `url`: URL to fetch and analyze
+* `locale`: Locale used to localize formatted results (Default: `de_DE`)
+* `strategy`: Analysis strategy (Default: `desktop`)
+  * Acceptable values: `desktop` | `mobile`
+* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `true`)
+
+## Available Themes
+
+### [light](./styles/light-theme.js)
+
+```javascript
+import lightTheme from '../styles/light-theme'
+
+<Dashboard theme={lightTheme}>
+  ...
+</Dashboard>
+```
+
+### [dark](./styles/dark-theme.js)
+
+```javascript
+import darkTheme from '../styles/dark-theme'
+
+<Dashboard theme={darkTheme}>
+  ...
+</Dashboard>
+```
 
 ## License
 
