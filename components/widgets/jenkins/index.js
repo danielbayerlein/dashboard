@@ -35,12 +35,12 @@ export default class Jenkins extends Component {
     this.loadInformation()
   }
 
-  async loadInformation() {
-     this.setState({ loading: true, error: null })
+  async loadInformation () {
+    this.setState({ loading: true, error: null })
 
-     const { jobs, url } = this.props
+    const { jobs, url } = this.props
 
-     try {
+    try {
       const builds = await Promise.all(
         jobs.map(async job => {
           const res = await fetch(`${url}/job/${job.path}/lastBuild/api/json`)
@@ -67,7 +67,7 @@ export default class Jenkins extends Component {
   }
 
   render () {
-    const { url, loading, error, builds } = this.state
+    const { loading, error, builds } = this.state
     const { title } = this.props
 
     return (

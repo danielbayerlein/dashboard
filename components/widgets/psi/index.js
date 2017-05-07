@@ -41,7 +41,7 @@ export default class PageSpeedInsights extends Component {
     const { error, loading, score } = this.state
     const { title } = this.props
     return (
-      <Widget title='PageSpeed Score' loading={loading} error={error}>
+      <Widget title={title} loading={loading} error={error}>
         <CircleProgress value={score} />
       </Widget>
     )
