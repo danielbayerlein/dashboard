@@ -15,7 +15,7 @@ const DateItem = styled.div`
 
 export default class DateTime extends Component {
   static defaultProps = {
-    interval: 10000
+    interval: 1000 * 10
   }
 
   state = {

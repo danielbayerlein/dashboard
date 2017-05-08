@@ -22,6 +22,7 @@ const JenkinsBadge = styled(Badge)`
 
 export default class Jenkins extends Component {
   static defaultProps = {
+    interval: 1000 * 60 * 5,
     title: 'Jenkins'
   }
 
@@ -31,10 +32,16 @@ export default class Jenkins extends Component {
   }
 
   componentDidMount () {
-    this.loadInformation()
+    this.fetchInformation()
   }
 
-  async loadInformation () {
+  componentWillUnmount () {
+    if (this.interval !== undefined) {
+      clearInterval(this.interval)
+    }
+  }
+
+  async fetchInformation () {
     const { jobs, url } = this.props
 
     try {
@@ -54,6 +61,8 @@ export default class Jenkins extends Component {
       this.setState({ loading: false, builds })
     } catch (error) {
       this.setState({ loading: false, error: true })
+    } finally {
+      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
   }
 

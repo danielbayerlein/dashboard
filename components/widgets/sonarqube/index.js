@@ -39,6 +39,7 @@ const SonarBadge = styled(Badge)`
 
 export default class SonarQube extends Component {
   static defaultProps = {
+    interval: 1000 * 60 * 5,
     title: 'SonarQube'
   }
 
@@ -48,7 +49,17 @@ export default class SonarQube extends Component {
     error: false
   }
 
-  async componentDidMount () {
+  componentDidMount () {
+    this.fetchInformation()
+  }
+
+  componentWillUnmount () {
+    if (this.interval !== undefined) {
+      clearInterval(this.interval)
+    }
+  }
+
+  async fetchInformation () {
     const { url, componentKey } = this.props
 
     // https://docs.sonarqube.org/display/SONAR/Metric+Definitions
@@ -65,6 +76,8 @@ export default class SonarQube extends Component {
       this.setState({ loading: false, measures: json.component.measures })
     } catch (error) {
       this.setState({ loading: false, error: true })
+    } finally {
+      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
   }
 

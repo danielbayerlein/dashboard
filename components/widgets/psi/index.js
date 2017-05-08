@@ -6,6 +6,7 @@ import Widget from '../../widget'
 export default class PageSpeedInsights extends Component {
   static defaultProps = {
     filterThirdPartyResources: true,
+    interval: 1000 * 60 * 60 * 12,
     locale: 'de_DE',
     strategy: 'desktop',
     title: 'PageSpeed Score'
@@ -17,7 +18,17 @@ export default class PageSpeedInsights extends Component {
     error: false
   }
 
-  async componentDidMount () {
+  componentDidMount () {
+    this.fetchInformation()
+  }
+
+  componentWillUnmount () {
+    if (this.interval !== undefined) {
+      clearInterval(this.interval)
+    }
+  }
+
+  async fetchInformation () {
     const { url, filterThirdPartyResources, locale, strategy } = this.props
 
     const searchParams = [
@@ -34,6 +45,8 @@ export default class PageSpeedInsights extends Component {
       this.setState({ loading: false, score: json.ruleGroups.SPEED.score })
     } catch (error) {
       this.setState({ loading: false, error: true })
+    } finally {
+      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
   }
 

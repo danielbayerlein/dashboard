@@ -5,6 +5,7 @@ import Counter from '../../counter'
 
 export default class JiraIssueCount extends Component {
   static defaultProps = {
+    interval: 1000 * 60 * 5,
     title: 'JIRA Issue Count'
   }
 
@@ -14,7 +15,17 @@ export default class JiraIssueCount extends Component {
     loading: true
   }
 
-  async componentDidMount () {
+  componentDidMount () {
+    this.fetchInformation()
+  }
+
+  componentWillUnmount () {
+    if (this.interval !== undefined) {
+      clearInterval(this.interval)
+    }
+  }
+
+  async fetchInformation () {
     const { url, query } = this.props
 
     try {
@@ -24,6 +35,8 @@ export default class JiraIssueCount extends Component {
       this.setState({ loading: false, count: json.total })
     } catch (error) {
       this.setState({ loading: false, error: true })
+    } finally {
+      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
   }
 
