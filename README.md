@@ -11,6 +11,9 @@
 </p>
 
 <p align="center">
+  <a href="https://travis-ci.org">
+    <img alt="Travis build status" src="https://travis-ci.org/danielbayerlein/dashboard.svg?branch=master">
+  </a>
   <a href="https://standardjs.com">
     <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg">
   </a>
@@ -28,18 +31,21 @@
   * [DateTime](#datetime)
     * [Example](#example)
     * [props](#props)
-  * [JIRA Issue Count](#jira-issue-count)
+  * [Jenkins](#jenkins)
     * [Example](#example-1)
     * [props](#props-1)
-  * [Bitbucket PullRequest Count](#bitbucket-pullrequest-count)
+  * [JIRA Issue Count](#jira-issue-count)
     * [Example](#example-2)
     * [props](#props-2)
-  * [PageSpeed Insights](#pagespeed-insights)
+  * [Bitbucket PullRequest Count](#bitbucket-pullrequest-count)
     * [Example](#example-3)
     * [props](#props-3)
-  * [SonarQube](#sonarqube)
+  * [PageSpeed Insights](#pagespeed-insights)
     * [Example](#example-4)
     * [props](#props-4)
+  * [SonarQube](#sonarqube)
+    * [Example](#example-5)
+    * [props](#props-5)
 * [Available Themes](#available-themes)
   * [light](#light)
   * [dark](#dark)
@@ -97,6 +103,27 @@ import DateTime from '../components/widgets/datetime'
 #### props
 
 * `interval`: Refresh interval in milliseconds (Default: `10000`)
+
+### [Jenkins](./components/widgets/jenkins/index.js)
+
+#### Example
+```javascript
+import Jenkins from '../components/widgets/jenkins'
+
+<Jenkins
+  url="https://crossorigin.me/http://ci.jenkins-ci.org"
+  jobs={[
+    { label: 'jenkins master', path: 'Core/job/jenkins/job/master/' },
+    { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7/'},
+    { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master/' },
+  ]}
+/>
+```
+
+#### props
+* `title`: Widget title (Default: `Jenkins`)
+* `url`: Jenkins URL
+* `jobs`: List of all jobs
 
 ### [JIRA Issue Count](./components/widgets/jira-issue-count/index.js)
 

@@ -5,6 +5,7 @@ import DateTime from '../components/widgets/datetime'
 import PageSpeedScore from '../components/widgets/psi'
 import JiraIssueCount from '../components/widgets/jira-issue-count'
 import SonarQube from '../components/widgets/sonarqube'
+import Jenkins from '../components/widgets/jenkins'
 import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullrequest-count'
 
 // Theme
@@ -33,6 +34,15 @@ export default () => (
     <SonarQube
       url='https://crossorigin.me/https://sonarqube.com/'
       componentKey='com.icegreen:greenmail-parent'
+    />
+
+    <Jenkins
+      url='https://crossorigin.me/http://ci.jenkins-ci.org'
+      jobs={[
+        { label: 'jenkins master', path: 'Core/job/jenkins/job/master/' },
+        { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7/' },
+        { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master/' }
+      ]}
     />
   </Dashboard>
 )
