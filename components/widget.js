@@ -15,6 +15,10 @@ const Container = styled.div`
   padding: 1em;
 `
 
+const Title = styled.h1`
+  text-align: center;
+`
+
 export default ({ children, error = false, loading = false, title = '' }) => {
   let content
 
@@ -28,7 +32,7 @@ export default ({ children, error = false, loading = false, title = '' }) => {
 
   return (
     <Container>
-      {title ? <h1>{title}</h1> : ''}
+      {title ? <Title>{title}</Title> : ''}
       {content}
     </Container>
   )
