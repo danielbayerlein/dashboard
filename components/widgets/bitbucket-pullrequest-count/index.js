@@ -22,12 +22,12 @@ export default class BitbucketPullRequestCount extends Component {
       const res = await fetch(`${url}rest/api/1.0/projects/${project}/repos/${repository}/pull-requests?limit=100`)
       const json = await res.json()
 
-      let count;
+      let count
       if (users.length) {
         const values = json.values.filter((el) => users.includes(el.user.slug))
-        count = values.length;
+        count = values.length
       } else {
-        count = json.size;
+        count = json.size
       }
 
       this.setState({ loading: false, count })
