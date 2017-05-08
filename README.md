@@ -26,6 +26,7 @@
 * [Server](#server)
   * [Development](#development)
   * [Production](#production)
+  * [Docker](#docker)
 * [Create a Dashboard](#create-a-dashboard)
 * [Available Widgets](#available-widgets)
   * [DateTime](#datetime)
@@ -66,6 +67,13 @@ Run `npm run dev` and go to http://localhost:3000.
 
 Build your dashboard for production with `npm run build` and then start the
 server with `npm start`.
+
+### Docker
+
+1. Build your dashboard for production with `npm run build`
+2. Build the image with `docker build -t dashboard .`
+3. Start the container with `docker run -d -p 8080:3000 dashboard`
+4. Go to http://localhost:8080
 
 ## Create a Dashboard
 
