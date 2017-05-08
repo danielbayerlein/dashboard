@@ -107,6 +107,7 @@ import DateTime from '../components/widgets/datetime'
 ### [Jenkins](./components/widgets/jenkins/index.js)
 
 #### Example
+
 ```javascript
 import Jenkins from '../components/widgets/jenkins'
 
@@ -121,6 +122,7 @@ import Jenkins from '../components/widgets/jenkins'
 ```
 
 #### props
+
 * `title`: Widget title (Default: `Jenkins`)
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Jenkins URL
@@ -166,6 +168,7 @@ import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullreque
 #### props
 
 * `title`: Widget title (Default: `Bitbucket PR Count`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Bitbucket Server URL
 * `project`: Bitbucket project key
 * `repository`: Bitbucket repository slug

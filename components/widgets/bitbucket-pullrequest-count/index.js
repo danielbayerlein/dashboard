@@ -5,6 +5,7 @@ import Counter from '../../counter'
 
 export default class BitbucketPullRequestCount extends Component {
   static defaultProps = {
+    interval: 1000 * 60 * 5,
     title: 'Bitbucket PR Count',
     users: []
   }
@@ -15,7 +16,15 @@ export default class BitbucketPullRequestCount extends Component {
     loading: true
   }
 
-  async componentDidMount () {
+  componentDidMount () {
+    this.fetchInformation()
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.interval)
+  }
+
+  async fetchInformation () {
     const { url, project, repository, users } = this.props
 
     try {
@@ -24,15 +33,16 @@ export default class BitbucketPullRequestCount extends Component {
 
       let count
       if (users.length) {
-        const values = json.values.filter((el) => users.includes(el.user.slug))
-        count = values.length
+        count = json.values.filter((el) => users.includes(el.user.slug)).length
       } else {
         count = json.size
       }
 
-      this.setState({ loading: false, count })
+      this.setState({ count, error: false, loading: false })
     } catch (error) {
-      this.setState({ loading: false, error: true })
+      this.setState({ error: true, loading: false })
+    } finally {
+      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
   }
 
