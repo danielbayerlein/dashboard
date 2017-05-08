@@ -7,6 +7,7 @@ import JiraIssueCount from '../components/widgets/jira-issue-count'
 import SonarQube from '../components/widgets/sonarqube'
 import Jenkins from '../components/widgets/jenkins'
 import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullrequest-count'
+import OrlyRandomCovers from '../components/widgets/orly-random-covers'
 
 // Theme
 import lightTheme from '../styles/light-theme'
@@ -44,5 +45,7 @@ export default () => (
         { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master/' }
       ]}
     />
+
+    <OrlyRandomCovers />
   </Dashboard>
 )
