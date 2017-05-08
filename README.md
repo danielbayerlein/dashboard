@@ -122,6 +122,7 @@ import Jenkins from '../components/widgets/jenkins'
 
 #### props
 * `title`: Widget title (Default: `Jenkins`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Jenkins URL
 * `jobs`: List of all jobs
 
@@ -142,6 +143,7 @@ import JiraIssueCount from '../components/widgets/jira-issue-count'
 #### props
 
 * `title`: Widget title (Default: `JIRA Issue Count`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: JIRA Server URL
 * `query`: JIRA search query (`jql`)
 
@@ -182,6 +184,7 @@ import PageSpeedScore from '../components/widgets/psi'
 #### props
 
 * `title`: Widget title (Default: `PageSpeed Score`)
+* `interval`: Refresh interval in milliseconds (Default: `43200000`)
 * `url`: URL to fetch and analyze
 * `locale`: Locale used to localize formatted results (Default: `de_DE`)
 * `strategy`: Analysis strategy (Default: `desktop`)
@@ -204,6 +207,7 @@ import SonarQube from '../components/widgets/sonarqube'
 #### props
 
 * `title`: Widget title (Default: `SonarQube`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: SonarQube URL
 * `componentKey`: SonarQube project key
 
