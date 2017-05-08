@@ -3,10 +3,11 @@ import fetch from 'isomorphic-unfetch'
 import Widget from '../../widget'
 import Counter from '../../counter'
 
-export default class JiraIssueCount extends Component {
+export default class BitbucketPullRequestCount extends Component {
   static defaultProps = {
     interval: 1000 * 60 * 5,
-    title: 'JIRA Issue Count'
+    title: 'Bitbucket PR Count',
+    users: []
   }
 
   state = {
@@ -24,13 +25,20 @@ export default class JiraIssueCount extends Component {
   }
 
   async fetchInformation () {
-    const { url, query } = this.props
+    const { url, project, repository, users } = this.props
 
     try {
-      const res = await fetch(`${url}rest/api/2/search?jql=${query}`)
+      const res = await fetch(`${url}rest/api/1.0/projects/${project}/repos/${repository}/pull-requests?limit=100`)
       const json = await res.json()
 
-      this.setState({ count: json.total, error: false, loading: false })
+      let count
+      if (users.length) {
+        count = json.values.filter((el) => users.includes(el.user.slug)).length
+      } else {
+        count = json.size
+      }
+
+      this.setState({ count, error: false, loading: false })
     } catch (error) {
       this.setState({ error: true, loading: false })
     } finally {

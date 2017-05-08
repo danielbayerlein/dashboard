@@ -37,12 +37,15 @@
   * [JIRA Issue Count](#jira-issue-count)
     * [Example](#example-2)
     * [props](#props-2)
-  * [PageSpeed Insights](#pagespeed-insights)
+  * [Bitbucket PullRequest Count](#bitbucket-pullrequest-count)
     * [Example](#example-3)
     * [props](#props-3)
-  * [SonarQube](#sonarqube)
+  * [PageSpeed Insights](#pagespeed-insights)
     * [Example](#example-4)
     * [props](#props-4)
+  * [SonarQube](#sonarqube)
+    * [Example](#example-5)
+    * [props](#props-5)
 * [Available Themes](#available-themes)
   * [light](#light)
   * [dark](#dark)
@@ -104,6 +107,7 @@ import DateTime from '../components/widgets/datetime'
 ### [Jenkins](./components/widgets/jenkins/index.js)
 
 #### Example
+
 ```javascript
 import Jenkins from '../components/widgets/jenkins'
 
@@ -118,7 +122,9 @@ import Jenkins from '../components/widgets/jenkins'
 ```
 
 #### props
+
 * `title`: Widget title (Default: `Jenkins`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Jenkins URL
 * `jobs`: List of all jobs
 
@@ -139,8 +145,34 @@ import JiraIssueCount from '../components/widgets/jira-issue-count'
 #### props
 
 * `title`: Widget title (Default: `JIRA Issue Count`)
-* `url`: JIRA URL
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
+* `url`: JIRA Server URL
 * `query`: JIRA search query (`jql`)
+
+### [Bitbucket PullRequest Count](./components/widgets/bitbucket-pullrequest-count/index.js)
+
+#### Example
+
+```javascript
+import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullrequest-count'
+
+<BitbucketPullRequestCount
+  title='Bitbucket Open PR'
+  url='https://bitbucket.typo3.com/'
+  project='EXT'
+  repository='blog'
+  users={['stekal', 'marleg', 'denhub']}
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `Bitbucket PR Count`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
+* `url`: Bitbucket Server URL
+* `project`: Bitbucket project key
+* `repository`: Bitbucket repository slug
+* `users`: Bitbucket user slugs as an array
 
 ### [PageSpeed Insights](./components/widgets/psi/index.js)
 
@@ -155,6 +187,7 @@ import PageSpeedScore from '../components/widgets/psi'
 #### props
 
 * `title`: Widget title (Default: `PageSpeed Score`)
+* `interval`: Refresh interval in milliseconds (Default: `43200000`)
 * `url`: URL to fetch and analyze
 * `locale`: Locale used to localize formatted results (Default: `de_DE`)
 * `strategy`: Analysis strategy (Default: `desktop`)
@@ -177,6 +210,7 @@ import SonarQube from '../components/widgets/sonarqube'
 #### props
 
 * `title`: Widget title (Default: `SonarQube`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: SonarQube URL
 * `componentKey`: SonarQube project key
 
