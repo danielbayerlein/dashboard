@@ -28,7 +28,6 @@ export default () => (
       url='https://crossorigin.me/https://bitbucket.typo3.com/'
       project='EXT'
       repository='blog'
-      users='marstn,danbay,chrheg'
     />
 
     <SonarQube

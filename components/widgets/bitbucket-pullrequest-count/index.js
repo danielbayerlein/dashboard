@@ -6,7 +6,7 @@ import Counter from '../../counter'
 export default class BitbucketPullRequestCount extends Component {
   static defaultProps = {
     title: 'Bitbucket PR Count',
-    users: ''
+    users: []
   }
 
   state = {
@@ -22,11 +22,10 @@ export default class BitbucketPullRequestCount extends Component {
       const res = await fetch(`${url}rest/api/1.0/projects/${project}/repos/${repository}/pull-requests`)
       const json = await res.json()
 
-      const userList = users.split(',')
-      let pullrequests = [];
-      if (userList.length) {
+      let pullrequests = json.values
+      if (users.length) {
         pullrequests = json.values.filter((el) => {
-          return userList.indexOf(el.user.slug.trim()) < 1
+          return users.indexOf(el.user.slug.trim()) > -1
         });
       }
 
