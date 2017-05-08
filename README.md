@@ -37,12 +37,15 @@
   * [JIRA Issue Count](#jira-issue-count)
     * [Example](#example-2)
     * [props](#props-2)
-  * [PageSpeed Insights](#pagespeed-insights)
+  * [Bitbucket PullRequest Count](#bitbucket-pullrequest-count)
     * [Example](#example-3)
     * [props](#props-3)
-  * [SonarQube](#sonarqube)
+  * [PageSpeed Insights](#pagespeed-insights)
     * [Example](#example-4)
     * [props](#props-4)
+  * [SonarQube](#sonarqube)
+    * [Example](#example-5)
+    * [props](#props-5)
 * [Available Themes](#available-themes)
   * [light](#light)
   * [dark](#dark)
@@ -104,6 +107,7 @@ import DateTime from '../components/widgets/datetime'
 ### [Jenkins](./components/widgets/jenkins/index.js)
 
 #### Example
+
 ```javascript
 import Jenkins from '../components/widgets/jenkins'
 
@@ -118,6 +122,7 @@ import Jenkins from '../components/widgets/jenkins'
 ```
 
 #### props
+
 * `title`: Widget title (Default: `Jenkins`)
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Jenkins URL
@@ -141,8 +146,33 @@ import JiraIssueCount from '../components/widgets/jira-issue-count'
 
 * `title`: Widget title (Default: `JIRA Issue Count`)
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
-* `url`: JIRA URL
+* `url`: JIRA Server URL
 * `query`: JIRA search query (`jql`)
+
+### [Bitbucket PullRequest Count](./components/widgets/bitbucket-pullrequest-count/index.js)
+
+#### Example
+
+```javascript
+import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullrequest-count'
+
+<BitbucketPullRequestCount
+  title='Bitbucket Open PR'
+  url='https://bitbucket.typo3.com/'
+  project='EXT'
+  repository='blog'
+  users={['stekal', 'marleg', 'denhub']}
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `Bitbucket PR Count`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
+* `url`: Bitbucket Server URL
+* `project`: Bitbucket project key
+* `repository`: Bitbucket repository slug
+* `users`: Bitbucket user slugs as an array
 
 ### [PageSpeed Insights](./components/widgets/psi/index.js)
 
