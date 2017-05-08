@@ -130,6 +130,7 @@ import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullreque
   url='https://bitbucket.typo3.com/'
   project='EXT'
   repository='blog'
+  users="stekal,marleg,denhub"
 />
 ```
 
@@ -139,6 +140,7 @@ import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullreque
 * `url`: Bitbucket Server URL
 * `project`: Bitbucket project key
 * `repository`: Bitbucket repository slug
+* `users`: Bitbucket user slugs
 
 ### [PageSpeed Insights](./components/widgets/psi/index.js)
 
