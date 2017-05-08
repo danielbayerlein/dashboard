@@ -20,9 +20,7 @@ export default class JiraIssueCount extends Component {
   }
 
   componentWillUnmount () {
-    if (this.interval !== undefined) {
-      clearInterval(this.interval)
-    }
+    clearInterval(this.interval)
   }
 
   async fetchInformation () {
@@ -32,9 +30,9 @@ export default class JiraIssueCount extends Component {
       const res = await fetch(`${url}rest/api/2/search?jql=${query}`)
       const json = await res.json()
 
-      this.setState({ loading: false, count: json.total })
+      this.setState({ count: json.total, error: false, loading: false })
     } catch (error) {
-      this.setState({ loading: false, error: true })
+      this.setState({ error: true, loading: false })
     } finally {
       this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }

@@ -54,9 +54,7 @@ export default class SonarQube extends Component {
   }
 
   componentWillUnmount () {
-    if (this.interval !== undefined) {
-      clearInterval(this.interval)
-    }
+    clearInterval(this.interval)
   }
 
   async fetchInformation () {
@@ -73,9 +71,9 @@ export default class SonarQube extends Component {
       const res = await fetch(`${url}/api/measures/component?componentKey=${componentKey}&metricKeys=${metricKeys}`)
       const json = await res.json()
 
-      this.setState({ loading: false, measures: json.component.measures })
+      this.setState({ error: false, loading: false, measures: json.component.measures })
     } catch (error) {
-      this.setState({ loading: false, error: true })
+      this.setState({ error: true, loading: false })
     } finally {
       this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }

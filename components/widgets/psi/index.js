@@ -23,9 +23,7 @@ export default class PageSpeedInsights extends Component {
   }
 
   componentWillUnmount () {
-    if (this.interval !== undefined) {
-      clearInterval(this.interval)
-    }
+    clearInterval(this.interval)
   }
 
   async fetchInformation () {
@@ -42,9 +40,9 @@ export default class PageSpeedInsights extends Component {
       const res = await fetch(`https://www.googleapis.com/pagespeedonline/v2/runPagespeed?${searchParams}`)
       const json = await res.json()
 
-      this.setState({ loading: false, score: json.ruleGroups.SPEED.score })
+      this.setState({ error: false, loading: false, score: json.ruleGroups.SPEED.score })
     } catch (error) {
-      this.setState({ loading: false, error: true })
+      this.setState({ error: true, loading: false })
     } finally {
       this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }

@@ -36,9 +36,7 @@ export default class Jenkins extends Component {
   }
 
   componentWillUnmount () {
-    if (this.interval !== undefined) {
-      clearInterval(this.interval)
-    }
+    clearInterval(this.interval)
   }
 
   async fetchInformation () {
@@ -58,9 +56,9 @@ export default class Jenkins extends Component {
         })
       )
 
-      this.setState({ loading: false, builds })
+      this.setState({ error: false, loading: false, builds })
     } catch (error) {
-      this.setState({ loading: false, error: true })
+      this.setState({ error: true, loading: false })
     } finally {
       this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
