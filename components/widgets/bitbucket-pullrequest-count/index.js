@@ -19,17 +19,18 @@ export default class BitbucketPullRequestCount extends Component {
     const { url, project, repository, users } = this.props
 
     try {
-      const res = await fetch(`${url}rest/api/1.0/projects/${project}/repos/${repository}/pull-requests`)
+      const res = await fetch(`${url}rest/api/1.0/projects/${project}/repos/${repository}/pull-requests?limit=100`)
       const json = await res.json()
 
-      let pullrequests = json.values
+      let count;
       if (users.length) {
-        pullrequests = json.values.filter((el) => {
-          return users.indexOf(el.user.slug.trim()) > -1
-        });
+        const values = json.values.filter((el) => users.includes(el.user.slug))
+        count = values.length;
+      } else {
+        count = json.size;
       }
 
-      this.setState({ loading: false, count: pullrequests.length })
+      this.setState({ loading: false, count })
     } catch (error) {
       this.setState({ loading: false, error: true })
     }
