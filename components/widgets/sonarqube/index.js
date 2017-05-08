@@ -1,20 +1,9 @@
 import { Component } from 'react'
 import styled from 'styled-components'
 import fetch from 'isomorphic-unfetch'
-import { size } from 'polished'
 import Widget from '../../widget'
-
-const Table = styled.table`
-  border-spacing: 0.75em;
-`
-
-const Th = styled.th`
-  text-align: right;
-`
-
-const Td = styled.td`
-  text-align: left;
-`
+import Table, { Th, Td } from '../../table'
+import Badge from '../../badge'
 
 const Alert = styled.span`
   color: ${props => {
@@ -29,8 +18,7 @@ const Alert = styled.span`
   }}
 `
 
-const Badge = styled.span`
-  ${size('1.75em')}
+const SonarBadge = styled(Badge)`
   background-color: ${props => {
     switch (props.children) {
       case 'A':
@@ -47,11 +35,6 @@ const Badge = styled.span`
         return 'transparent'
     }
   }}
-  border-radius: 50%;
-  color: ${props => props.theme.palette.textInvertColor};
-  display: inline-block;
-  line-height: 1.75em;
-  text-align: center;
 `
 
 export default class SonarQube extends Component {
@@ -135,21 +118,21 @@ export default class SonarQube extends Component {
             <tr>
               <Th>Reliability:</Th>
               <Td>
-                <Badge>{reliabilityRating}</Badge> <small>({bugs})</small>
+                <SonarBadge>{reliabilityRating}</SonarBadge> <small>({bugs})</small>
               </Td>
             </tr>
 
             <tr>
               <Th>Security:</Th>
               <Td>
-                <Badge>{securityRating}</Badge> <small>({vulnerabilities})</small>
+                <SonarBadge>{securityRating}</SonarBadge> <small>({vulnerabilities})</small>
               </Td>
             </tr>
 
             <tr>
               <Th>Maintainability:</Th>
               <Td>
-                <Badge>{sqaleRating}</Badge> <small>({codeSmells})</small>
+                <SonarBadge>{sqaleRating}</SonarBadge> <small>({codeSmells})</small>
               </Td>
             </tr>
 
