@@ -1,0 +1,14 @@
+.git
+components
+node_modules
+pages
+static
+styles
+.dockerignore
+.DS_Store
+.gitignore
+.travis.yml
+Dockerfile
+LICENSE.md
+npm-debug.log
+README.md
