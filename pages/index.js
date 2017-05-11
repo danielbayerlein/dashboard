@@ -3,10 +3,10 @@ import Dashboard from '../components/dashboard'
 // Widgets
 import DateTime from '../components/widgets/datetime'
 import PageSpeedScore from '../components/widgets/psi'
-import JiraIssueCount from '../components/widgets/jira-issue-count'
+import JiraIssueCount from '../components/widgets/jira/issue-count'
 import SonarQube from '../components/widgets/sonarqube'
 import Jenkins from '../components/widgets/jenkins'
-import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullrequest-count'
+import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-request-count'
 
 // Theme
 import lightTheme from '../styles/light-theme'
