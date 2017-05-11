@@ -22,6 +22,8 @@
   </a>
 </p>
 
+## Table of Contents
+
 * [Installation](#installation)
 * [Server](#server)
   * [Development](#development)
