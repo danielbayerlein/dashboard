@@ -2,7 +2,7 @@ import Dashboard from '../components/dashboard'
 
 // Widgets
 import DateTime from '../components/widgets/datetime'
-import PageSpeedScore from '../components/widgets/psi'
+import PageSpeedScore from '../components/widgets/pagespeed-insights/score'
 import JiraIssueCount from '../components/widgets/jira/issue-count'
 import SonarQube from '../components/widgets/sonarqube'
 import Jenkins from '../components/widgets/jenkins'
