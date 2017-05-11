@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import CircleProgress from '../../circle-progress'
 import Widget from '../../widget'
 
-export default class PageSpeedInsights extends Component {
+export default class PageSpeedInsightsScore extends Component {
   static defaultProps = {
     filterThirdPartyResources: true,
     interval: 1000 * 60 * 60 * 12,
