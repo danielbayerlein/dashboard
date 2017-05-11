@@ -2,7 +2,8 @@ import Dashboard from '../components/dashboard'
 
 // Widgets
 import DateTime from '../components/widgets/datetime'
-import PageSpeedScore from '../components/widgets/pagespeed-insights/score'
+import PageSpeedInsightsScore from '../components/widgets/pagespeed-insights/score'
+import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/stats'
 import JiraIssueCount from '../components/widgets/jira/issue-count'
 import SonarQube from '../components/widgets/sonarqube'
 import Jenkins from '../components/widgets/jenkins'
@@ -16,7 +17,9 @@ export default () => (
   <Dashboard theme={lightTheme}>
     <DateTime />
 
-    <PageSpeedScore url='https://github.com/' />
+    <PageSpeedInsightsScore url='https://github.com/' />
+
+    <PageSpeedInsightsStats url='https://github.com/' />
 
     <JiraIssueCount
       title='JIRA Open Bugs'
