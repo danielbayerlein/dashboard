@@ -58,7 +58,7 @@
 * [Cross-Origin Resource Sharing (CORS)](#cross-origin-resource-sharing-cors)
   * [Proxy](#proxy)
     * [Server](#server-1)
-    * [Dashboard](#dashboard-1)
+    * [Dashboard](#dashboard)
   * [Resources](#resources)
 * [License](#license)
 
