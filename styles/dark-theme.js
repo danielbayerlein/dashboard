@@ -22,6 +22,7 @@ export default {
     primaryColor: colors.cyan500,
     accentColor: colors.pinkA200,
     errorColor: colors.red500,
+    neutralColor: colors.grey700,
     warnColor: colors.amber500,
     warnSecondaryColor: colors.orange500,
     successColor: colors.green500,

@@ -8,6 +8,7 @@ import JiraIssueCount from '../components/widgets/jira/issue-count'
 import SonarQube from '../components/widgets/sonarqube'
 import Jenkins from '../components/widgets/jenkins'
 import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-request-count'
+import BitbucketPullRequestList from '../components/widgets/bitbucket/pull-request-list'
 
 // Theme
 import lightTheme from '../styles/light-theme'
@@ -30,6 +31,13 @@ export default () => (
     <BitbucketPullRequestCount
       title='Bitbucket Open PR'
       url='https://crossorigin.me/https://bitbucket.typo3.com/'
+      project='EXT'
+      repository='blog'
+    />
+
+    <BitbucketPullRequestList
+      title='Bitbucket PR List'
+      url='https://crossorigin.me/https://api.bitbucket.org/'
       project='EXT'
       repository='blog'
     />
