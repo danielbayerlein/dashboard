@@ -204,7 +204,7 @@ import PageSpeedInsightsScore from '../components/widgets/pagespeed-insights/sco
 * `url`: URL to fetch and analyze
 * `strategy`: Analysis strategy (Default: `desktop`)
   * Acceptable values: `desktop` | `mobile`
-* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `true`)
+* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `false`)
 
 ### [PageSpeed Insights Stats](./components/widgets/pagespeed-insights/stats.js)
 
@@ -223,7 +223,7 @@ import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/sta
 * `url`: URL to fetch and analyze
 * `strategy`: Analysis strategy (Default: `desktop`)
   * Acceptable values: `desktop` | `mobile`
-* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `true`)
+* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `false`)
 
 ### [SonarQube](./components/widgets/sonarqube/index.js)
 

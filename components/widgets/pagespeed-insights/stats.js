@@ -5,7 +5,7 @@ import Widget from '../../widget'
 
 export default class PageSpeedInsightsStats extends Component {
   static defaultProps = {
-    filterThirdPartyResources: true,
+    filterThirdPartyResources: false,
     interval: 1000 * 60 * 60 * 12,
     strategy: 'desktop',
     title: 'PageSpeed Stats'
