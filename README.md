@@ -57,8 +57,8 @@
   * [dark](#dark)
 * [Cross-Origin Resource Sharing (CORS)](#cross-origin-resource-sharing-cors)
   * [Proxy](#proxy)
-    * [Server](#server-2)
-    * [Dashboard](#dashboard-2)
+    * [Server](#server-1)
+    * [Dashboard](#dashboard-1)
   * [Resources](#resources)
 * [License](#license)
 
