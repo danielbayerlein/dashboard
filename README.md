@@ -43,12 +43,15 @@
   * [Bitbucket PullRequest Count](#bitbucket-pullrequest-count)
     * [Example](#example-3)
     * [props](#props-3)
-  * [PageSpeed Insights](#pagespeed-insights)
+  * [PageSpeed Insights Score](#pagespeed-insights-score)
     * [Example](#example-4)
     * [props](#props-4)
-  * [SonarQube](#sonarqube)
+  * [PageSpeed Insights Stats](#pagespeed-insights-stats)
     * [Example](#example-5)
     * [props](#props-5)
+  * [SonarQube](#sonarqube)
+    * [Example](#example-6)
+    * [props](#props-6)
 * [Available Themes](#available-themes)
   * [light](#light)
   * [dark](#dark)
@@ -138,12 +141,12 @@ import Jenkins from '../components/widgets/jenkins'
 * `url`: Jenkins URL
 * `jobs`: List of all jobs
 
-### [JIRA Issue Count](./components/widgets/jira-issue-count/index.js)
+### [JIRA Issue Count](./components/widgets/jira/issue-count.js)
 
 #### Example
 
 ```javascript
-import JiraIssueCount from '../components/widgets/jira-issue-count'
+import JiraIssueCount from '../components/widgets/jira/issue-count'
 
 <JiraIssueCount
   title='JIRA Open Bugs'
@@ -159,12 +162,12 @@ import JiraIssueCount from '../components/widgets/jira-issue-count'
 * `url`: JIRA Server URL
 * `query`: JIRA search query (`jql`)
 
-### [Bitbucket PullRequest Count](./components/widgets/bitbucket-pullrequest-count/index.js)
+### [Bitbucket PullRequest Count](./components/widgets/bitbucket/pull-request-count.js)
 
 #### Example
 
 ```javascript
-import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullrequest-count'
+import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-request-count'
 
 <BitbucketPullRequestCount
   title='Bitbucket Open PR'
@@ -184,19 +187,39 @@ import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullreque
 * `repository`: Bitbucket repository slug
 * `users`: Bitbucket user slugs as an array
 
-### [PageSpeed Insights](./components/widgets/psi/index.js)
+### [PageSpeed Insights Score](./components/widgets/pagespeed-insights/score.js)
 
 #### Example
 
 ```javascript
-import PageSpeedScore from '../components/widgets/psi'
+import PageSpeedInsightsScore from '../components/widgets/pagespeed-insights/score'
 
-<PageSpeedScore url='https://github.com/' />
+<PageSpeedInsightsScore url='https://github.com/' />
 ```
 
 #### props
 
 * `title`: Widget title (Default: `PageSpeed Score`)
+* `interval`: Refresh interval in milliseconds (Default: `43200000`)
+* `url`: URL to fetch and analyze
+* `locale`: Locale used to localize formatted results (Default: `de_DE`)
+* `strategy`: Analysis strategy (Default: `desktop`)
+  * Acceptable values: `desktop` | `mobile`
+* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `true`)
+
+### [PageSpeed Insights Stats](./components/widgets/pagespeed-insights/stats.js)
+
+#### Example
+
+```javascript
+import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/stats'
+
+<PageSpeedInsightsStats url='https://github.com/' />
+```
+
+#### props
+
+* `title`: Widget title (Default: `PageSpeed Stats`)
 * `interval`: Refresh interval in milliseconds (Default: `43200000`)
 * `url`: URL to fetch and analyze
 * `locale`: Locale used to localize formatted results (Default: `de_DE`)
