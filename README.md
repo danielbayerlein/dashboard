@@ -125,11 +125,11 @@ import DateTime from '../components/widgets/datetime'
 import Jenkins from '../components/widgets/jenkins'
 
 <Jenkins
-  url="http://ci.jenkins-ci.org"
+  url='http://ci.jenkins-ci.org'
   jobs={[
-    { label: 'jenkins master', path: 'Core/job/jenkins/job/master/' },
-    { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7/'},
-    { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master/' },
+    { label: 'jenkins master', path: 'Core/job/jenkins/job/master' },
+    { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7'},
+    { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master' },
   ]}
 />
 ```
@@ -150,7 +150,7 @@ import JiraIssueCount from '../components/widgets/jira/issue-count'
 
 <JiraIssueCount
   title='JIRA Open Bugs'
-  url='https://jira.atlassian.com/'
+  url='https://jira.atlassian.com'
   query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
 />
 ```
@@ -171,7 +171,7 @@ import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-requ
 
 <BitbucketPullRequestCount
   title='Bitbucket Open PR'
-  url='https://bitbucket.typo3.com/'
+  url='https://bitbucket.typo3.com'
   project='EXT'
   repository='blog'
   users={['stekal', 'marleg', 'denhub']}
@@ -194,7 +194,7 @@ import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-requ
 ```javascript
 import PageSpeedInsightsScore from '../components/widgets/pagespeed-insights/score'
 
-<PageSpeedInsightsScore url='https://github.com/' />
+<PageSpeedInsightsScore url='https://github.com' />
 ```
 
 #### props
@@ -213,7 +213,7 @@ import PageSpeedInsightsScore from '../components/widgets/pagespeed-insights/sco
 ```javascript
 import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/stats'
 
-<PageSpeedInsightsStats url='https://github.com/' />
+<PageSpeedInsightsStats url='https://github.com' />
 ```
 
 #### props
@@ -233,7 +233,7 @@ import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/sta
 import SonarQube from '../components/widgets/sonarqube'
 
 <SonarQube
-  url='https://sonarqube.com/'
+  url='https://sonarqube.com'
   componentKey='com.icegreen:greenmail-parent'
 />
 ```
