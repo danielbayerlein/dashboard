@@ -5,9 +5,8 @@ import Widget from '../../widget'
 
 export default class PageSpeedInsightsScore extends Component {
   static defaultProps = {
-    filterThirdPartyResources: true,
+    filterThirdPartyResources: false,
     interval: 1000 * 60 * 60 * 12,
-    locale: 'de_DE',
     strategy: 'desktop',
     title: 'PageSpeed Score'
   }
@@ -27,12 +26,11 @@ export default class PageSpeedInsightsScore extends Component {
   }
 
   async fetchInformation () {
-    const { url, filterThirdPartyResources, locale, strategy } = this.props
+    const { url, filterThirdPartyResources, strategy } = this.props
 
     const searchParams = [
       `url=${url}`,
       `filter_third_party_resources=${filterThirdPartyResources}`,
-      `locale=${locale}`,
       `strategy=${strategy}`
     ].join('&')
 

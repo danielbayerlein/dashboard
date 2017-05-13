@@ -5,9 +5,8 @@ import Widget from '../../widget'
 
 export default class PageSpeedInsightsStats extends Component {
   static defaultProps = {
-    filterThirdPartyResources: true,
+    filterThirdPartyResources: false,
     interval: 1000 * 60 * 60 * 12,
-    locale: 'de_DE',
     strategy: 'desktop',
     title: 'PageSpeed Stats'
   }
@@ -31,12 +30,11 @@ export default class PageSpeedInsightsStats extends Component {
   }
 
   async fetchInformation () {
-    const { url, filterThirdPartyResources, locale, strategy } = this.props
+    const { url, filterThirdPartyResources, strategy } = this.props
 
     const searchParams = [
       `url=${url}`,
       `filter_third_party_resources=${filterThirdPartyResources}`,
-      `locale=${locale}`,
       `strategy=${strategy}`
     ].join('&')
 
@@ -71,35 +69,37 @@ export default class PageSpeedInsightsStats extends Component {
     return (
       <Widget title={title} loading={loading} error={error}>
         <Table>
-          <tr>
-            <Th>Request</Th>
-            <Td>{stats.requestSize} KB ({stats.requestCount})</Td>
-          </tr>
+          <tbody>
+            <tr>
+              <Th>Request</Th>
+              <Td>{stats.requestSize} KB ({stats.requestCount})</Td>
+            </tr>
 
-          <tr>
-            <Th>JavaScript</Th>
-            <Td>{stats.javascriptSize} KB ({stats.javascriptCount})</Td>
-          </tr>
+            <tr>
+              <Th>JavaScript</Th>
+              <Td>{stats.javascriptSize} KB ({stats.javascriptCount})</Td>
+            </tr>
 
-          <tr>
-            <Th>CSS</Th>
-            <Td>{stats.cssSize} KB ({stats.cssCount})</Td>
-          </tr>
+            <tr>
+              <Th>CSS</Th>
+              <Td>{stats.cssSize} KB ({stats.cssCount})</Td>
+            </tr>
 
-          <tr>
-            <Th>HTML</Th>
-            <Td>{stats.htmlSize} KB</Td>
-          </tr>
+            <tr>
+              <Th>HTML</Th>
+              <Td>{stats.htmlSize} KB</Td>
+            </tr>
 
-          <tr>
-            <Th>Image</Th>
-            <Td>{stats.imageSize} KB</Td>
-          </tr>
+            <tr>
+              <Th>Image</Th>
+              <Td>{stats.imageSize} KB</Td>
+            </tr>
 
-          <tr>
-            <Th>Other</Th>
-            <Td>{stats.otherSize} KB</Td>
-          </tr>
+            <tr>
+              <Th>Other</Th>
+              <Td>{stats.otherSize} KB</Td>
+            </tr>
+          </tbody>
         </Table>
       </Widget>
     )
