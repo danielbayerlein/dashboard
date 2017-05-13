@@ -202,10 +202,9 @@ import PageSpeedInsightsScore from '../components/widgets/pagespeed-insights/sco
 * `title`: Widget title (Default: `PageSpeed Score`)
 * `interval`: Refresh interval in milliseconds (Default: `43200000`)
 * `url`: URL to fetch and analyze
-* `locale`: Locale used to localize formatted results (Default: `de_DE`)
 * `strategy`: Analysis strategy (Default: `desktop`)
   * Acceptable values: `desktop` | `mobile`
-* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `true`)
+* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `false`)
 
 ### [PageSpeed Insights Stats](./components/widgets/pagespeed-insights/stats.js)
 
@@ -222,10 +221,9 @@ import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/sta
 * `title`: Widget title (Default: `PageSpeed Stats`)
 * `interval`: Refresh interval in milliseconds (Default: `43200000`)
 * `url`: URL to fetch and analyze
-* `locale`: Locale used to localize formatted results (Default: `de_DE`)
 * `strategy`: Analysis strategy (Default: `desktop`)
   * Acceptable values: `desktop` | `mobile`
-* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `true`)
+* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `false`)
 
 ### [SonarQube](./components/widgets/sonarqube/index.js)
 
