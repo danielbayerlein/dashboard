@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components'
-import { size } from 'polished'
 
 const rotation = keyframes`
   0% {
@@ -28,8 +27,9 @@ const turn = keyframes`
 `
 
 const Svg = styled.svg`
-  ${size('5em')}
   animation: ${rotation} 1.4s linear infinite;
+  height: ${props => props.size};
+  width: ${props => props.size};
 `
 
 const Circle = styled.circle`
@@ -43,8 +43,8 @@ const Circle = styled.circle`
   transform-origin: center;
 `
 
-export default () => (
-  <Svg viewBox='0 0 66 66'>
+export default ({ size = 'medium' }) => (
+  <Svg viewBox='0 0 66 66' size={size === 'small' ? '1.75em' : '5em'}>
     <Circle cx='33' cy='33' r='30' />
   </Svg>
 )

@@ -1,4 +1,5 @@
 const colors = {
+  grey400: '#bdbdbd',
   grey700: '#616161',
   grey800: '#424242',
   grey: '#303030',
@@ -25,6 +26,7 @@ export default {
     warnColor: colors.amber500,
     warnSecondaryColor: colors.orange500,
     successColor: colors.green500,
-    successSecondaryColor: colors.lime500
+    successSecondaryColor: colors.lime500,
+    disabledColor: colors.grey400
   }
 }
