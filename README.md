@@ -55,6 +55,11 @@
 * [Available Themes](#available-themes)
   * [light](#light)
   * [dark](#dark)
+* [Cross-Origin Resource Sharing (CORS)](#cross-origin-resource-sharing-cors)
+  * [Proxy](#proxy)
+    * [Server](#server-1)
+    * [Dashboard](#dashboard)
+  * [Resources](#resources)
 * [License](#license)
 
 ## Installation
@@ -266,6 +271,41 @@ import darkTheme from '../styles/dark-theme'
   ...
 </Dashboard>
 ```
+
+## Cross-Origin Resource Sharing (CORS)
+
+[Cross-Origin Resource Sharing](https://www.w3.org/TR/cors/) (CORS) is a W3C
+spec that allows cross-domain communication from the browser. By building on
+top of the XMLHttpRequest object, CORS allows developers to work with the same
+idioms as same-domain requests.
+
+### Proxy
+
+You can use a proxy (e.g. [hapi-rest-proxy](https://github.com/chrishelgert/hapi-rest-proxy))
+to enable CORS request for any website.
+
+#### Server
+
+```bash
+docker pull chrishelgert/hapi-rest-proxy
+docker run -d -p 3001:8080 chrishelgert/hapi-rest-proxy
+```
+
+#### Dashboard
+
+```javascript
+<SonarQube
+  url='http://localhost:3001?url=https://sonarqube.com'
+  componentKey='com.icegreen:greenmail-parent'
+/>
+```
+
+### Resources
+
+* https://www.w3.org/TR/cors/
+* https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+* https://enable-cors.org
+* https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
 
 ## License
 
