@@ -2,32 +2,12 @@ import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import Widget from '../../widget'
-
-// TODO: move in separate file
-const Badge = styled.span`
-  font-size: 0.8em;
-  border-radius: 5px;
-  position: absolute;
-  margin-left: 5px;
-  display: inline-block;
-  padding: 2px 4px;
-  background-color: ${props => {
-    switch (props.status) {
-      case 'OPEN':
-        return props.theme.palette.neutralColor
-      case 'DECLINED':
-        return props.theme.palette.warnColor
-      case 'MERGED':
-        return props.theme.palette.successColor
-      default:
-        return 'transparent'
-    }
-  }}
-`
+import Arrowicon from '../../arrow-icon'
+import { Status } from '../../badge'
 
 const Destintion = styled.span`
-  font-size: 0.8em;
   color: ${props => props.theme.palette.primaryColor};
+  font-size: 0.8em;
 `
 
 const Code = styled.span`
@@ -55,17 +35,20 @@ export default class BitbucketPullRequestList extends Component {
     clearInterval(this.interval)
   }
 
+  extractBranchName(id) {
+    return id.replace('refs/heads/', '')
+  }
+
   async fetchInformation () {
     const { url, project, repository, users } = this.props
 
     try {
-      // TODO: check bitbucket server api (1.0)
-      const res = await fetch(`${url}2.0/repositories/marsn88/dashboard-demo/pullrequests?limit=5`)
+      const res = await fetch(`${url}rest/api/1.0/projects/${project}/repos/${repository}/pull-requests?limit=5`)
       const json = await res.json()
 
       let pullRequests = json.values;
       if (users.length) {
-        pullRequests = json.values.filter((el) => users.includes(pullRequests.user.slug))
+        pullRequests = json.values.filter((el) => users.includes(pullRequests.author.user.slug))
       }
 
       this.setState({ pullRequests, error: false, loading: false })
@@ -83,10 +66,10 @@ export default class BitbucketPullRequestList extends Component {
       <Widget title={title} loading={loading} error={error}>
         {pullRequests.map(pr => (
           <div key={`pr-${pr.name}`}>
-            {pr.title} <Badge status={pr.state}>{pr.state}</Badge>
+            {pr.title} <Status status={pr.state}>{pr.state}</Status>
             <div>
               <Destintion>
-                <Code>{pr.source.branch.name}</Code> > <Code>{pr.destination.branch.name}</Code>
+                <Code>{this.extractBranchName(pr.fromRef.id)}</Code> <Arrowicon /> <Code>{this.extractBranchName(pr.toRef.id)}</Code>
               </Destintion>
             </div>
           </div>

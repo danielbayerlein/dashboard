@@ -37,7 +37,7 @@ export default () => (
 
     <BitbucketPullRequestList
       title='Bitbucket PR List'
-      url='https://crossorigin.me/https://api.bitbucket.org/'
+      url='https://crossorigin.me/https://bitbucket.typo3.com/'
       project='EXT'
       repository='blog'
     />
