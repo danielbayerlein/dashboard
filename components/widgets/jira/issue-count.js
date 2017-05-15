@@ -2,9 +2,11 @@ import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
 import Widget from '../../widget'
 import Counter from '../../counter'
+import { base64BasicAuthHeader } from '../../../lib/auth'
 
 export default class JiraIssueCount extends Component {
   static defaultProps = {
+    authKey: null,
     interval: 1000 * 60 * 5,
     title: 'JIRA Issue Count'
   }
@@ -24,10 +26,15 @@ export default class JiraIssueCount extends Component {
   }
 
   async fetchInformation () {
-    const { url, query } = this.props
+    const { authKey, url, query } = this.props
+    let options = {}
+
+    if (authKey) {
+      options = { headers: base64BasicAuthHeader(authKey) }
+    }
 
     try {
-      const res = await fetch(`${url}/rest/api/2/search?jql=${query}`)
+      const res = await fetch(`${url}/rest/api/2/search?jql=${query}`, options)
       const json = await res.json()
 
       this.setState({ count: json.total, error: false, loading: false })
