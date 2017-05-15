@@ -84,7 +84,7 @@ export default class Jenkins extends Component {
                     {
                       build.result
                       ? <JenkinsBadge status={build.result} />
-                    : <LoadingIndicator size='small' />
+                      : <LoadingIndicator size='small' />
                     }
                   </a>
                 </Td>
