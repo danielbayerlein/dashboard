@@ -43,8 +43,12 @@ const Circle = styled.circle`
   transform-origin: center;
 `
 
-export default ({ size = 'medium' }) => (
-  <Svg viewBox='0 0 66 66' size={size === 'small' ? '1.75em' : '5em'}>
-    <Circle cx='33' cy='33' r='30' />
-  </Svg>
-)
+export default ({ size = 'medium' }) => {
+  const svgSize = size === 'small' ? '1.75em' : '5em'
+
+  return (
+    <Svg viewBox='0 0 66 66' size={svgSize}>
+      <Circle cx='33' cy='33' r='30' />
+    </Svg>
+  )
+}
