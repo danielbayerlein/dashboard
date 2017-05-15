@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Widget from '../../widget'
 import Table, { Th, Td } from '../../table'
 import Badge from '../../badge'
+import LoadingIndicator from '../../loading-indicator'
 
 const JenkinsBadge = styled(Badge)`
   background-color: ${props => {
@@ -14,7 +15,10 @@ const JenkinsBadge = styled(Badge)`
         return props.theme.palette.warnColor
       case 'SUCCESS':
         return props.theme.palette.successColor
-      default:
+      case 'ABORTED':
+      case 'NOT_BUILT':
+        return props.theme.palette.disabledColor
+      default: // null = 'In Progress'
         return 'transparent'
     }
   }}
@@ -77,7 +81,11 @@ export default class Jenkins extends Component {
                 <Th>{build.name}</Th>
                 <Td>
                   <a href={build.url} title={build.result}>
-                    <JenkinsBadge status={build.result} />
+                    {
+                      build.result
+                      ? <JenkinsBadge status={build.result} />
+                      : <LoadingIndicator size='small' />
+                    }
                   </a>
                 </Td>
               </tr>
