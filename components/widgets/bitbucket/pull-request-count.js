@@ -1,7 +1,17 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
+import yup from 'yup'
 import Widget from '../../widget'
 import Counter from '../../counter'
+
+const schema = yup.object().shape({
+  url: yup.string().required(),
+  project: yup.string().required(),
+  repository: yup.string().required(),
+  interval: yup.number(),
+  title: yup.string(),
+  users: yup.array().of(yup.string())
+})
 
 export default class BitbucketPullRequestCount extends Component {
   static defaultProps = {
@@ -17,7 +27,12 @@ export default class BitbucketPullRequestCount extends Component {
   }
 
   componentDidMount () {
-    this.fetchInformation()
+    schema.validate(this.props)
+      .then(() => this.fetchInformation())
+      .catch((err) => {
+        console.log('Bitbucket PullRequest Count: missing or invalid params', err.errors)
+        this.setState({ error: true, loading: false })
+      })
   }
 
   componentWillUnmount () {
