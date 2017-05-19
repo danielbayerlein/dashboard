@@ -170,6 +170,7 @@ import JiraIssueCount from '../components/widgets/jira/issue-count'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: JIRA Server URL
 * `query`: JIRA search query (`jql`)
+* `authKey`: Credential key, defined in `auth.json`
 
 ### [Bitbucket PullRequest Count](./components/widgets/bitbucket/pull-request-count.js)
 
@@ -195,6 +196,7 @@ import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-requ
 * `project`: Bitbucket project key
 * `repository`: Bitbucket repository slug
 * `users`: Bitbucket user slugs as an array
+* `authKey`: Credential key, defined in `auth.json`
 
 ### [PageSpeed Insights Score](./components/widgets/pagespeed-insights/score.js)
 
