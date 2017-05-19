@@ -54,7 +54,11 @@
     * [props](#props-6)
 * [Available Themes](#available-themes)
   * [light](#light)
+    * [Example](#example-7)
+    * [Preview](#preview)
   * [dark](#dark)
+    * [Example](#example-8)
+    * [Preview](#preview-1)
 * [Cross-Origin Resource Sharing (CORS)](#cross-origin-resource-sharing-cors)
   * [Proxy](#proxy)
     * [Server](#server-1)
@@ -254,6 +258,8 @@ import SonarQube from '../components/widgets/sonarqube'
 
 ### [light](./styles/light-theme.js)
 
+#### Example
+
 ```javascript
 import lightTheme from '../styles/light-theme'
 
@@ -262,7 +268,13 @@ import lightTheme from '../styles/light-theme'
 </Dashboard>
 ```
 
+#### Preview
+
+![dashboard-light](https://cloud.githubusercontent.com/assets/457834/26214930/8c065dce-3bfe-11e7-9da0-2d6ebba2dfb8.png)
+
 ### [dark](./styles/dark-theme.js)
+
+#### Example
 
 ```javascript
 import darkTheme from '../styles/dark-theme'
@@ -271,6 +283,10 @@ import darkTheme from '../styles/dark-theme'
   ...
 </Dashboard>
 ```
+
+#### Preview
+
+![dashboard-dark](https://cloud.githubusercontent.com/assets/457834/26214954/a668dc50-3bfe-11e7-8c19-7a0c7dd260e7.png)
 
 ## Cross-Origin Resource Sharing (CORS)
 
