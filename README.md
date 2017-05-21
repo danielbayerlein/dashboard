@@ -149,6 +149,7 @@ import Jenkins from '../components/widgets/jenkins'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Jenkins URL
 * `jobs`: List of all jobs
+* `authKey`: Credential key, defined in `auth.json`
 
 ### [JIRA Issue Count](./components/widgets/jira/issue-count.js)
 
@@ -255,6 +256,7 @@ import SonarQube from '../components/widgets/sonarqube'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: SonarQube URL
 * `componentKey`: SonarQube project key
+* `authKey`: Credential key, defined in `auth.json`
 
 ## Available Themes
 

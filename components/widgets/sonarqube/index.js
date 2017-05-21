@@ -4,6 +4,7 @@ import fetch from 'isomorphic-unfetch'
 import Widget from '../../widget'
 import Table, { Th, Td } from '../../table'
 import Badge from '../../badge'
+import { basicAuthHeader } from '../../../lib/auth'
 
 const Alert = styled.span`
   color: ${props => {
@@ -58,7 +59,12 @@ export default class SonarQube extends Component {
   }
 
   async fetchInformation () {
-    const { url, componentKey } = this.props
+    const { authKey, url, componentKey } = this.props
+    let opts = {}
+
+    if (authKey) {
+      opts = { headers: basicAuthHeader(authKey) }
+    }
 
     // https://docs.sonarqube.org/display/SONAR/Metric+Definitions
     const metricKeys = [
@@ -68,7 +74,7 @@ export default class SonarQube extends Component {
     ].join(',')
 
     try {
-      const res = await fetch(`${url}/api/measures/component?componentKey=${componentKey}&metricKeys=${metricKeys}`)
+      const res = await fetch(`${url}/api/measures/component?componentKey=${componentKey}&metricKeys=${metricKeys}`, opts)
       const json = await res.json()
 
       this.setState({ error: false, loading: false, measures: json.component.measures })
