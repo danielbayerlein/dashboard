@@ -51,7 +51,7 @@ export default () => (
 
     <ElasticsearchErrorHitCount
       title='Log Hits'
-      url='http://localhost:3001/http://elastic:changeme@localhost:9200'
+      url='http://localhost:3001/http://localhost:9200'
       auth='Basic ZWxhc3RpYzpjaGFuZ2VtZQ=='
       index='blog'
       query='user:dilbert%20-_type:post'
