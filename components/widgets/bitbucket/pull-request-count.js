@@ -2,7 +2,7 @@ import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
 import Widget from '../../widget'
 import Counter from '../../counter'
-import { base64BasicAuthHeader } from '../../../lib/auth'
+import { basicAuthHeader } from '../../../lib/auth'
 
 export default class BitbucketPullRequestCount extends Component {
   static defaultProps = {
@@ -30,7 +30,7 @@ export default class BitbucketPullRequestCount extends Component {
     let opts = {}
 
     if (authKey) {
-      opts = { headers: base64BasicAuthHeader(authKey) }
+      opts = { headers: basicAuthHeader(authKey) }
     }
 
     try {
