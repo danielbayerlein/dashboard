@@ -8,13 +8,14 @@ import JiraIssueCount from '../components/widgets/jira/issue-count'
 import SonarQube from '../components/widgets/sonarqube'
 import Jenkins from '../components/widgets/jenkins'
 import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-request-count'
+import ElasticsearchErrorHitCount from '../components/widgets/elasticsearch/hit-count'
 
 // Theme
 import lightTheme from '../styles/light-theme'
-// import darkTheme from '../styles/dark-theme'
+import darkTheme from '../styles/dark-theme'
 
 export default () => (
-  <Dashboard theme={lightTheme}>
+  <Dashboard theme={darkTheme}>
     <DateTime />
 
     <PageSpeedInsightsScore url='https://github.com' />
@@ -46,6 +47,14 @@ export default () => (
         { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7' },
         { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master' }
       ]}
+    />
+
+    <ElasticsearchErrorHitCount
+      title='Elasticsearch errors'
+      url='http://localhost:9200'
+      auth='Basic ZWxhc3RpYzpjaGFuZ2VtZQ=='
+      index='blog'
+      query='user:dilbert%20-_type:post'
     />
   </Dashboard>
 )
