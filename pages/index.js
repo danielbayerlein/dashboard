@@ -12,7 +12,7 @@ import ElasticsearchErrorHitCount from '../components/widgets/elasticsearch/hit-
 
 // Theme
 import lightTheme from '../styles/light-theme'
-//import darkTheme from '../styles/dark-theme'
+// import darkTheme from '../styles/dark-theme'
 
 export default () => (
   <Dashboard theme={lightTheme}>

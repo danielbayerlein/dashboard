@@ -6,8 +6,7 @@ import Counter from '../../counter'
 export default class ElasticsearchErrorHitCount extends Component {
   static defaultProps = {
     interval: 1000 * 60 * 5,
-    title: 'Elasticsearch Hit Count',
-    users: []
+    title: 'Elasticsearch Hit Count'
   }
 
   state = {
@@ -25,13 +24,13 @@ export default class ElasticsearchErrorHitCount extends Component {
   }
 
   async fetchInformation () {
-    const { url, index, query, users, auth } = this.props
+    const { url, index, query, auth } = this.props
 
     try {
       const res = await fetch(`${url}/${index}/_search?q=${query}`, {
         credentials: 'included',
         headers: {
-          //'Authorization': 'Basic '+btoa('elastic:changeme')
+          // 'Authorization': 'Basic '+btoa('elastic:changeme')
           'Authorization': `${auth}`
         }
       })
