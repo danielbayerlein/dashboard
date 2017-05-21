@@ -28,18 +28,15 @@ export default class ElasticsearchErrorHitCount extends Component {
     const { url, index, query, users, auth } = this.props
 
     try {
-      let requestUrl = `${url}/${index}/_search?q=${query}`
-      console.log(requestUrl)
-
-      const res = await fetch(`${requestUrl}`, {
-        credentials: 'include',
-        mode: 'no-cors',
-          headers: {
-            'Authorization': '${auth}'
-          }
+      const res = await fetch(`${url}/${index}/_search?q=${query}`, {
+        credentials: 'included',
+        headers: {
+          //'Authorization': 'Basic '+btoa('elastic:changeme')
+          'Authorization': `${auth}`
+        }
       })
-      console.log(res)
       const json = await res.json()
+
       this.setState({ count: json.hits.total, error: false, loading: false })
     } catch (error) {
       this.setState({ error: true, loading: false })
@@ -61,7 +58,7 @@ export default class ElasticsearchErrorHitCount extends Component {
 }
 
 /* TESTDATA
-# docker 
+# docker
 docker run -p 9200:9200 -e "http.host=0.0.0.0" -e "transport.host=127.0.0.1" docker.elastic.co/elasticsearch/elasticsearch:5.4.0
 
 #import data

@@ -297,14 +297,23 @@ idioms as same-domain requests.
 
 ### Proxy
 
-You can use a proxy (e.g. [hapi-rest-proxy](https://github.com/chrishelgert/hapi-rest-proxy))
+You can use a proxy (e.g. [hapi-rest-proxy](https://github.com/chrishelgert/hapi-rest-proxy) or [cors-anywhere](https://github.com/Rob--W/cors-anywhere))
 to enable CORS request for any website.
 
-#### Server
+#### hapi-rest-proxy Server
 
 ```bash
 docker pull chrishelgert/hapi-rest-proxy
 docker run -d -p 3001:8080 chrishelgert/hapi-rest-proxy
+```
+#### cors-anywhere Server
+
+```bash
+git clone https://github.com/Rob--W/cors-anywhere.git
+cd cors-anywhere
+export PORT=3001
+npm install
+node server.js
 ```
 
 #### Dashboard
