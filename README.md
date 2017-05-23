@@ -323,7 +323,7 @@ idioms as same-domain requests.
 
 ### Proxy
 
-You can use a proxy (e.g. [hapi-rest-proxy](https://github.com/chrishelgert/hapi-rest-proxy) or [cors-anywhere](https://github.com/Rob--W/cors-anywhere))
+You can use a proxy (e.g. [hapi-rest-proxy](https://github.com/chrishelgert/hapi-rest-proxy))
 to enable CORS request for any website.
 
 #### Server
