@@ -29,10 +29,10 @@ const schema = yup.object().shape({
   url: yup.string().url().required(),
   jobs: yup.array(yup.object({
     label: yup.string().required(),
-    path: yup.string().required(),
+    path: yup.string().required()
   })).required(),
   interval: yup.number(),
-  title: yup.string(),
+  title: yup.string()
 })
 
 export default class Jenkins extends Component {
