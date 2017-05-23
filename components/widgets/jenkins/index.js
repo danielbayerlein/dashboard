@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
+import yup from 'yup'
 import Widget from '../../widget'
 import Table, { Th, Td } from '../../table'
 import Badge from '../../badge'
@@ -24,6 +25,16 @@ const JenkinsBadge = styled(Badge)`
   }}
 `
 
+const schema = yup.object().shape({
+  url: yup.string().url().required(),
+  jobs: yup.array(yup.object({
+    label: yup.string().required(),
+    path: yup.string().required(),
+  })).required(),
+  interval: yup.number(),
+  title: yup.string(),
+})
+
 export default class Jenkins extends Component {
   static defaultProps = {
     interval: 1000 * 60 * 5,
@@ -36,7 +47,12 @@ export default class Jenkins extends Component {
   }
 
   componentDidMount () {
-    this.fetchInformation()
+    schema.validate(this.props)
+      .then(() => this.fetchInformation())
+      .catch((err) => {
+        console.log('Jenkins: missing or invalid params', err.errors)
+        this.setState({ error: true, loading: false })
+      })
   }
 
   componentWillUnmount () {

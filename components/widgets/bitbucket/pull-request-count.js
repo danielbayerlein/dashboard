@@ -5,7 +5,7 @@ import Widget from '../../widget'
 import Counter from '../../counter'
 
 const schema = yup.object().shape({
-  url: yup.string().required(),
+  url: yup.string().url().required(),
   project: yup.string().required(),
   repository: yup.string().required(),
   interval: yup.number(),

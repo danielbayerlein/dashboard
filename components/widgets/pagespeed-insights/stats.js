@@ -1,7 +1,16 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
+import yup from 'yup'
 import Table, { Th, Td } from '../../table'
 import Widget from '../../widget'
+
+const schema = yup.object().shape({
+  url: yup.string().url().required(),
+  filterThirdPartyResources: yup.boolean(),
+  interval: yup.number(),
+  strategy: yup.string(),
+  title: yup.string()
+})
 
 export default class PageSpeedInsightsStats extends Component {
   static defaultProps = {
@@ -18,7 +27,12 @@ export default class PageSpeedInsightsStats extends Component {
   }
 
   componentDidMount () {
-    this.fetchInformation()
+    schema.validate(this.props)
+      .then(() => this.fetchInformation())
+      .catch((err) => {
+        console.log('PageSpeed Stats: missing or invalid params', err.errors)
+        this.setState({ error: true, loading: false })
+      })
   }
 
   componentWillUnmount () {
