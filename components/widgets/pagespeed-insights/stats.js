@@ -30,7 +30,7 @@ export default class PageSpeedInsightsStats extends Component {
     schema.validate(this.props)
       .then(() => this.fetchInformation())
       .catch((err) => {
-        console.log('PageSpeed Stats: missing or invalid params', err.errors)
+        console.log('PageSpeed Insights Stats: missing or invalid params', err.errors)
         this.setState({ error: true, loading: false })
       })
   }
