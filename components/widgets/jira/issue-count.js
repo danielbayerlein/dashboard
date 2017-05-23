@@ -1,7 +1,15 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
+import yup from 'yup'
 import Widget from '../../widget'
 import Counter from '../../counter'
+
+const schema = yup.object().shape({
+  url: yup.string().url().required(),
+  query: yup.string().required(),
+  interval: yup.number(),
+  title: yup.string()
+})
 
 export default class JiraIssueCount extends Component {
   static defaultProps = {
@@ -16,7 +24,12 @@ export default class JiraIssueCount extends Component {
   }
 
   componentDidMount () {
-    this.fetchInformation()
+    schema.validate(this.props)
+      .then(() => this.fetchInformation())
+      .catch((err) => {
+        console.log('JIRA Issue Count: missing or invalid params', err.errors)
+        this.setState({ error: true, loading: false })
+      })
   }
 
   componentWillUnmount () {
