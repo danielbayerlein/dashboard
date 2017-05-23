@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import styled from 'styled-components'
 import fetch from 'isomorphic-unfetch'
+import yup from 'yup'
 import Widget from '../../widget'
 import Table, { Th, Td } from '../../table'
 import Badge from '../../badge'
@@ -38,6 +39,13 @@ const SonarBadge = styled(Badge)`
   }}
 `
 
+const schema = yup.object().shape({
+  url: yup.string().url().required(),
+  componentKey: yup.string().required(),
+  interval: yup.number(),
+  title: yup.string()
+})
+
 export default class SonarQube extends Component {
   static defaultProps = {
     interval: 1000 * 60 * 5,
@@ -51,7 +59,12 @@ export default class SonarQube extends Component {
   }
 
   componentDidMount () {
-    this.fetchInformation()
+    schema.validate(this.props)
+      .then(() => this.fetchInformation())
+      .catch((err) => {
+        console.log('SonarQube: missing or invalid params', err.errors)
+        this.setState({ error: true, loading: false })
+      })
   }
 
   componentWillUnmount () {
