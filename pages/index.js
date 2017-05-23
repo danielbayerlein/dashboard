@@ -8,7 +8,7 @@ import JiraIssueCount from '../components/widgets/jira/issue-count'
 import SonarQube from '../components/widgets/sonarqube'
 import Jenkins from '../components/widgets/jenkins'
 import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-request-count'
-import ElasticsearchErrorHitCount from '../components/widgets/elasticsearch/hit-count'
+import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count'
 
 // Theme
 import lightTheme from '../styles/light-theme'
@@ -49,12 +49,11 @@ export default () => (
       ]}
     />
 
-    <ElasticsearchErrorHitCount
+    <ElasticsearchHitCount
       title='Log Hits'
-      url='http://localhost:3001/http://localhost:9200'
-      auth='Basic ZWxhc3RpYzpjaGFuZ2VtZQ=='
+      url='https://crossorigin.me/http://ec2-34-210-144-223.us-west-2.compute.amazonaws.com:9200'
       index='blog'
-      query='user:dilbert%20-_type:post'
+      query='user:dilbert'
     />
   </Dashboard>
 )

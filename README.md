@@ -52,6 +52,9 @@
   * [SonarQube](#sonarqube)
     * [Example](#example-6)
     * [props](#props-6)
+  * [ElasticsearchHitCount](#elasticsearchhitcount)
+    * [Example](#example-7)
+    * [props](#props-7)
 * [Available Themes](#available-themes)
   * [light](#light)
     * [Example](#example-7)
@@ -254,6 +257,29 @@ import SonarQube from '../components/widgets/sonarqube'
 * `url`: SonarQube URL
 * `componentKey`: SonarQube project key
 
+### [ElasticsearchHitCount](./components/widgets/elasticsearch/hit-count.js)
+
+#### Example
+
+```javascript
+import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count'
+
+<ElasticsearchHitCount
+  title='Log Hits'
+  url='http://ec2-34-210-144-223.us-west-2.compute.amazonaws.com:9200'
+  index='blog'
+  query='user:dilbert'
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `Elasticsearch Hit Count`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
+* `url`: Elasticsearch URL
+* `index`: Elasticsearch index to search in
+* `query`: Elasticsearch query
+
 ## Available Themes
 
 ### [light](./styles/light-theme.js)
@@ -300,20 +326,11 @@ idioms as same-domain requests.
 You can use a proxy (e.g. [hapi-rest-proxy](https://github.com/chrishelgert/hapi-rest-proxy) or [cors-anywhere](https://github.com/Rob--W/cors-anywhere))
 to enable CORS request for any website.
 
-#### hapi-rest-proxy Server
+#### Server
 
 ```bash
 docker pull chrishelgert/hapi-rest-proxy
 docker run -d -p 3001:8080 chrishelgert/hapi-rest-proxy
-```
-#### cors-anywhere Server
-
-```bash
-git clone https://github.com/Rob--W/cors-anywhere.git
-cd cors-anywhere
-export PORT=3001
-npm install
-node server.js
 ```
 
 #### Dashboard
