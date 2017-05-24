@@ -283,6 +283,7 @@ import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count
 * `url`: Elasticsearch URL
 * `index`: Elasticsearch index to search in
 * `query`: Elasticsearch query
+* `authKey`: Credential key, defined in `auth.json`
 
 ## Available Themes
 

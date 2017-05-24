@@ -2,6 +2,7 @@ import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
 import Widget from '../../widget'
 import Counter from '../../counter'
+import { basicAuthHeader } from '../../../lib/auth'
 
 export default class ElasticsearchHitCount extends Component {
   static defaultProps = {
@@ -24,10 +25,15 @@ export default class ElasticsearchHitCount extends Component {
   }
 
   async fetchInformation () {
-    const { url, index, query } = this.props
+    const { authKey, index, query, url } = this.props
+    let opts = {}
+
+    if (authKey) {
+      opts = { headers: basicAuthHeader(authKey) }
+    }
 
     try {
-      const res = await fetch(`${url}/${index}/_search?q=${query}`)
+      const res = await fetch(`${url}/${index}/_search?q=${query}`, opts)
       const json = await res.json()
 
       this.setState({ count: json.hits.total, error: false, loading: false })
