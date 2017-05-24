@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/danielbayerlein/dashboard#readme",
   "dependencies": {
+    "dotenv-webpack": "^1.4.5",
     "isomorphic-unfetch": "^1.0.0",
     "js-base64": "^2.1.9",
     "next": "^2.4.0",

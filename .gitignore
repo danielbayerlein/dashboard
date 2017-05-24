@@ -59,6 +59,3 @@ typings/
 
 # Next.js directory
 .next
-
-# Dashboard
-auth.json
