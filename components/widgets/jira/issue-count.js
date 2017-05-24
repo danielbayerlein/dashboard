@@ -15,7 +15,6 @@ const schema = yup.object().shape({
 
 export default class JiraIssueCount extends Component {
   static defaultProps = {
-    authKey: null,
     interval: 1000 * 60 * 5,
     title: 'JIRA Issue Count'
   }
