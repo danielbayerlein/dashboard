@@ -33,7 +33,8 @@ const schema = yup.object().shape({
     path: yup.string().required()
   })).required(),
   interval: yup.number(),
-  title: yup.string()
+  title: yup.string(),
+  authKey: yup.string()
 })
 
 export default class Jenkins extends Component {

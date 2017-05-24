@@ -9,7 +9,8 @@ const schema = yup.object().shape({
   url: yup.string().url().required(),
   query: yup.string().required(),
   interval: yup.number(),
-  title: yup.string()
+  title: yup.string(),
+  authKey: yup.string()
 })
 
 export default class JiraIssueCount extends Component {

@@ -11,7 +11,8 @@ const schema = yup.object().shape({
   repository: yup.string().required(),
   interval: yup.number(),
   title: yup.string(),
-  users: yup.array().of(yup.string())
+  users: yup.array().of(yup.string()),
+  authKey: yup.string()
 })
 
 export default class BitbucketPullRequestCount extends Component {

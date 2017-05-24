@@ -43,7 +43,8 @@ const schema = yup.object().shape({
   url: yup.string().url().required(),
   componentKey: yup.string().required(),
   interval: yup.number(),
-  title: yup.string()
+  title: yup.string(),
+  authKey: yup.string()
 })
 
 export default class SonarQube extends Component {
