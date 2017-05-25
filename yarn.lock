@@ -951,7 +951,7 @@ buffer@^4.3.0:
     ieee754 "^1.1.4"
     isarray "^1.0.0"
 
-buffer@^5.0.2:
+buffer@^5.0.3:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/buffer/-/buffer-5.0.6.tgz#2ea669f7eec0b6eda05b08f8b5ff661b28573588"
   dependencies:
@@ -1076,10 +1076,6 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
-colors@0.5.x:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/colors/-/colors-0.5.1.tgz#7d0023eaeb154e8ee9fce75dcb923d0ed1667774"
-
 combined-stream@^1.0.5, combined-stream@~1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.5.tgz#938370a57b4a51dea2c77c15d5c5fdf895164009"
@@ -1192,23 +1188,17 @@ crypto-browserify@^3.11.0:
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
 
-css-color-list@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/css-color-list/-/css-color-list-0.0.1.tgz#8718e8695ae7a2cc8787be8715f1c008a7f28b15"
-  dependencies:
-    css-color-names "0.0.1"
+css-color-keywords@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/css-color-keywords/-/css-color-keywords-1.0.0.tgz#fea2616dc676b2962686b3af8dbdbe180b244e05"
 
-css-color-names@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.1.tgz#5d0548fa256456ede4a9a0c2ac7ab19d3eb1ad81"
-
-css-to-react-native@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/css-to-react-native/-/css-to-react-native-1.0.6.tgz#728c7e774e56536558a0ecaa990d9507c43a4ac4"
+css-to-react-native@^2.0.3:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/css-to-react-native/-/css-to-react-native-2.0.4.tgz#cf4cc407558b3474d4ba8be1a2cd3b6ce713101b"
   dependencies:
-    css-color-list "0.0.1"
+    css-color-keywords "^1.0.0"
     fbjs "^0.8.5"
-    nearley "^2.7.7"
+    postcss-value-parser "^3.3.0"
 
 d@1:
   version "1.0.0"
@@ -1326,10 +1316,6 @@ diffie-hellman@^5.0.0:
     bn.js "^4.1.0"
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
-
-discontinuous-range@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/discontinuous-range/-/discontinuous-range-1.0.0.tgz#e38331f0844bba49b9a9cb71c771585aab1bc65a"
 
 doctrine@1.5.0, doctrine@^1.2.2:
   version "1.5.0"
@@ -1709,7 +1695,7 @@ fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
 
-fbjs@^0.8.5, fbjs@^0.8.7, fbjs@^0.8.9:
+fbjs@^0.8.5, fbjs@^0.8.9:
   version "0.8.12"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.12.tgz#10b5d92f76d45575fd63a217d4ea02bea2f8ed04"
   dependencies:
@@ -2026,6 +2012,10 @@ hmac-drbg@^1.0.0:
 hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
+
+hoist-non-react-statics@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
@@ -2663,14 +2653,6 @@ ncp@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ncp/-/ncp-2.0.0.tgz#195a21d6c46e361d2fb1281ba38b91e9df7bdbb3"
 
-nearley@^2.7.7:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/nearley/-/nearley-2.9.0.tgz#496dfae56b256241e4329a76d32453fdcc74b22d"
-  dependencies:
-    nomnom "~1.6.2"
-    railroad-diagrams "^1.0.0"
-    randexp "^0.4.2"
-
 next@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/next/-/next-2.4.0.tgz#9cf9ebff79921b3bb1d7de813dc420302eb66081"
@@ -2774,13 +2756,6 @@ node-pre-gyp@^0.6.29:
     semver "^5.3.0"
     tar "^2.2.1"
     tar-pack "^3.4.0"
-
-nomnom@~1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/nomnom/-/nomnom-1.6.2.tgz#84a66a260174408fc5b77a18f888eccc44fb6971"
-  dependencies:
-    colors "0.5.x"
-    underscore "~1.4.4"
 
 nopt@^4.0.1:
   version "4.0.1"
@@ -3062,6 +3037,10 @@ polished@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/polished/-/polished-1.1.2.tgz#211a7b0abbc3dd25101f4e95399e72edf7317f0e"
 
+postcss-value-parser@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-3.3.0.tgz#87f38f9f18f774a4ab4c8a232f5c5ce8872a9d15"
+
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -3096,18 +3075,12 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@15.5.10:
+prop-types@15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
     fbjs "^0.8.9"
     loose-envify "^1.3.1"
-
-prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
-  version "15.5.7"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.7.tgz#231c4f29cdd82e355011d4889386ca9059544dd1"
-  dependencies:
-    fbjs "^0.8.9"
 
 property-expr@^1.2.0:
   version "1.3.1"
@@ -3150,17 +3123,6 @@ querystring-es3@^0.2.0:
 querystring@0.2.0, querystring@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
-
-railroad-diagrams@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/railroad-diagrams/-/railroad-diagrams-1.0.0.tgz#eb7e6267548ddedfb899c1b90e57374559cddb7e"
-
-randexp@^0.4.2:
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/randexp/-/randexp-0.4.5.tgz#ffe3a80c3f666cd71e6b008e477e584c1a32ff3e"
-  dependencies:
-    discontinuous-range "1.0.0"
-    ret "~0.1.10"
 
 randomatic@^1.1.3:
   version "1.1.6"
@@ -3400,10 +3362,6 @@ restore-cursor@^1.0.1:
   dependencies:
     exit-hook "^1.0.0"
     onetime "^1.0.0"
-
-ret@~0.1.10:
-  version "0.1.14"
-  resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.14.tgz#58c636837b12e161f8a380cf081c6a230fd1664e"
 
 right-align@^0.1.1:
   version "0.1.3"
@@ -3706,18 +3664,20 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-styled-components@^1.4.6:
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-1.4.6.tgz#58f32e8a6ab510fb1481e901e838e0477f148b06"
+styled-components@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-2.0.0.tgz#0906652b77647e7400ca7e5a6d8d45eba6fa77ec"
   dependencies:
-    buffer "^5.0.2"
-    css-to-react-native "^1.0.6"
-    fbjs "^0.8.7"
+    buffer "^5.0.3"
+    css-to-react-native "^2.0.3"
+    fbjs "^0.8.9"
+    hoist-non-react-statics "^1.2.0"
     inline-style-prefixer "^2.0.5"
     is-function "^1.0.1"
     is-plain-object "^2.0.1"
     prop-types "^15.5.4"
-    supports-color "^3.1.2"
+    stylis "^2.0.0"
+    supports-color "^3.2.3"
 
 styled-jsx@0.5.7:
   version "0.5.7"
@@ -3732,11 +3692,15 @@ styled-jsx@0.5.7:
     source-map "0.5.6"
     string-hash "1.1.1"
 
+stylis@^2.0.0:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/stylis/-/stylis-2.0.12.tgz#547253055d170f2a7ac2f6d09365d70635f2bec6"
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
 
-supports-color@^3.1.0, supports-color@^3.1.2:
+supports-color@^3.1.0, supports-color@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-3.2.3.tgz#65ac0504b3954171d8a64946b2ae3cbb8a5f54f6"
   dependencies:
@@ -3888,10 +3852,6 @@ uglify-to-browserify@~1.0.0:
 uid-number@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/uid-number/-/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
-
-underscore@~1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.4.4.tgz#61a6a32010622afa07963bf325203cf12239d604"
 
 unfetch@2.1.2, unfetch@^2.1.0:
   version "2.1.2"
