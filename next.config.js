@@ -1,7 +1,7 @@
 const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-  webpack: (config, { dev }) => {
+  webpack: (config) => {
     config.plugins.push(
       new Dotenv({ path: './.env' })
     )
