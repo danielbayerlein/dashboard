@@ -3,6 +3,10 @@ export default {
     username: process.env.BITBUCKET_USER,
     password: process.env.BITBUCKET_PASS
   },
+  elasticsearch: {
+    username: process.env.ELASTICSEARCH_USER,
+    password: process.env.ELASTICSEARCH_PASS
+  },
   jenkins: {
     username: process.env.JENKINS_USER,
     password: process.env.JENKINS_PASS
