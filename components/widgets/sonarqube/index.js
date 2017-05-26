@@ -74,11 +74,7 @@ export default class SonarQube extends Component {
 
   async fetchInformation () {
     const { authKey, url, componentKey } = this.props
-    let opts = {}
-
-    if (authKey) {
-      opts = { headers: basicAuthHeader(authKey) }
-    }
+    const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     // https://docs.sonarqube.org/display/SONAR/Metric+Definitions
     const metricKeys = [

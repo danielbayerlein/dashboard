@@ -40,11 +40,7 @@ export default class ElasticsearchHitCount extends Component {
 
   async fetchInformation () {
     const { authKey, index, query, url } = this.props
-    let opts = {}
-
-    if (authKey) {
-      opts = { headers: basicAuthHeader(authKey) }
-    }
+    const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
       const res = await fetch(`${url}/${index}/_search?q=${query}`, opts)

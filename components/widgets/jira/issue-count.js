@@ -40,11 +40,7 @@ export default class JiraIssueCount extends Component {
 
   async fetchInformation () {
     const { authKey, url, query } = this.props
-    let opts = {}
-
-    if (authKey) {
-      opts = { headers: basicAuthHeader(authKey) }
-    }
+    const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
       const res = await fetch(`${url}/rest/api/2/search?jql=${query}`, opts)

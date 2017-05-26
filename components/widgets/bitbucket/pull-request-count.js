@@ -43,11 +43,7 @@ export default class BitbucketPullRequestCount extends Component {
 
   async fetchInformation () {
     const { authKey, url, project, repository, users } = this.props
-    let opts = {}
-
-    if (authKey) {
-      opts = { headers: basicAuthHeader(authKey) }
-    }
+    const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
       const res = await fetch(`${url}/rest/api/1.0/projects/${project}/repos/${repository}/pull-requests?limit=100`, opts)

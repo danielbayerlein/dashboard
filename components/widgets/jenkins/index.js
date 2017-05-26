@@ -63,11 +63,7 @@ export default class Jenkins extends Component {
 
   async fetchInformation () {
     const { authKey, jobs, url } = this.props
-    let opts = {}
-
-    if (authKey) {
-      opts = { headers: basicAuthHeader(authKey) }
-    }
+    const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
       const builds = await Promise.all(
