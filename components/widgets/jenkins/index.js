@@ -6,6 +6,7 @@ import Widget from '../../widget'
 import Table, { Th, Td } from '../../table'
 import Badge from '../../badge'
 import LoadingIndicator from '../../loading-indicator'
+import { basicAuthHeader } from '../../../lib/auth'
 
 const JenkinsBadge = styled(Badge)`
   background-color: ${props => {
@@ -32,7 +33,8 @@ const schema = yup.object().shape({
     path: yup.string().required()
   })).required(),
   interval: yup.number(),
-  title: yup.string()
+  title: yup.string(),
+  authKey: yup.string()
 })
 
 export default class Jenkins extends Component {
@@ -60,12 +62,13 @@ export default class Jenkins extends Component {
   }
 
   async fetchInformation () {
-    const { jobs, url } = this.props
+    const { authKey, jobs, url } = this.props
+    const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
       const builds = await Promise.all(
         jobs.map(async job => {
-          const res = await fetch(`${url}/job/${job.path}/lastBuild/api/json`)
+          const res = await fetch(`${url}/job/${job.path}/lastBuild/api/json`, opts)
           const json = await res.json()
 
           return {
