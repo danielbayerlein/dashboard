@@ -3,6 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import yup from 'yup'
 import Widget from '../../widget'
 import Counter from '../../counter'
+import { basicAuthHeader } from '../../../lib/auth'
 
 const schema = yup.object().shape({
   url: yup.string().url().required(),
@@ -10,7 +11,8 @@ const schema = yup.object().shape({
   repository: yup.string().required(),
   interval: yup.number(),
   title: yup.string(),
-  users: yup.array().of(yup.string())
+  users: yup.array().of(yup.string()),
+  authKey: yup.string()
 })
 
 export default class BitbucketPullRequestCount extends Component {
@@ -40,10 +42,11 @@ export default class BitbucketPullRequestCount extends Component {
   }
 
   async fetchInformation () {
-    const { url, project, repository, users } = this.props
+    const { authKey, url, project, repository, users } = this.props
+    const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
-      const res = await fetch(`${url}/rest/api/1.0/projects/${project}/repos/${repository}/pull-requests?limit=100`)
+      const res = await fetch(`${url}/rest/api/1.0/projects/${project}/repos/${repository}/pull-requests?limit=100`, opts)
       const json = await res.json()
 
       let count

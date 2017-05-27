@@ -3,12 +3,14 @@ import fetch from 'isomorphic-unfetch'
 import yup from 'yup'
 import Widget from '../../widget'
 import Counter from '../../counter'
+import { basicAuthHeader } from '../../../lib/auth'
 
 const schema = yup.object().shape({
   url: yup.string().url().required(),
   query: yup.string().required(),
   interval: yup.number(),
-  title: yup.string()
+  title: yup.string(),
+  authKey: yup.string()
 })
 
 export default class JiraIssueCount extends Component {
@@ -37,10 +39,11 @@ export default class JiraIssueCount extends Component {
   }
 
   async fetchInformation () {
-    const { url, query } = this.props
+    const { authKey, url, query } = this.props
+    const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
-      const res = await fetch(`${url}/rest/api/2/search?jql=${query}`)
+      const res = await fetch(`${url}/rest/api/2/search?jql=${query}`, opts)
       const json = await res.json()
 
       this.setState({ count: json.total, error: false, loading: false })

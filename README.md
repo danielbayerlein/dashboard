@@ -152,6 +152,7 @@ import Jenkins from '../components/widgets/jenkins'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Jenkins URL
 * `jobs`: List of all jobs
+* `authKey`: Credential key, defined in `auth.js`
 
 ### [JIRA Issue Count](./components/widgets/jira/issue-count.js)
 
@@ -173,6 +174,7 @@ import JiraIssueCount from '../components/widgets/jira/issue-count'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: JIRA Server URL
 * `query`: JIRA search query (`jql`)
+* `authKey`: Credential key, defined in `auth.js`
 
 ### [Bitbucket PullRequest Count](./components/widgets/bitbucket/pull-request-count.js)
 
@@ -198,6 +200,7 @@ import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-requ
 * `project`: Bitbucket project key
 * `repository`: Bitbucket repository slug
 * `users`: Bitbucket user slugs as an array
+* `authKey`: Credential key, defined in `auth.js`
 
 ### [PageSpeed Insights Score](./components/widgets/pagespeed-insights/score.js)
 
@@ -256,6 +259,7 @@ import SonarQube from '../components/widgets/sonarqube'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: SonarQube URL
 * `componentKey`: SonarQube project key
+* `authKey`: Credential key, defined in `auth.js`
 
 ### [ElasticsearchHitCount](./components/widgets/elasticsearch/hit-count.js)
 
@@ -279,6 +283,7 @@ import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count
 * `url`: Elasticsearch URL
 * `index`: Elasticsearch index to search in
 * `query`: Elasticsearch query
+* `authKey`: Credential key, defined in `auth.js`
 
 ## Available Themes
 

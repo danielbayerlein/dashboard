@@ -3,6 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import yup from 'yup'
 import Widget from '../../widget'
 import Counter from '../../counter'
+import { basicAuthHeader } from '../../../lib/auth'
 
 const schema = yup.object().shape({
   url: yup.string().url().required(),
@@ -38,10 +39,11 @@ export default class ElasticsearchHitCount extends Component {
   }
 
   async fetchInformation () {
-    const { url, index, query } = this.props
+    const { authKey, index, query, url } = this.props
+    const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
-      const res = await fetch(`${url}/${index}/_search?q=${query}`)
+      const res = await fetch(`${url}/${index}/_search?q=${query}`, opts)
       const json = await res.json()
 
       this.setState({ count: json.hits.total, error: false, loading: false })
