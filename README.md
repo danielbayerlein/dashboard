@@ -62,6 +62,7 @@
   * [dark](#dark)
     * [Example](#example-9)
     * [Preview](#preview-1)
+* [Authentication](#authentication)
 * [Cross-Origin Resource Sharing (CORS)](#cross-origin-resource-sharing-cors)
   * [Proxy](#proxy)
     * [Server](#server-1)
@@ -318,6 +319,35 @@ import darkTheme from '../styles/dark-theme'
 #### Preview
 
 ![dashboard-dark](https://cloud.githubusercontent.com/assets/457834/26214954/a668dc50-3bfe-11e7-8c19-7a0c7dd260e7.png)
+
+## Authentication
+
+Any widget can authenticate itself, should your server expect this. We use
+[basic authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).
+
+1. Define your credential key in `auth.js`. For example:
+  ```javascript
+  jira: {
+    username: process.env.JIRA_USER,
+    password: process.env.JIRA_PASS
+  }
+  ```
+2. Give the defined credential key `jira` via prop `authKey` to the widget.
+  For example:
+  ```javascript
+  <JiraIssueCount
+    authKey='jira'
+    url='https://jira.atlassian.com'
+    query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
+  />
+  ```
+3. Create a `.env` file in the root directory of your project. Add
+  environment-specific variables on new lines in the form of `NAME=VALUE`.
+  For example:
+  ```
+  JIRA_USER=root
+  JIRA_PASS=s1mpl3
+  ```
 
 ## Cross-Origin Resource Sharing (CORS)
 
