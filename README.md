@@ -326,28 +326,28 @@ Any widget can authenticate itself, should your server expect this. We use
 [basic authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).
 
 1. Define your credential key in `auth.js`. For example:
-  ```javascript
-  jira: {
-    username: process.env.JIRA_USER,
-    password: process.env.JIRA_PASS
-  }
-  ```
+   ```javascript
+   jira: {
+     username: process.env.JIRA_USER,
+     password: process.env.JIRA_PASS
+   }
+   ```
 2. Give the defined credential key `jira` via prop `authKey` to the widget.
-  For example:
-  ```javascript
-  <JiraIssueCount
-    authKey='jira'
-    url='https://jira.atlassian.com'
-    query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
-  />
-  ```
+   For example:
+   ```javascript
+   <JiraIssueCount
+     authKey='jira'
+     url='https://jira.atlassian.com'
+     query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
+   />
+   ```
 3. Create a `.env` file in the root directory of your project. Add
-  environment-specific variables on new lines in the form of `NAME=VALUE`.
-  For example:
-  ```
-  JIRA_USER=root
-  JIRA_PASS=s1mpl3
-  ```
+   environment-specific variables on new lines in the form of `NAME=VALUE`.
+   For example:
+   ```dosini
+   JIRA_USER=root
+   JIRA_PASS=s1mpl3
+   ```
 
 ## Cross-Origin Resource Sharing (CORS)
 
