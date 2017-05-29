@@ -2,7 +2,6 @@ import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import Widget from '../../widget'
-import Counter from '../../counter'
 
 const Image = styled.img`
   height: 18em;
