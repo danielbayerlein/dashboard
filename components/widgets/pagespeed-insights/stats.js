@@ -1,13 +1,21 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
+import yup from 'yup'
 import Table, { Th, Td } from '../../table'
 import Widget from '../../widget'
 
+const schema = yup.object().shape({
+  url: yup.string().url().required(),
+  filterThirdPartyResources: yup.boolean(),
+  interval: yup.number(),
+  strategy: yup.string(),
+  title: yup.string()
+})
+
 export default class PageSpeedInsightsStats extends Component {
   static defaultProps = {
-    filterThirdPartyResources: true,
+    filterThirdPartyResources: false,
     interval: 1000 * 60 * 60 * 12,
-    locale: 'de_DE',
     strategy: 'desktop',
     title: 'PageSpeed Stats'
   }
@@ -19,7 +27,12 @@ export default class PageSpeedInsightsStats extends Component {
   }
 
   componentDidMount () {
-    this.fetchInformation()
+    schema.validate(this.props)
+      .then(() => this.fetchInformation())
+      .catch((err) => {
+        console.log('PageSpeed Insights Stats: missing or invalid params', err.errors)
+        this.setState({ error: true, loading: false })
+      })
   }
 
   componentWillUnmount () {
@@ -31,12 +44,11 @@ export default class PageSpeedInsightsStats extends Component {
   }
 
   async fetchInformation () {
-    const { url, filterThirdPartyResources, locale, strategy } = this.props
+    const { url, filterThirdPartyResources, strategy } = this.props
 
     const searchParams = [
       `url=${url}`,
       `filter_third_party_resources=${filterThirdPartyResources}`,
-      `locale=${locale}`,
       `strategy=${strategy}`
     ].join('&')
 
@@ -71,35 +83,37 @@ export default class PageSpeedInsightsStats extends Component {
     return (
       <Widget title={title} loading={loading} error={error}>
         <Table>
-          <tr>
-            <Th>Request</Th>
-            <Td>{stats.requestSize} KB ({stats.requestCount})</Td>
-          </tr>
+          <tbody>
+            <tr>
+              <Th>Request</Th>
+              <Td>{stats.requestSize} KB ({stats.requestCount})</Td>
+            </tr>
 
-          <tr>
-            <Th>JavaScript</Th>
-            <Td>{stats.javascriptSize} KB ({stats.javascriptCount})</Td>
-          </tr>
+            <tr>
+              <Th>JavaScript</Th>
+              <Td>{stats.javascriptSize} KB ({stats.javascriptCount})</Td>
+            </tr>
 
-          <tr>
-            <Th>CSS</Th>
-            <Td>{stats.cssSize} KB ({stats.cssCount})</Td>
-          </tr>
+            <tr>
+              <Th>CSS</Th>
+              <Td>{stats.cssSize} KB ({stats.cssCount})</Td>
+            </tr>
 
-          <tr>
-            <Th>HTML</Th>
-            <Td>{stats.htmlSize} KB</Td>
-          </tr>
+            <tr>
+              <Th>HTML</Th>
+              <Td>{stats.htmlSize} KB</Td>
+            </tr>
 
-          <tr>
-            <Th>Image</Th>
-            <Td>{stats.imageSize} KB</Td>
-          </tr>
+            <tr>
+              <Th>Image</Th>
+              <Td>{stats.imageSize} KB</Td>
+            </tr>
 
-          <tr>
-            <Th>Other</Th>
-            <Td>{stats.otherSize} KB</Td>
-          </tr>
+            <tr>
+              <Th>Other</Th>
+              <Td>{stats.otherSize} KB</Td>
+            </tr>
+          </tbody>
         </Table>
       </Widget>
     )
