@@ -35,7 +35,7 @@ export default class BitbucketPullRequestList extends Component {
     clearInterval(this.interval)
   }
 
-  extractBranchName(id) {
+  extractBranchName (id) {
     return id.replace('refs/heads/', '')
   }
 
@@ -46,14 +46,14 @@ export default class BitbucketPullRequestList extends Component {
       const res = await fetch(`${url}rest/api/1.0/projects/${project}/repos/${repository}/pull-requests?limit=5`)
       const json = await res.json()
 
-      let pullRequests = json.values;
+      let pullRequests = json.values
       if (users.length) {
         pullRequests = json.values.filter((el) => users.includes(pullRequests.author.user.slug))
       }
 
       this.setState({ pullRequests, error: false, loading: false })
     } catch (error) {
-      this.setState({ pullRequests, error: true, loading: false })
+      this.setState({ error: true, loading: false })
     } finally {
       this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
