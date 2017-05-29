@@ -1,13 +1,21 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
+import yup from 'yup'
 import CircleProgress from '../../circle-progress'
 import Widget from '../../widget'
 
-export default class PageSpeedInsights extends Component {
+const schema = yup.object().shape({
+  url: yup.string().url().required(),
+  filterThirdPartyResources: yup.boolean(),
+  interval: yup.number(),
+  strategy: yup.string(),
+  title: yup.string()
+})
+
+export default class PageSpeedInsightsScore extends Component {
   static defaultProps = {
-    filterThirdPartyResources: true,
+    filterThirdPartyResources: false,
     interval: 1000 * 60 * 60 * 12,
-    locale: 'de_DE',
     strategy: 'desktop',
     title: 'PageSpeed Score'
   }
@@ -19,7 +27,12 @@ export default class PageSpeedInsights extends Component {
   }
 
   componentDidMount () {
-    this.fetchInformation()
+    schema.validate(this.props)
+      .then(() => this.fetchInformation())
+      .catch((err) => {
+        console.log('PageSpeed Insights Score: missing or invalid params', err.errors)
+        this.setState({ error: true, loading: false })
+      })
   }
 
   componentWillUnmount () {
@@ -27,12 +40,11 @@ export default class PageSpeedInsights extends Component {
   }
 
   async fetchInformation () {
-    const { url, filterThirdPartyResources, locale, strategy } = this.props
+    const { url, filterThirdPartyResources, strategy } = this.props
 
     const searchParams = [
       `url=${url}`,
       `filter_third_party_resources=${filterThirdPartyResources}`,
-      `locale=${locale}`,
       `strategy=${strategy}`
     ].join('&')
 

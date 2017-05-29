@@ -22,10 +22,13 @@
   </a>
 </p>
 
+## Table of Contents
+
 * [Installation](#installation)
 * [Server](#server)
   * [Development](#development)
   * [Production](#production)
+  * [Docker](#docker)
 * [Create a Dashboard](#create-a-dashboard)
 * [Available Widgets](#available-widgets)
   * [DateTime](#datetime)
@@ -40,15 +43,31 @@
   * [Bitbucket PullRequest Count](#bitbucket-pullrequest-count)
     * [Example](#example-3)
     * [props](#props-3)
-  * [PageSpeed Insights](#pagespeed-insights)
+  * [PageSpeed Insights Score](#pagespeed-insights-score)
     * [Example](#example-4)
     * [props](#props-4)
-  * [SonarQube](#sonarqube)
+  * [PageSpeed Insights Stats](#pagespeed-insights-stats)
     * [Example](#example-5)
     * [props](#props-5)
+  * [SonarQube](#sonarqube)
+    * [Example](#example-6)
+    * [props](#props-6)
+  * [ElasticsearchHitCount](#elasticsearchhitcount)
+    * [Example](#example-7)
+    * [props](#props-7)
 * [Available Themes](#available-themes)
   * [light](#light)
+    * [Example](#example-8)
+    * [Preview](#preview)
   * [dark](#dark)
+    * [Example](#example-9)
+    * [Preview](#preview-1)
+* [Authentication](#authentication)
+* [Cross-Origin Resource Sharing (CORS)](#cross-origin-resource-sharing-cors)
+  * [Proxy](#proxy)
+    * [Server](#server-1)
+    * [Dashboard](#dashboard)
+  * [Resources](#resources)
 * [License](#license)
 
 ## Installation
@@ -66,6 +85,13 @@ Run `npm run dev` and go to http://localhost:3000.
 
 Build your dashboard for production with `npm run build` and then start the
 server with `npm start`.
+
+### Docker
+
+1. Build your dashboard for production with `npm run build`
+2. Build the image with `docker build -t dashboard .`
+3. Start the container with `docker run -d -p 8080:3000 dashboard`
+4. Go to http://localhost:8080
 
 ## Create a Dashboard
 
@@ -112,11 +138,11 @@ import DateTime from '../components/widgets/datetime'
 import Jenkins from '../components/widgets/jenkins'
 
 <Jenkins
-  url="https://crossorigin.me/http://ci.jenkins-ci.org"
+  url='http://ci.jenkins-ci.org'
   jobs={[
-    { label: 'jenkins master', path: 'Core/job/jenkins/job/master/' },
-    { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7/'},
-    { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master/' },
+    { label: 'jenkins master', path: 'Core/job/jenkins/job/master' },
+    { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7'},
+    { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master' },
   ]}
 />
 ```
@@ -127,17 +153,18 @@ import Jenkins from '../components/widgets/jenkins'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Jenkins URL
 * `jobs`: List of all jobs
+* `authKey`: Credential key, defined in `auth.js`
 
-### [JIRA Issue Count](./components/widgets/jira-issue-count/index.js)
+### [JIRA Issue Count](./components/widgets/jira/issue-count.js)
 
 #### Example
 
 ```javascript
-import JiraIssueCount from '../components/widgets/jira-issue-count'
+import JiraIssueCount from '../components/widgets/jira/issue-count'
 
 <JiraIssueCount
   title='JIRA Open Bugs'
-  url='https://jira.atlassian.com/'
+  url='https://jira.atlassian.com'
   query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
 />
 ```
@@ -148,17 +175,18 @@ import JiraIssueCount from '../components/widgets/jira-issue-count'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: JIRA Server URL
 * `query`: JIRA search query (`jql`)
+* `authKey`: Credential key, defined in `auth.js`
 
-### [Bitbucket PullRequest Count](./components/widgets/bitbucket-pullrequest-count/index.js)
+### [Bitbucket PullRequest Count](./components/widgets/bitbucket/pull-request-count.js)
 
 #### Example
 
 ```javascript
-import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullrequest-count'
+import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-request-count'
 
 <BitbucketPullRequestCount
   title='Bitbucket Open PR'
-  url='https://bitbucket.typo3.com/'
+  url='https://bitbucket.typo3.com'
   project='EXT'
   repository='blog'
   users={['stekal', 'marleg', 'denhub']}
@@ -173,15 +201,16 @@ import BitbucketPullRequestCount from '../components/widgets/bitbucket-pullreque
 * `project`: Bitbucket project key
 * `repository`: Bitbucket repository slug
 * `users`: Bitbucket user slugs as an array
+* `authKey`: Credential key, defined in `auth.js`
 
-### [PageSpeed Insights](./components/widgets/psi/index.js)
+### [PageSpeed Insights Score](./components/widgets/pagespeed-insights/score.js)
 
 #### Example
 
 ```javascript
-import PageSpeedScore from '../components/widgets/psi'
+import PageSpeedInsightsScore from '../components/widgets/pagespeed-insights/score'
 
-<PageSpeedScore url='https://github.com/' />
+<PageSpeedInsightsScore url='https://github.com' />
 ```
 
 #### props
@@ -189,10 +218,28 @@ import PageSpeedScore from '../components/widgets/psi'
 * `title`: Widget title (Default: `PageSpeed Score`)
 * `interval`: Refresh interval in milliseconds (Default: `43200000`)
 * `url`: URL to fetch and analyze
-* `locale`: Locale used to localize formatted results (Default: `de_DE`)
 * `strategy`: Analysis strategy (Default: `desktop`)
   * Acceptable values: `desktop` | `mobile`
-* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `true`)
+* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `false`)
+
+### [PageSpeed Insights Stats](./components/widgets/pagespeed-insights/stats.js)
+
+#### Example
+
+```javascript
+import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/stats'
+
+<PageSpeedInsightsStats url='https://github.com' />
+```
+
+#### props
+
+* `title`: Widget title (Default: `PageSpeed Stats`)
+* `interval`: Refresh interval in milliseconds (Default: `43200000`)
+* `url`: URL to fetch and analyze
+* `strategy`: Analysis strategy (Default: `desktop`)
+  * Acceptable values: `desktop` | `mobile`
+* `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `false`)
 
 ### [SonarQube](./components/widgets/sonarqube/index.js)
 
@@ -202,7 +249,7 @@ import PageSpeedScore from '../components/widgets/psi'
 import SonarQube from '../components/widgets/sonarqube'
 
 <SonarQube
-  url='https://sonarqube.com/'
+  url='https://sonarqube.com'
   componentKey='com.icegreen:greenmail-parent'
 />
 ```
@@ -213,10 +260,37 @@ import SonarQube from '../components/widgets/sonarqube'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: SonarQube URL
 * `componentKey`: SonarQube project key
+* `authKey`: Credential key, defined in `auth.js`
+
+### [ElasticsearchHitCount](./components/widgets/elasticsearch/hit-count.js)
+
+#### Example
+
+```javascript
+import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count'
+
+<ElasticsearchHitCount
+  title='Log Hits'
+  url='http://ec2-34-210-144-223.us-west-2.compute.amazonaws.com:9200'
+  index='blog'
+  query='user:dilbert'
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `Elasticsearch Hit Count`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
+* `url`: Elasticsearch URL
+* `index`: Elasticsearch index to search in
+* `query`: Elasticsearch query
+* `authKey`: Credential key, defined in `auth.js`
 
 ## Available Themes
 
 ### [light](./styles/light-theme.js)
+
+#### Example
 
 ```javascript
 import lightTheme from '../styles/light-theme'
@@ -226,7 +300,13 @@ import lightTheme from '../styles/light-theme'
 </Dashboard>
 ```
 
+#### Preview
+
+![dashboard-light](https://cloud.githubusercontent.com/assets/457834/26214930/8c065dce-3bfe-11e7-9da0-2d6ebba2dfb8.png)
+
 ### [dark](./styles/dark-theme.js)
+
+#### Example
 
 ```javascript
 import darkTheme from '../styles/dark-theme'
@@ -235,6 +315,74 @@ import darkTheme from '../styles/dark-theme'
   ...
 </Dashboard>
 ```
+
+#### Preview
+
+![dashboard-dark](https://cloud.githubusercontent.com/assets/457834/26214954/a668dc50-3bfe-11e7-8c19-7a0c7dd260e7.png)
+
+## Authentication
+
+Any widget can authenticate itself, should your server expect this. We use
+[basic authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).
+
+1. Define your credential key in `auth.js`. For example:
+   ```javascript
+   jira: {
+     username: process.env.JIRA_USER,
+     password: process.env.JIRA_PASS
+   }
+   ```
+2. Give the defined credential key `jira` via prop `authKey` to the widget.
+   For example:
+   ```javascript
+   <JiraIssueCount
+     authKey='jira'
+     url='https://jira.atlassian.com'
+     query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
+   />
+   ```
+3. Create a `.env` file in the root directory of your project. Add
+   environment-specific variables on new lines in the form of `NAME=VALUE`.
+   For example:
+   ```dosini
+   JIRA_USER=root
+   JIRA_PASS=s1mpl3
+   ```
+
+## Cross-Origin Resource Sharing (CORS)
+
+[Cross-Origin Resource Sharing](https://www.w3.org/TR/cors/) (CORS) is a W3C
+spec that allows cross-domain communication from the browser. By building on
+top of the XMLHttpRequest object, CORS allows developers to work with the same
+idioms as same-domain requests.
+
+### Proxy
+
+You can use a proxy (e.g. [hapi-rest-proxy](https://github.com/chrishelgert/hapi-rest-proxy))
+to enable CORS request for any website.
+
+#### Server
+
+```bash
+docker pull chrishelgert/hapi-rest-proxy
+docker run -d -p 3001:8080 chrishelgert/hapi-rest-proxy
+```
+
+#### Dashboard
+
+```javascript
+<SonarQube
+  url='http://localhost:3001?url=https://sonarqube.com'
+  componentKey='com.icegreen:greenmail-parent'
+/>
+```
+
+### Resources
+
+* https://www.w3.org/TR/cors/
+* https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+* https://enable-cors.org
+* https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
 
 ## License
 

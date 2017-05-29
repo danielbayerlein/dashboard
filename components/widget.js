@@ -11,6 +11,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 1em;
+  padding: 1em;
+`
+
+const Title = styled.h1`
+  text-align: center;
 `
 
 export default ({ children, error = false, loading = false, title = '' }) => {
@@ -26,7 +32,7 @@ export default ({ children, error = false, loading = false, title = '' }) => {
 
   return (
     <Container>
-      {title ? <h1>{title}</h1> : ''}
+      {title ? <Title>{title}</Title> : ''}
       {content}
     </Container>
   )
