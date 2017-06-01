@@ -1339,9 +1339,9 @@ domain-browser@^1.1.1:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"
 
-dotenv-webpack@^1.4.5:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/dotenv-webpack/-/dotenv-webpack-1.4.5.tgz#f40727990dadbe7be7341ddbab0514a2b793c9ec"
+dotenv-webpack@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/dotenv-webpack/-/dotenv-webpack-1.5.0.tgz#934b218d1d87158237aa9cba0b3becf63298cb4b"
   dependencies:
     dotenv "^4.0.0"
 
