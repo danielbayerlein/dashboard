@@ -29,7 +29,7 @@
     "dotenv-webpack": "^1.5.0",
     "isomorphic-unfetch": "^1.0.0",
     "js-base64": "^2.1.9",
-    "next": "^2.4.0",
+    "next": "^2.4.1",
     "polished": "^1.1.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
