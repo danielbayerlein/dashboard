@@ -13,10 +13,10 @@ const schema = yup.object().shape({
   title: yup.string()
 })
 
-export default class Orly extends Component {
+export default class OrlyBookCovers extends Component {
   static defaultProps = {
     interval: 1000 * 60 * 5,
-    title: 'O RLY'
+    title: 'O Rly Book Covers'
   }
 
   state = {
@@ -29,7 +29,7 @@ export default class Orly extends Component {
     schema.validate(this.props)
       .then(() => this.fetchInformation())
       .catch((err) => {
-        console.log('O RLY: missing or invalid params', err.errors)
+        console.log('O RLY Book Covers: missing or invalid params', err.errors)
         this.setState({ error: true, loading: false })
       })
   }

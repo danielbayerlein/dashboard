@@ -9,7 +9,7 @@ import SonarQube from '../components/widgets/sonarqube'
 import Jenkins from '../components/widgets/jenkins'
 import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-request-count'
 import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count'
-import OrlyRandomCovers from '../components/widgets/orly-random-covers'
+import OrlyBookCovers from '../components/widgets/reddit/orly-book-covers'
 
 // Theme
 import lightTheme from '../styles/light-theme'
@@ -57,6 +57,6 @@ export default () => (
       query='user:dilbert'
     />
 
-    <OrlyRandomCovers />
+    <OrlyBookCovers />
   </Dashboard>
 )
