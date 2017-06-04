@@ -3,7 +3,7 @@ import { size } from 'polished'
 
 export default styled.span`
   ${size('1.75em')}
-  background-color: transparent
+  background-color: transparent;
   border-radius: 50%;
   color: ${props => props.theme.palette.textInvertColor};
   display: inline-block;
