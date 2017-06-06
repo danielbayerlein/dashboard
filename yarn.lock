@@ -403,6 +403,12 @@ babel-plugin-react-require@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-react-require/-/babel-plugin-react-require-3.0.0.tgz#2e4e7b4496b93a654a1c80042276de4e4eeb20e3"
 
+babel-plugin-styled-components@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.1.4.tgz#b0e6d5bb01059bc7ab9118d3d686f6472ee8e91f"
+  dependencies:
+    stylis "2.0.0"
+
 babel-plugin-syntax-async-functions@^6.8.0:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-async-functions/-/babel-plugin-syntax-async-functions-6.13.0.tgz#cad9cad1191b5ad634bf30ae0872391e0647be95"
@@ -3720,6 +3726,10 @@ styled-jsx@1.0.3:
     source-map "0.5.6"
     string-hash "1.1.1"
     stylis "3.0.10"
+
+stylis@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/stylis/-/stylis-2.0.0.tgz#6785a6546bd73478799a67d49d67086953b50ad5"
 
 stylis@3.0.10:
   version "3.0.10"
