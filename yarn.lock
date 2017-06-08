@@ -3808,9 +3808,9 @@ timers-browserify@^2.0.2:
   dependencies:
     setimmediate "^1.0.4"
 
-tinytime@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/tinytime/-/tinytime-0.2.5.tgz#2369b9c8cefdd94eb5bce6f07e46e4e71877c8c5"
+tinytime@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/tinytime/-/tinytime-0.2.6.tgz#3d68b8eda06fd2a0d650f9206c57e4e44280bfa7"
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"

@@ -35,7 +35,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "styled-components": "^2.0.0",
-    "tinytime": "^0.2.5",
+    "tinytime": "^0.2.6",
     "yup": "^0.21.3"
   },
   "devDependencies": {
