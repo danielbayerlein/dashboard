@@ -36,7 +36,7 @@ export default () => (
     />
 
     <SonarQube
-      url='https://crossorigin.me/https://sonarqube.com'
+      url='https://crossorigin.me/https://sonarcloud.io'
       componentKey='com.icegreen:greenmail-parent'
     />
 
