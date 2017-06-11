@@ -249,7 +249,7 @@ import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/sta
 import SonarQube from '../components/widgets/sonarqube'
 
 <SonarQube
-  url='https://sonarqube.com'
+  url='https://sonarcloud.io'
   componentKey='com.icegreen:greenmail-parent'
 />
 ```
@@ -372,7 +372,7 @@ docker run -d -p 3001:8080 chrishelgert/hapi-rest-proxy
 
 ```javascript
 <SonarQube
-  url='http://localhost:3001?url=https://sonarqube.com'
+  url='http://localhost:3001?url=https://sonarcloud.io'
   componentKey='com.icegreen:greenmail-parent'
 />
 ```
