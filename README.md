@@ -22,53 +22,59 @@
   </a>
 </p>
 
-## Table of Contents
+<h2>Table of Contents</h2>
+<details>
+  <summary>Table of Contents</summary>
 
-* [Installation](#installation)
-* [Server](#server)
-  * [Development](#development)
-  * [Production](#production)
-  * [Docker](#docker)
-* [Create a Dashboard](#create-a-dashboard)
-* [Available Widgets](#available-widgets)
-  * [DateTime](#datetime)
-    * [Example](#example)
-    * [props](#props)
-  * [Jenkins](#jenkins)
-    * [Example](#example-1)
-    * [props](#props-1)
-  * [JIRA Issue Count](#jira-issue-count)
-    * [Example](#example-2)
-    * [props](#props-2)
-  * [Bitbucket PullRequest Count](#bitbucket-pullrequest-count)
-    * [Example](#example-3)
-    * [props](#props-3)
-  * [PageSpeed Insights Score](#pagespeed-insights-score)
-    * [Example](#example-4)
-    * [props](#props-4)
-  * [PageSpeed Insights Stats](#pagespeed-insights-stats)
-    * [Example](#example-5)
-    * [props](#props-5)
-  * [SonarQube](#sonarqube)
-    * [Example](#example-6)
-    * [props](#props-6)
-  * [ElasticsearchHitCount](#elasticsearchhitcount)
-    * [Example](#example-7)
-    * [props](#props-7)
-* [Available Themes](#available-themes)
-  * [light](#light)
-    * [Example](#example-8)
-    * [Preview](#preview)
-  * [dark](#dark)
-    * [Example](#example-9)
-    * [Preview](#preview-1)
-* [Authentication](#authentication)
-* [Cross-Origin Resource Sharing (CORS)](#cross-origin-resource-sharing-cors)
-  * [Proxy](#proxy)
-    * [Server](#server-1)
-    * [Dashboard](#dashboard)
-  * [Resources](#resources)
-* [License](#license)
+  * [Installation](#installation)
+  * [Server](#server)
+    * [Development](#development)
+    * [Production](#production)
+    * [Docker](#docker)
+  * [Create a Dashboard](#create-a-dashboard)
+  * [Available Widgets](#available-widgets)
+    * [DateTime](#datetime)
+      * [Example](#example)
+      * [props](#props)
+    * [Jenkins](#jenkins)
+      * [Example](#example-1)
+      * [props](#props-1)
+    * [JIRA Issue Count](#jira-issue-count)
+      * [Example](#example-2)
+      * [props](#props-2)
+    * [Bitbucket PullRequest Count](#bitbucket-pullrequest-count)
+      * [Example](#example-3)
+      * [props](#props-3)
+    * [PageSpeed Insights Score](#pagespeed-insights-score)
+      * [Example](#example-4)
+      * [props](#props-4)
+    * [PageSpeed Insights Stats](#pagespeed-insights-stats)
+      * [Example](#example-5)
+      * [props](#props-5)
+    * [SonarQube](#sonarqube)
+      * [Example](#example-6)
+      * [props](#props-6)
+    * [ElasticsearchHitCount](#elasticsearchhitcount)
+      * [Example](#example-7)
+      * [props](#props-7)
+    * [GithubIssueCount](#githubissuecount)
+      * [Example](#example-8)
+      * [props](#props-8)
+  * [Available Themes](#available-themes)
+    * [light](#light)
+      * [Example](#example-8)
+      * [Preview](#preview)
+    * [dark](#dark)
+      * [Example](#example-9)
+      * [Preview](#preview-1)
+  * [Authentication](#authentication)
+  * [Cross-Origin Resource Sharing (CORS)](#cross-origin-resource-sharing-cors)
+    * [Proxy](#proxy)
+      * [Server](#server-1)
+      * [Dashboard](#dashboard)
+    * [Resources](#resources)
+  * [License](#license)
+</details>
 
 ## Installation
 
@@ -284,6 +290,27 @@ import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count
 * `url`: Elasticsearch URL
 * `index`: Elasticsearch index to search in
 * `query`: Elasticsearch query
+* `authKey`: Credential key, defined in `auth.js`
+
+### [GithubIssueCount](./components/widgets/github/issue-count.js)
+
+#### Example
+
+```javascript
+import GithubIssueCount from '../components/github/issue-count'
+
+<GithubIssueCount
+  owner="danielbayerlein"
+  repository="dashboard"
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `Github Issue Count`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
+* `owner`: Owner of the repository
+* `repository`: Name of the repository
 * `authKey`: Credential key, defined in `auth.js`
 
 ## Available Themes
