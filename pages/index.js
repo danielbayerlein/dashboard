@@ -9,6 +9,7 @@ import SonarQube from '../components/widgets/sonarqube'
 import Jenkins from '../components/widgets/jenkins'
 import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-request-count'
 import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count'
+import GithubIssueCount from '../components/widgets/github/issue-count'
 
 // Theme
 import lightTheme from '../styles/light-theme'
@@ -55,5 +56,7 @@ export default () => (
       index='blog'
       query='user:dilbert'
     />
+
+    <GithubIssueCount owner="danielbayerlein" repository="dashboard" />
   </Dashboard>
 )
