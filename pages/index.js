@@ -57,6 +57,9 @@ export default () => (
       query='user:dilbert'
     />
 
-    <GithubIssueCount owner="danielbayerlein" repository="dashboard" />
+    <GithubIssueCount
+      owner="danielbayerlein"
+      repository="dashboard"
+    />
   </Dashboard>
 )
