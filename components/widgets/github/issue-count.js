@@ -13,10 +13,10 @@ const schema = yup.object().shape({
   authKey: yup.string()
 })
 
-export default class GithubIssueCount extends Component {
+export default class GitHubIssueCount extends Component {
   static defaultProps = {
     interval: 1000 * 60 * 5,
-    title: 'Github Issue Count',
+    title: 'GitHub Issue Count',
     users: []
   }
 
@@ -30,7 +30,7 @@ export default class GithubIssueCount extends Component {
     schema.validate(this.props)
       .then(() => this.fetchInformation())
       .catch((err) => {
-        console.log('Github Issue Count: missing or invalid params', err.errors)
+        console.log('GitHub Issue Count: missing or invalid params', err.errors)
         this.setState({ error: true, loading: false })
       })
   }

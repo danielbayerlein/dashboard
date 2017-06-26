@@ -57,15 +57,15 @@
     * [ElasticsearchHitCount](#elasticsearchhitcount)
       * [Example](#example-7)
       * [props](#props-7)
-    * [GithubIssueCount](#githubissuecount)
+    * [GitHubIssueCount](#githubissuecount)
       * [Example](#example-8)
       * [props](#props-8)
   * [Available Themes](#available-themes)
     * [light](#light)
-      * [Example](#example-8)
+      * [Example](#example-9)
       * [Preview](#preview)
     * [dark](#dark)
-      * [Example](#example-9)
+      * [Example](#example-10)
       * [Preview](#preview-1)
   * [Authentication](#authentication)
   * [Cross-Origin Resource Sharing (CORS)](#cross-origin-resource-sharing-cors)
@@ -292,22 +292,22 @@ import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count
 * `query`: Elasticsearch query
 * `authKey`: Credential key, defined in `auth.js`
 
-### [GithubIssueCount](./components/widgets/github/issue-count.js)
+### [GitHubIssueCount](./components/widgets/github/issue-count.js)
 
 #### Example
 
 ```javascript
-import GithubIssueCount from '../components/github/issue-count'
+import GitHubIssueCount from '../components/github/issue-count'
 
-<GithubIssueCount
-  owner="danielbayerlein"
-  repository="dashboard"
+<GitHubIssueCount
+  owner='danielbayerlein'
+  repository='dashboard'
 />
 ```
 
 #### props
 
-* `title`: Widget title (Default: `Github Issue Count`)
+* `title`: Widget title (Default: `GitHub Issue Count`)
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `owner`: Owner of the repository
 * `repository`: Name of the repository
