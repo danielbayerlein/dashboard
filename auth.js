@@ -18,5 +18,9 @@ export default {
   sonarqube: {
     username: process.env.SONARQUBE_USER,
     password: process.env.SONARQUBE_PASS
+  },
+  github: {
+    username: process.env.GITHUB_USER,
+    password: process.env.GITHUB_PASS
   }
 }

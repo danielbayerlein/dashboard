@@ -307,7 +307,7 @@ import GithubIssueCount from '../components/github/issue-count'
 
 #### props
 
-* `title`: Widget title (Default: `Elasticsearch Hit Count`)
+* `title`: Widget title (Default: `Github Issue Count`)
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `owner`: Owner of the repository
 * `repository`: Name of the repository
