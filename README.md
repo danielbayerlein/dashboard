@@ -20,6 +20,9 @@
   <a href="https://greenkeeper.io/">
     <img alt="Greenkeeper badge" src="https://badges.greenkeeper.io/danielbayerlein/dashboard.svg">
   </a>
+  <a href="https://deploy.now.sh/?repo=https://github.com/danielbayerlein/dashboard">
+    <img alt="Deploy to now" src="https://deploy.now.sh/static/button.svg" height="20">
+  </a>
 </p>
 
 ## Table of Contents
