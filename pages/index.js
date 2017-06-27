@@ -9,6 +9,7 @@ import SonarQube from '../components/widgets/sonarqube'
 import Jenkins from '../components/widgets/jenkins'
 import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-request-count'
 import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count'
+import GitHubIssueCount from '../components/widgets/github/issue-count'
 
 // Theme
 import lightTheme from '../styles/light-theme'
@@ -54,6 +55,11 @@ export default () => (
       url='https://crossorigin.me/http://ec2-34-210-144-223.us-west-2.compute.amazonaws.com:9200'
       index='blog'
       query='user:dilbert'
+    />
+
+    <GitHubIssueCount
+      owner='danielbayerlein'
+      repository='dashboard'
     />
   </Dashboard>
 )
