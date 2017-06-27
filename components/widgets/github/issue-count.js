@@ -16,8 +16,7 @@ const schema = yup.object().shape({
 export default class GitHubIssueCount extends Component {
   static defaultProps = {
     interval: 1000 * 60 * 5,
-    title: 'GitHub Issue Count',
-    users: []
+    title: 'GitHub Issue Count'
   }
 
   state = {
