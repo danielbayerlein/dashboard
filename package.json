@@ -28,7 +28,7 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.1.5",
     "dotenv-webpack": "^1.5.0",
-    "isomorphic-unfetch": "^1.0.0",
+    "isomorphic-unfetch": "^2.0.0",
     "js-base64": "^2.1.9",
     "next": "^2.4.4",
     "polished": "^1.2.1",
