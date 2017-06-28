@@ -120,11 +120,11 @@ import DateTime from '../components/widgets/datetime'
 import Jenkins from '../components/widgets/jenkins'
 
 <Jenkins
-  url='http://ci.jenkins-ci.org'
+  url='https://builds.apache.org'
   jobs={[
-    { label: 'jenkins master', path: 'Core/job/jenkins/job/master' },
-    { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7'},
-    { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master' },
+    { label: 'Hadoop', path: 'Hadoop-trunk-Commit' },
+    { label: 'Jackrabbit', path: 'Jackrabbit-trunk' },
+    { label: 'JMeter', path: 'JMeter-trunk' }
   ]}
 />
 ```
