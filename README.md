@@ -37,6 +37,7 @@
   * [DateTime](#datetime)
   * [Jenkins](#jenkins)
   * [JIRA Issue Count](#jira-issue-count)
+  * [JIRA Sprint Days Remaining](#jira-sprint-days-remaining)
   * [Bitbucket PullRequest Count](#bitbucket-pullrequest-count)
   * [PageSpeed Insights Score](#pagespeed-insights-score)
   * [PageSpeed Insights Stats](#pagespeed-insights-stats)
@@ -157,6 +158,28 @@ import JiraIssueCount from '../components/widgets/jira/issue-count'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: JIRA Server URL
 * `query`: JIRA search query (`jql`)
+* `authKey`: Credential key, defined in `auth.js`
+
+### [JIRA Sprint Days Remaining](./components/widgets/jira/sprint-days-remaining.js)
+
+#### Example
+
+```javascript
+import JiraSprintDaysRemaining from '../components/widgets/jira/sprint-days-remaining'
+
+<JiraSprintDaysRemaining
+  title='Sprint Days'
+  url='https://jira.atlassian.com'
+  boardId={1}
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `JIRA Sprint Days Remaining`)
+* `interval`: Refresh interval in milliseconds (Default: `43200000`)
+* `url`: JIRA Server URL
+* `boardId`: JIRA board id
 * `authKey`: Credential key, defined in `auth.js`
 
 ### [Bitbucket PullRequest Count](./components/widgets/bitbucket/pull-request-count.js)
