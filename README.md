@@ -375,7 +375,7 @@ docker run -d -p 3001:8080 chrishelgert/hapi-rest-proxy
 
 ```javascript
 <SonarQube
-  url='http://localhost:3001/?url=https://sonarcloud.io'
+  url='http://127.0.0.1:3001/?url=https://sonarcloud.io'
   componentKey='com.icegreen:greenmail-parent'
 />
 ```
