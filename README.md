@@ -41,8 +41,8 @@
   * [PageSpeed Insights Score](#pagespeed-insights-score)
   * [PageSpeed Insights Stats](#pagespeed-insights-stats)
   * [SonarQube](#sonarqube)
-  * [ElasticsearchHitCount](#elasticsearchhitcount)
-  * [GitHubIssueCount](#githubissuecount)
+  * [Elasticsearch Hit Count](#elasticsearch-hit-count)
+  * [GitHub Issue Count](#github-issue-count)
 * [Available Themes](#available-themes)
   * [light](#light)
   * [dark](#dark)
@@ -244,7 +244,7 @@ import SonarQube from '../components/widgets/sonarqube'
 * `componentKey`: SonarQube project key
 * `authKey`: Credential key, defined in `auth.js`
 
-### [ElasticsearchHitCount](./components/widgets/elasticsearch/hit-count.js)
+### [Elasticsearch Hit Count](./components/widgets/elasticsearch/hit-count.js)
 
 #### Example
 
@@ -268,7 +268,7 @@ import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count
 * `query`: Elasticsearch query
 * `authKey`: Credential key, defined in `auth.js`
 
-### [GitHubIssueCount](./components/widgets/github/issue-count.js)
+### [GitHub Issue Count](./components/widgets/github/issue-count.js)
 
 #### Example
 
