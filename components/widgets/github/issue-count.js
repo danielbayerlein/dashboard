@@ -1,29 +1,28 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
 import yup from 'yup'
-import CircleProgress from '../../circle-progress'
 import Widget from '../../widget'
+import Counter from '../../counter'
+import { basicAuthHeader } from '../../../lib/auth'
 
 const schema = yup.object().shape({
-  url: yup.string().url().required(),
-  filterThirdPartyResources: yup.boolean(),
+  owner: yup.string().required(),
+  repository: yup.string().required(),
   interval: yup.number(),
-  strategy: yup.string(),
-  title: yup.string()
+  title: yup.string(),
+  authKey: yup.string()
 })
 
-export default class PageSpeedInsightsScore extends Component {
+export default class GitHubIssueCount extends Component {
   static defaultProps = {
-    filterThirdPartyResources: false,
-    interval: 1000 * 60 * 60 * 12,
-    strategy: 'desktop',
-    title: 'PageSpeed Score'
+    interval: 1000 * 60 * 5,
+    title: 'GitHub Issue Count'
   }
 
   state = {
-    score: 0,
-    loading: true,
-    error: false
+    count: 0,
+    error: false,
+    loading: true
   }
 
   componentDidMount () {
@@ -40,19 +39,14 @@ export default class PageSpeedInsightsScore extends Component {
   }
 
   async fetchInformation () {
-    const { url, filterThirdPartyResources, strategy } = this.props
-
-    const searchParams = [
-      `url=${url}`,
-      `filter_third_party_resources=${filterThirdPartyResources}`,
-      `strategy=${strategy}`
-    ].join('&')
+    const { authKey, owner, repository } = this.props
+    const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
-      const res = await fetch(`https://www.googleapis.com/pagespeedonline/v2/runPagespeed?${searchParams}`)
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repository}`, opts)
       const json = await res.json()
 
-      this.setState({ error: false, loading: false, score: json.ruleGroups.SPEED.score })
+      this.setState({ count: json.open_issues_count, error: false, loading: false })
     } catch (error) {
       this.setState({ error: true, loading: false })
     } finally {
@@ -61,11 +55,11 @@ export default class PageSpeedInsightsScore extends Component {
   }
 
   render () {
-    const { error, loading, score } = this.state
+    const { count, error, loading } = this.state
     const { title } = this.props
     return (
       <Widget title={title} loading={loading} error={error}>
-        <CircleProgress value={score} />
+        <Counter value={count} />
       </Widget>
     )
   }

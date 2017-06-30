@@ -10,6 +10,7 @@ import Jenkins from '../components/widgets/jenkins'
 import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-request-count'
 import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count'
 import BitbucketPullRequestList from '../components/widgets/bitbucket/pull-request-list'
+import GitHubIssueCount from '../components/widgets/github/issue-count'
 
 // Theme
 import lightTheme from '../styles/light-theme'
@@ -44,16 +45,16 @@ export default () => (
     />
 
     <SonarQube
-      url='https://crossorigin.me/https://sonarqube.com'
+      url='https://crossorigin.me/https://sonarcloud.io'
       componentKey='com.icegreen:greenmail-parent'
     />
 
     <Jenkins
-      url='https://crossorigin.me/http://ci.jenkins-ci.org'
+      url='https://crossorigin.me/https://builds.apache.org'
       jobs={[
-        { label: 'jenkins master', path: 'Core/job/jenkins/job/master' },
-        { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7' },
-        { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master' }
+        { label: 'Hadoop', path: 'Hadoop-trunk-Commit' },
+        { label: 'Jackrabbit', path: 'Jackrabbit-trunk' },
+        { label: 'JMeter', path: 'JMeter-trunk' }
       ]}
     />
 
@@ -62,6 +63,11 @@ export default () => (
       url='https://crossorigin.me/http://ec2-34-210-144-223.us-west-2.compute.amazonaws.com:9200'
       index='blog'
       query='user:dilbert'
+    />
+
+    <GitHubIssueCount
+      owner='danielbayerlein'
+      repository='dashboard'
     />
   </Dashboard>
 )

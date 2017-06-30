@@ -63,7 +63,7 @@ export default class SonarQube extends Component {
     schema.validate(this.props)
       .then(() => this.fetchInformation())
       .catch((err) => {
-        console.log('SonarQube: missing or invalid params', err.errors)
+        console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
         this.setState({ error: true, loading: false })
       })
   }
