@@ -42,8 +42,8 @@
   * [PageSpeed Insights Score](#pagespeed-insights-score)
   * [PageSpeed Insights Stats](#pagespeed-insights-stats)
   * [SonarQube](#sonarqube)
-  * [ElasticsearchHitCount](#elasticsearchhitcount)
-  * [GitHubIssueCount](#githubissuecount)
+  * [Elasticsearch Hit Count](#elasticsearch-hit-count)
+  * [GitHub Issue Count](#github-issue-count)
 * [Available Themes](#available-themes)
   * [light](#light)
   * [dark](#dark)
@@ -121,11 +121,11 @@ import DateTime from '../components/widgets/datetime'
 import Jenkins from '../components/widgets/jenkins'
 
 <Jenkins
-  url='http://ci.jenkins-ci.org'
+  url='https://builds.apache.org'
   jobs={[
-    { label: 'jenkins master', path: 'Core/job/jenkins/job/master' },
-    { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7'},
-    { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master' },
+    { label: 'Hadoop', path: 'Hadoop-trunk-Commit' },
+    { label: 'Jackrabbit', path: 'Jackrabbit-trunk' },
+    { label: 'JMeter', path: 'JMeter-trunk' }
   ]}
 />
 ```
@@ -267,7 +267,7 @@ import SonarQube from '../components/widgets/sonarqube'
 * `componentKey`: SonarQube project key
 * `authKey`: Credential key, defined in `auth.js`
 
-### [ElasticsearchHitCount](./components/widgets/elasticsearch/hit-count.js)
+### [Elasticsearch Hit Count](./components/widgets/elasticsearch/hit-count.js)
 
 #### Example
 
@@ -291,7 +291,7 @@ import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count
 * `query`: Elasticsearch query
 * `authKey`: Credential key, defined in `auth.js`
 
-### [GitHubIssueCount](./components/widgets/github/issue-count.js)
+### [GitHub Issue Count](./components/widgets/github/issue-count.js)
 
 #### Example
 
@@ -398,7 +398,7 @@ docker run -d -p 3001:8080 chrishelgert/hapi-rest-proxy
 
 ```javascript
 <SonarQube
-  url='http://localhost:3001/?url=https://sonarcloud.io'
+  url='http://127.0.0.1:3001/?url=https://sonarcloud.io'
   componentKey='com.icegreen:greenmail-parent'
 />
 ```

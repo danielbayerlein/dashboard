@@ -32,7 +32,7 @@ export default class BitbucketPullRequestCount extends Component {
     schema.validate(this.props)
       .then(() => this.fetchInformation())
       .catch((err) => {
-        console.log('Bitbucket PullRequest Count: missing or invalid params', err.errors)
+        console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
         this.setState({ error: true, loading: false })
       })
   }
