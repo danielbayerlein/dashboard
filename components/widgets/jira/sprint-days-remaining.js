@@ -29,7 +29,7 @@ export default class JiraSprintDaysRemaining extends Component {
     schema.validate(this.props)
       .then(() => this.fetchInformation())
       .catch((err) => {
-        console.error(this.constructor.name, err.errors)
+        console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
         this.setState({ error: true, loading: false })
       })
   }
@@ -54,7 +54,6 @@ export default class JiraSprintDaysRemaining extends Component {
     try {
       const res = await fetch(`${url}/rest/agile/1.0/board/${boardId}/sprint?state=active`, opts)
       const json = await res.json()
-
       const days = this.calculateDays(json.values[0].endDate)
 
       this.setState({ days, error: false, loading: false })
