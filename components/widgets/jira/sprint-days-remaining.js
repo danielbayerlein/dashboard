@@ -7,20 +7,20 @@ import { basicAuthHeader } from '../../../lib/auth'
 
 const schema = yup.object().shape({
   url: yup.string().url().required(),
-  query: yup.string().required(),
+  boardId: yup.number().required(),
   interval: yup.number(),
   title: yup.string(),
   authKey: yup.string()
 })
 
-export default class JiraIssueCount extends Component {
+export default class JiraSprintDaysRemaining extends Component {
   static defaultProps = {
-    interval: 1000 * 60 * 5,
-    title: 'JIRA Issue Count'
+    interval: 1000 * 60 * 60,
+    title: 'JIRA Sprint Days Remaining'
   }
 
   state = {
-    count: 0,
+    days: 0,
     error: false,
     loading: true
   }
@@ -38,15 +38,25 @@ export default class JiraIssueCount extends Component {
     clearInterval(this.interval)
   }
 
+  calculateDays (date) {
+    const currentDate = new Date()
+    const endDate = new Date(date)
+    const timeDiff = endDate.getTime() - currentDate.getTime()
+    const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))
+
+    return diffDays
+  }
+
   async fetchInformation () {
-    const { authKey, url, query } = this.props
+    const { authKey, boardId, url } = this.props
     const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
-      const res = await fetch(`${url}/rest/api/2/search?jql=${query}`, opts)
+      const res = await fetch(`${url}/rest/agile/1.0/board/${boardId}/sprint?state=active`, opts)
       const json = await res.json()
+      const days = this.calculateDays(json.values[0].endDate)
 
-      this.setState({ count: json.total, error: false, loading: false })
+      this.setState({ days, error: false, loading: false })
     } catch (error) {
       this.setState({ error: true, loading: false })
     } finally {
@@ -55,11 +65,11 @@ export default class JiraIssueCount extends Component {
   }
 
   render () {
-    const { count, error, loading } = this.state
+    const { days, error, loading } = this.state
     const { title } = this.props
     return (
       <Widget title={title} loading={loading} error={error}>
-        <Counter value={count} />
+        <Counter value={days} />
       </Widget>
     )
   }

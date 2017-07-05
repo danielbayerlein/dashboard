@@ -20,6 +20,9 @@
   <a href="https://greenkeeper.io/">
     <img alt="Greenkeeper badge" src="https://badges.greenkeeper.io/danielbayerlein/dashboard.svg">
   </a>
+  <a href="https://deploy.now.sh/?repo=https://github.com/danielbayerlein/dashboard">
+    <img alt="Deploy to now" src="https://deploy.now.sh/static/button.svg" height="20">
+  </a>
 </p>
 
 ## Table of Contents
@@ -32,41 +35,21 @@
 * [Create a Dashboard](#create-a-dashboard)
 * [Available Widgets](#available-widgets)
   * [DateTime](#datetime)
-    * [Example](#example)
-    * [props](#props)
   * [Jenkins](#jenkins)
-    * [Example](#example-1)
-    * [props](#props-1)
   * [JIRA Issue Count](#jira-issue-count)
-    * [Example](#example-2)
-    * [props](#props-2)
+  * [JIRA Sprint Days Remaining](#jira-sprint-days-remaining)
   * [Bitbucket PullRequest Count](#bitbucket-pullrequest-count)
-    * [Example](#example-3)
-    * [props](#props-3)
   * [PageSpeed Insights Score](#pagespeed-insights-score)
-    * [Example](#example-4)
-    * [props](#props-4)
   * [PageSpeed Insights Stats](#pagespeed-insights-stats)
-    * [Example](#example-5)
-    * [props](#props-5)
   * [SonarQube](#sonarqube)
-    * [Example](#example-6)
-    * [props](#props-6)
-  * [ElasticsearchHitCount](#elasticsearchhitcount)
-    * [Example](#example-7)
-    * [props](#props-7)
+  * [Elasticsearch Hit Count](#elasticsearch-hit-count)
+  * [GitHub Issue Count](#github-issue-count)
 * [Available Themes](#available-themes)
   * [light](#light)
-    * [Example](#example-8)
-    * [Preview](#preview)
   * [dark](#dark)
-    * [Example](#example-9)
-    * [Preview](#preview-1)
 * [Authentication](#authentication)
 * [Cross-Origin Resource Sharing (CORS)](#cross-origin-resource-sharing-cors)
   * [Proxy](#proxy)
-    * [Server](#server-1)
-    * [Dashboard](#dashboard)
   * [Resources](#resources)
 * [License](#license)
 
@@ -138,11 +121,11 @@ import DateTime from '../components/widgets/datetime'
 import Jenkins from '../components/widgets/jenkins'
 
 <Jenkins
-  url='http://ci.jenkins-ci.org'
+  url='https://builds.apache.org'
   jobs={[
-    { label: 'jenkins master', path: 'Core/job/jenkins/job/master' },
-    { label: 'jenkins stable', path: 'Core/job/jenkins/job/stable-2.7'},
-    { label: 'jenkins sshd', path: 'Core/job/sshd-module/job/master' },
+    { label: 'Hadoop', path: 'Hadoop-trunk-Commit' },
+    { label: 'Jackrabbit', path: 'Jackrabbit-trunk' },
+    { label: 'JMeter', path: 'JMeter-trunk' }
   ]}
 />
 ```
@@ -175,6 +158,28 @@ import JiraIssueCount from '../components/widgets/jira/issue-count'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: JIRA Server URL
 * `query`: JIRA search query (`jql`)
+* `authKey`: Credential key, defined in `auth.js`
+
+### [JIRA Sprint Days Remaining](./components/widgets/jira/sprint-days-remaining.js)
+
+#### Example
+
+```javascript
+import JiraSprintDaysRemaining from '../components/widgets/jira/sprint-days-remaining'
+
+<JiraSprintDaysRemaining
+  title='Sprint Days'
+  url='https://jira.atlassian.com'
+  boardId={42}
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `JIRA Sprint Days Remaining`)
+* `interval`: Refresh interval in milliseconds (Default: `3600000`)
+* `url`: JIRA Server URL
+* `boardId`: JIRA board id
 * `authKey`: Credential key, defined in `auth.js`
 
 ### [Bitbucket PullRequest Count](./components/widgets/bitbucket/pull-request-count.js)
@@ -249,7 +254,7 @@ import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/sta
 import SonarQube from '../components/widgets/sonarqube'
 
 <SonarQube
-  url='https://sonarqube.com'
+  url='https://sonarcloud.io'
   componentKey='com.icegreen:greenmail-parent'
 />
 ```
@@ -262,7 +267,7 @@ import SonarQube from '../components/widgets/sonarqube'
 * `componentKey`: SonarQube project key
 * `authKey`: Credential key, defined in `auth.js`
 
-### [ElasticsearchHitCount](./components/widgets/elasticsearch/hit-count.js)
+### [Elasticsearch Hit Count](./components/widgets/elasticsearch/hit-count.js)
 
 #### Example
 
@@ -284,6 +289,27 @@ import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count
 * `url`: Elasticsearch URL
 * `index`: Elasticsearch index to search in
 * `query`: Elasticsearch query
+* `authKey`: Credential key, defined in `auth.js`
+
+### [GitHub Issue Count](./components/widgets/github/issue-count.js)
+
+#### Example
+
+```javascript
+import GitHubIssueCount from '../components/github/issue-count'
+
+<GitHubIssueCount
+  owner='danielbayerlein'
+  repository='dashboard'
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `GitHub Issue Count`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
+* `owner`: Owner of the repository
+* `repository`: Name of the repository
 * `authKey`: Credential key, defined in `auth.js`
 
 ## Available Themes
@@ -372,7 +398,7 @@ docker run -d -p 3001:8080 chrishelgert/hapi-rest-proxy
 
 ```javascript
 <SonarQube
-  url='http://localhost:3001?url=https://sonarqube.com'
+  url='http://127.0.0.1:3001/?url=https://sonarcloud.io'
   componentKey='com.icegreen:greenmail-parent'
 />
 ```
