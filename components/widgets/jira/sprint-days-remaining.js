@@ -41,7 +41,7 @@ export default class JiraSprintDaysRemaining extends Component {
   calculateDays (date) {
     const currentDate = new Date()
     const endDate = new Date(date)
-    const timeDiff = Math.abs(endDate.getTime() - currentDate.getTime())
+    const timeDiff = endDate.getTime() - currentDate.getTime()
     const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))
 
     return diffDays
