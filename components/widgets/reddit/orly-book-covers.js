@@ -29,7 +29,7 @@ export default class OrlyBookCovers extends Component {
     schema.validate(this.props)
       .then(() => this.fetchInformation())
       .catch((err) => {
-        console.log('O RLY Book Covers: missing or invalid params', err.errors)
+        console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
         this.setState({ error: true, loading: false })
       })
   }
