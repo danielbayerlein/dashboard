@@ -170,14 +170,14 @@ import JiraSprintDaysRemaining from '../components/widgets/jira/sprint-days-rema
 <JiraSprintDaysRemaining
   title='Sprint Days'
   url='https://jira.atlassian.com'
-  boardId={1}
+  boardId={42}
 />
 ```
 
 #### props
 
 * `title`: Widget title (Default: `JIRA Sprint Days Remaining`)
-* `interval`: Refresh interval in milliseconds (Default: `43200000`)
+* `interval`: Refresh interval in milliseconds (Default: `3600000`)
 * `url`: JIRA Server URL
 * `boardId`: JIRA board id
 * `authKey`: Credential key, defined in `auth.js`

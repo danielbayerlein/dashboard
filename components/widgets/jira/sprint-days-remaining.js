@@ -15,7 +15,7 @@ const schema = yup.object().shape({
 
 export default class JiraSprintDaysRemaining extends Component {
   static defaultProps = {
-    interval: 1000 * 60 * 60 * 12,
+    interval: 1000 * 60 * 60,
     title: 'JIRA Sprint Days Remaining'
   }
 
