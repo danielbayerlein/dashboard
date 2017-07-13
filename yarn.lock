@@ -1409,9 +1409,9 @@ domain-browser@^1.1.1:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"
 
-dotenv-webpack@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/dotenv-webpack/-/dotenv-webpack-1.5.2.tgz#92308aeb4573ebd34b8b34ea56d35d221d79888e"
+dotenv-webpack@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/dotenv-webpack/-/dotenv-webpack-1.5.3.tgz#452ed4be171fb00d2a85111cb6ee4da8ceda768c"
   dependencies:
     dotenv "^4.0.0"
 
@@ -2788,9 +2788,9 @@ ncp@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ncp/-/ncp-2.0.0.tgz#195a21d6c46e361d2fb1281ba38b91e9df7bdbb3"
 
-next@^2.4.4:
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/next/-/next-2.4.6.tgz#e3a88b60374bd92fbbf2bf8df9dc9f325471ddbb"
+next@^2.4.7:
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/next/-/next-2.4.7.tgz#54cc71748e2bfb08013d301fd21d6f33a4fa9d5b"
   dependencies:
     ansi-html "0.0.7"
     babel-core "6.24.0"
@@ -3172,9 +3172,9 @@ pluralize@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-1.2.1.tgz#d1a21483fd22bb41e58a12fa3421823140897c45"
 
-polished@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/polished/-/polished-1.2.1.tgz#83c18a85bf9d7023477cfc7049763b657d50f0f7"
+polished@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-1.3.0.tgz#ae0e26f0297297635fcd70a25a4a0f1947b3af54"
 
 postcss-value-parser@^3.3.0:
   version "3.3.0"
