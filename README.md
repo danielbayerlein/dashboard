@@ -136,7 +136,7 @@ import Jenkins from '../components/widgets/jenkins'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Jenkins URL
 * `jobs`: List of all jobs
-* `authKey`: Credential key, defined in `auth.js`
+* `authKey`: Credential key, defined in [auth.js](./auth.js)
 
 ### [JIRA Issue Count](./components/widgets/jira/issue-count.js)
 
@@ -158,7 +158,7 @@ import JiraIssueCount from '../components/widgets/jira/issue-count'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: JIRA Server URL
 * `query`: JIRA search query (`jql`)
-* `authKey`: Credential key, defined in `auth.js`
+* `authKey`: Credential key, defined in [auth.js](./auth.js)
 
 ### [JIRA Sprint Days Remaining](./components/widgets/jira/sprint-days-remaining.js)
 
@@ -180,7 +180,7 @@ import JiraSprintDaysRemaining from '../components/widgets/jira/sprint-days-rema
 * `interval`: Refresh interval in milliseconds (Default: `3600000`)
 * `url`: JIRA Server URL
 * `boardId`: JIRA board id
-* `authKey`: Credential key, defined in `auth.js`
+* `authKey`: Credential key, defined in [auth.js](./auth.js)
 
 ### [Bitbucket PullRequest Count](./components/widgets/bitbucket/pull-request-count.js)
 
@@ -206,7 +206,7 @@ import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-requ
 * `project`: Bitbucket project key
 * `repository`: Bitbucket repository slug
 * `users`: Bitbucket user slugs as an array
-* `authKey`: Credential key, defined in `auth.js`
+* `authKey`: Credential key, defined in [auth.js](./auth.js)
 
 ### [PageSpeed Insights Score](./components/widgets/pagespeed-insights/score.js)
 
@@ -265,7 +265,7 @@ import SonarQube from '../components/widgets/sonarqube'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: SonarQube URL
 * `componentKey`: SonarQube project key
-* `authKey`: Credential key, defined in `auth.js`
+* `authKey`: Credential key, defined in [auth.js](./auth.js)
 
 ### [Elasticsearch Hit Count](./components/widgets/elasticsearch/hit-count.js)
 
@@ -289,7 +289,7 @@ import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count
 * `url`: Elasticsearch URL
 * `index`: Elasticsearch index to search in
 * `query`: Elasticsearch query
-* `authKey`: Credential key, defined in `auth.js`
+* `authKey`: Credential key, defined in [auth.js](./auth.js)
 
 ### [GitHub Issue Count](./components/widgets/github/issue-count.js)
 
@@ -310,7 +310,7 @@ import GitHubIssueCount from '../components/github/issue-count'
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `owner`: Owner of the repository
 * `repository`: Name of the repository
-* `authKey`: Credential key, defined in `auth.js`
+* `authKey`: Credential key, defined in [auth.js](./auth.js)
 
 ## Available Themes
 
@@ -351,7 +351,7 @@ import darkTheme from '../styles/dark-theme'
 Any widget can authenticate itself, should your server expect this. We use
 [basic authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).
 
-1. Define your credential key in `auth.js`. For example:
+1. Define your credential key in [auth.js](./auth.js). For example:
    ```javascript
    jira: {
      username: process.env.JIRA_USER,
