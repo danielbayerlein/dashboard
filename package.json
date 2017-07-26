@@ -8,7 +8,9 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "standard --verbose | snazzy",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "standard --verbose | snazzy",
+    "lint:css": "stylelint './components/**/*.js'",
     "test": "npm run lint"
   },
   "repository": {
@@ -41,9 +43,17 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.2"
+    "standard": "^10.0.2",
+    "stylelint": "^8.0.0",
+    "stylelint-config-standard": "^17.0.0",
+    "stylelint-processor-styled-components": "^0.2.1"
   },
   "standard": {
     "parser": "babel-eslint"
+  },
+  "stylelint": {
+    "processors": ["stylelint-processor-styled-components"],
+    "extends": "stylelint-config-standard",
+    "syntax": "scss"
   }
 }
