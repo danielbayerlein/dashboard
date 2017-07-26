@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "standard --verbose | snazzy",
-    "lint:css": "stylelint 'components/**/*.js'",
+    "lint:css": "stylelint '**/*.js'",
     "test": "npm run lint"
   },
   "repository": {
