@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "standard --verbose | snazzy",
-    "lint:css": "stylelint './components/**/*.js'",
+    "lint:css": "stylelint 'components/**/*.js'",
     "test": "npm run lint"
   },
   "repository": {
@@ -50,6 +50,21 @@
   },
   "standard": {
     "parser": "babel-eslint"
+  },
+  "babel": {
+    "presets": [
+      "next/babel"
+    ],
+    "plugins": [
+      [
+        "styled-components",
+        {
+          "ssr": true,
+          "displayName": true,
+          "preprocess": false
+        }
+      ]
+    ]
   },
   "stylelint": {
     "processors": ["stylelint-processor-styled-components"],
