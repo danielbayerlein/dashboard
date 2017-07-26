@@ -8,9 +8,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:js": "standard --verbose | snazzy",
-    "lint:css": "stylelint '**/*.js'",
+    "lint": "standard --verbose | snazzy && stylelint '**/*.js'",
     "test": "npm run lint"
   },
   "repository": {
@@ -29,7 +27,7 @@
   "homepage": "https://github.com/danielbayerlein/dashboard#readme",
   "dependencies": {
     "babel-plugin-styled-components": "^1.1.7",
-    "dotenv-webpack": "^1.5.3",
+    "dotenv-webpack": "^1.5.4",
     "isomorphic-unfetch": "^2.0.0",
     "js-base64": "^2.1.9",
     "next": "^2.4.7",
