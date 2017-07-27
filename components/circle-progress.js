@@ -12,9 +12,11 @@ const Circle = styled.circle`
   stroke-width: 10;
   transform: translate(100px, 100px) rotate(-89.9deg);
   transition: stroke-dashoffset 0.3s linear;
+
   &.background {
     stroke: ${props => props.theme.palette.borderColor};
   }
+
   &.progress {
     stroke: ${props => props.theme.palette.primaryColor};
   }

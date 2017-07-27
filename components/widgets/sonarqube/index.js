@@ -17,7 +17,7 @@ const Alert = styled.span`
       default: // OK
         return props.theme.palette.successColor
     }
-  }}
+  }};
 `
 
 const SonarBadge = styled(Badge)`
@@ -36,7 +36,7 @@ const SonarBadge = styled(Badge)`
       default:
         return 'transparent'
     }
-  }}
+  }};
 `
 
 const schema = yup.object().shape({

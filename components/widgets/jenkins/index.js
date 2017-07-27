@@ -23,7 +23,7 @@ const JenkinsBadge = styled(Badge)`
       default: // null = 'In Progress'
         return 'transparent'
     }
-  }}
+  }};
 `
 
 const schema = yup.object().shape({
