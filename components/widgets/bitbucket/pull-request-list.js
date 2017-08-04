@@ -29,7 +29,7 @@ const Code = styled.span`
 export default class BitbucketPullRequestList extends Component {
   static defaultProps = {
     interval: 1000 * 60 * 5,
-    title: 'Bitbucket PR List',
+    title: 'Latest Pull Requests',
     users: []
   }
 
@@ -43,7 +43,8 @@ export default class BitbucketPullRequestList extends Component {
     schema.validate(this.props)
       .then(() => this.fetchInformation())
       .catch((err) => {
-        console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
+        console.error('abc')
+        console.error(`${err.name} @ ${this.constructor.name}`, err)
         this.setState({ error: true, loading: false })
       })
   }
@@ -57,11 +58,11 @@ export default class BitbucketPullRequestList extends Component {
   }
 
   async fetchInformation () {
-    const { url, project, repository, users } = this.props
+    const { authKey, url, project, repository, users } = this.props
     const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
-      const res = await fetch(`${url}rest/api/1.0/projects/${project}/repos/${repository}/pull-requests?limit=5`, opts)
+      const res = await fetch(`${url}/rest/api/1.0/projects/${project}/repos/${repository}/pull-requests?limit=3`, opts)
       const json = await res.json()
 
       let pullRequests = json.values
@@ -83,13 +84,16 @@ export default class BitbucketPullRequestList extends Component {
     return (
       <Widget title={title} loading={loading} error={error}>
         {pullRequests.map(pr => (
-          <div key={`pr-${pr.name}`}>
+          <div key={`pr-${pr.id}`}>
             {pr.title} <Status status={pr.state}>{pr.state}</Status>
+            <hr/>
+            {/*
             <div>
               <Destintion>
                 <Code>{this.extractBranchName(pr.fromRef.id)}</Code> <Arrowicon /> <Code>{this.extractBranchName(pr.toRef.id)}</Code>
               </Destintion>
             </div>
+            */}
           </div>
         ))}
       </Widget>
