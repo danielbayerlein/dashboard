@@ -312,6 +312,30 @@ import GitHubIssueCount from '../components/github/issue-count'
 * `repository`: Name of the repository
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
 
+### [Eureka Health Status](./components/widgets/eureka/health-status.js)
+
+#### Example
+
+```javascript
+import EurekaHealthStatus from '../components/widgets/eureka/health-status'
+
+<EurekaHealthStatus
+  title='Eureka'
+  url='http://127.0.0.1:8080/http://eurekahost:8761'
+  healthQuery='/management/health'
+  appsQuery='/eureka/apps'
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `GitHub Issue Count`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
+* `url`: Eureka Server Base URL
+* `healthQuery`: Relative Path to Spring Boot Actuator Health endpoint
+* `appsQuery`: Relative Path to Eureka Apps API endpoint  [Eureka REST operations](https://github.com/Netflix/eureka/wiki/Eureka-REST-operations)
+* `authKey`: Credential key, defined in [auth.js](./auth.js)
+
 ## Available Themes
 
 ### [light](./styles/light-theme.js)
