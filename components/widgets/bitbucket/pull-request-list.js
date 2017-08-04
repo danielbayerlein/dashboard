@@ -1,9 +1,21 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
+import yup from 'yup'
 import styled from 'styled-components'
 import Widget from '../../widget'
 import Arrowicon from '../../arrow-icon'
 import { Status } from '../../badge'
+import { basicAuthHeader } from '../../../lib/auth'
+
+const schema = yup.object().shape({
+  url: yup.string().url().required(),
+  project: yup.string().required(),
+  repository: yup.string().required(),
+  interval: yup.number(),
+  title: yup.string(),
+  users: yup.array().of(yup.string()),
+  authKey: yup.string()
+})
 
 const Destintion = styled.span`
   color: ${props => props.theme.palette.primaryColor};
@@ -28,7 +40,12 @@ export default class BitbucketPullRequestList extends Component {
   }
 
   componentDidMount () {
-    this.fetchInformation()
+    schema.validate(this.props)
+      .then(() => this.fetchInformation())
+      .catch((err) => {
+        console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
+        this.setState({ error: true, loading: false })
+      })
   }
 
   componentWillUnmount () {
@@ -41,9 +58,10 @@ export default class BitbucketPullRequestList extends Component {
 
   async fetchInformation () {
     const { url, project, repository, users } = this.props
+    const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
-      const res = await fetch(`${url}rest/api/1.0/projects/${project}/repos/${repository}/pull-requests?limit=5`)
+      const res = await fetch(`${url}rest/api/1.0/projects/${project}/repos/${repository}/pull-requests?limit=5`, opts)
       const json = await res.json()
 
       let pullRequests = json.values
