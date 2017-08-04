@@ -7,8 +7,7 @@ const Container = styled.main`
   background-color: ${props => props.theme.palette.backgroundColor};
   color: ${props => props.theme.palette.textColor};
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: center;
   min-height: 100vh;
   padding: 1em;
