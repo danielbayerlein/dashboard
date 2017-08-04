@@ -22,8 +22,8 @@ export default class PageSpeedInsightsScore extends Component {
 
   state = {
     score: 0,
-    loading: true,
-    error: false
+    isLoading: true,
+    hasError: false
   }
 
   componentDidMount () {
@@ -31,7 +31,7 @@ export default class PageSpeedInsightsScore extends Component {
       .then(() => this.fetchInformation())
       .catch((err) => {
         console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
-        this.setState({ error: true, loading: false })
+        this.setState({ hasError: true, isLoading: false })
       })
   }
 
@@ -52,19 +52,19 @@ export default class PageSpeedInsightsScore extends Component {
       const res = await fetch(`https://www.googleapis.com/pagespeedonline/v2/runPagespeed?${searchParams}`)
       const json = await res.json()
 
-      this.setState({ error: false, loading: false, score: json.ruleGroups.SPEED.score })
-    } catch (error) {
-      this.setState({ error: true, loading: false })
+      this.setState({ hasError: false, isLoading: false, score: json.ruleGroups.SPEED.score })
+    } catch (err) {
+      this.setState({ hasError: true, isLoading: false })
     } finally {
       this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
   }
 
   render () {
-    const { error, loading, score } = this.state
+    const { hasError, isLoading, score } = this.state
     const { title } = this.props
     return (
-      <Widget title={title} loading={loading} error={error}>
+      <Widget title={title} isLoading={isLoading} hasError={hasError}>
         <CircleProgress value={score} />
       </Widget>
     )

@@ -44,8 +44,8 @@ export default class Jenkins extends Component {
   }
 
   state = {
-    loading: true,
-    error: false
+    isLoading: true,
+    hasError: false
   }
 
   componentDidMount () {
@@ -53,7 +53,7 @@ export default class Jenkins extends Component {
       .then(() => this.fetchInformation())
       .catch((err) => {
         console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
-        this.setState({ error: true, loading: false })
+        this.setState({ hasError: true, isLoading: false })
       })
   }
 
@@ -79,20 +79,20 @@ export default class Jenkins extends Component {
         })
       )
 
-      this.setState({ error: false, loading: false, builds })
-    } catch (error) {
-      this.setState({ error: true, loading: false })
+      this.setState({ hasError: false, isLoading: false, builds })
+    } catch (err) {
+      this.setState({ hasError: true, isLoading: false })
     } finally {
       this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
   }
 
   render () {
-    const { loading, error, builds } = this.state
+    const { isLoading, hasError, builds } = this.state
     const { title } = this.props
 
     return (
-      <Widget title={title} error={error} loading={loading}>
+      <Widget title={title} hasError={hasError} isLoading={isLoading}>
         <Table>
           <tbody>
             {builds && builds.map(build => (

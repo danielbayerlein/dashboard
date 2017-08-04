@@ -19,12 +19,12 @@ const Title = styled.h1`
   text-align: center;
 `
 
-export default ({ children, error = false, loading = false, title = '' }) => {
+export default ({ children, hasError = false, isLoading = false, title = '' }) => {
   let content
 
-  if (loading) {
+  if (isLoading) {
     content = <LoadingIndicator />
-  } else if (error) {
+  } else if (hasError) {
     content = <ErrorIcon />
   } else {
     content = <div>{children}</div>

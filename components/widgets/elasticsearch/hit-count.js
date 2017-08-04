@@ -21,8 +21,8 @@ export default class ElasticsearchHitCount extends Component {
 
   state = {
     count: 0,
-    error: false,
-    loading: true
+    hasError: false,
+    isLoading: true
   }
 
   componentDidMount () {
@@ -30,7 +30,7 @@ export default class ElasticsearchHitCount extends Component {
       .then(() => this.fetchInformation())
       .catch((err) => {
         console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
-        this.setState({ error: true, loading: false })
+        this.setState({ hasError: true, isLoading: false })
       })
   }
 
@@ -46,20 +46,19 @@ export default class ElasticsearchHitCount extends Component {
       const res = await fetch(`${url}/${index}/_search?q=${query}`, opts)
       const json = await res.json()
 
-      this.setState({ count: json.hits.total, error: false, loading: false })
-    } catch (error) {
-      this.setState({ error: true, loading: false })
-      console.log(error)
+      this.setState({ count: json.hits.total, hasError: false, isLoading: false })
+    } catch (err) {
+      this.setState({ hasError: true, isLoading: false })
     } finally {
       this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
   }
 
   render () {
-    const { count, error, loading } = this.state
+    const { count, hasError, isLoading } = this.state
     const { title } = this.props
     return (
-      <Widget title={title} loading={loading} error={error}>
+      <Widget title={title} isLoading={isLoading} hasError={hasError}>
         <Counter value={count} />
       </Widget>
     )

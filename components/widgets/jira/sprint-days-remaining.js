@@ -21,8 +21,8 @@ export default class JiraSprintDaysRemaining extends Component {
 
   state = {
     days: 0,
-    error: false,
-    loading: true
+    hasError: false,
+    isLoading: true
   }
 
   componentDidMount () {
@@ -30,7 +30,7 @@ export default class JiraSprintDaysRemaining extends Component {
       .then(() => this.fetchInformation())
       .catch((err) => {
         console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
-        this.setState({ error: true, loading: false })
+        this.setState({ hasError: true, isLoading: false })
       })
   }
 
@@ -56,19 +56,19 @@ export default class JiraSprintDaysRemaining extends Component {
       const json = await res.json()
       const days = this.calculateDays(json.values[0].endDate)
 
-      this.setState({ days, error: false, loading: false })
-    } catch (error) {
-      this.setState({ error: true, loading: false })
+      this.setState({ days, hasError: false, isLoading: false })
+    } catch (err) {
+      this.setState({ hasError: true, isLoading: false })
     } finally {
       this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
   }
 
   render () {
-    const { days, error, loading } = this.state
+    const { days, hasError, isLoading } = this.state
     const { title } = this.props
     return (
-      <Widget title={title} loading={loading} error={error}>
+      <Widget title={title} isLoading={isLoading} hasError={hasError}>
         <Counter value={days} />
       </Widget>
     )
