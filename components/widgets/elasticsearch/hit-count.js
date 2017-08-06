@@ -49,7 +49,6 @@ export default class ElasticsearchHitCount extends Component {
       this.setState({ count: json.hits.total, error: false, loading: false })
     } catch (error) {
       this.setState({ error: true, loading: false })
-      console.log(error)
     } finally {
       this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
