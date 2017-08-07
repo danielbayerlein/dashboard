@@ -1,13 +1,22 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { size } from 'polished'
 import LoadingIndicator from './loading-indicator'
 import ErrorIcon from './error-icon'
+import { NONE, WARNING, CRITICAL } from '../lib/alert'
 
 const Container = styled.div`
   ${size('20em')}
   align-items: center;
   background-color: ${props => props.theme.palette.canvasColor};
-  border: 1px solid ${props => props.theme.palette.borderColor};
+  ${props => props.alertSeverity === NONE && css`
+    border: 1px solid ${props => props.theme.palette.borderColor};
+  `}
+  ${props => props.alertSeverity === WARNING && css`
+    border: 1px solid ${props => props.theme.palette.warnColor};
+  `}
+  ${props => props.alertSeverity === CRITICAL && css`
+    border: 1px solid ${props => props.theme.palette.errorColor};
+  `}
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +28,7 @@ const Title = styled.h1`
   text-align: center;
 `
 
-export default ({ children, hasError = false, isLoading = false, title = '' }) => {
+export default ({ children, hasError = false, isLoading = false, alertSeverity = NONE, title = '' }) => {
   let content
 
   if (isLoading) {
@@ -31,7 +40,7 @@ export default ({ children, hasError = false, isLoading = false, title = '' }) =
   }
 
   return (
-    <Container>
+    <Container alertSeverity={alertSeverity}>
       {title ? <Title>{title}</Title> : ''}
       {content}
     </Container>
