@@ -8,14 +8,16 @@ const Container = styled.div`
   ${size('20em')}
   align-items: center;
   background-color: ${props => props.theme.palette.canvasColor};
+  border-style: solid;
+  border-width: 1px;
   ${props => props.alertSeverity === NONE && css`
-    border: 1px solid ${props => props.theme.palette.borderColor};
+    border-color: ${props => props.theme.palette.borderColor};
   `}
   ${props => props.alertSeverity === WARNING && css`
-    border: 1px solid ${props => props.theme.palette.warnColor};
+    border-color: ${props => props.theme.palette.warnColor};
   `}
   ${props => props.alertSeverity === CRITICAL && css`
-    border: 1px solid ${props => props.theme.palette.errorColor};
+    border-color: ${props => props.theme.palette.errorColor};
   `}
   display: flex;
   flex-direction: column;
