@@ -28,5 +28,10 @@ export default {
     successColor: colors.green500,
     successSecondaryColor: colors.lime500,
     disabledColor: colors.grey400
+  },
+  Widget: {
+    none: { border: colors.grey700 },
+    warning: { border: colors.amber500 },
+    critical: { border: colors.red500 }
   }
 }
