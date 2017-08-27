@@ -3,13 +3,18 @@ import fetch from 'isomorphic-unfetch'
 import yup from 'yup'
 import CircleProgress from '../../circle-progress'
 import Widget from '../../widget'
+import { severity, NONE } from '../../../lib/alert'
 
 const schema = yup.object().shape({
   url: yup.string().url().required(),
   filterThirdPartyResources: yup.boolean(),
   interval: yup.number(),
   strategy: yup.string(),
-  title: yup.string()
+  title: yup.string(),
+  alert: yup.array(yup.object({
+    severity: yup.string().required(),
+    value: yup.number().required()
+  }))
 })
 
 export default class PageSpeedInsightsScore extends Component {
@@ -23,7 +28,8 @@ export default class PageSpeedInsightsScore extends Component {
   state = {
     score: 0,
     isLoading: true,
-    hasError: false
+    hasError: false,
+    alertSeverity: NONE
   }
 
   componentDidMount () {
@@ -40,7 +46,7 @@ export default class PageSpeedInsightsScore extends Component {
   }
 
   async fetchInformation () {
-    const { url, filterThirdPartyResources, strategy } = this.props
+    const { url, filterThirdPartyResources, strategy, alert } = this.props
 
     const searchParams = [
       `url=${url}`,
@@ -51,20 +57,27 @@ export default class PageSpeedInsightsScore extends Component {
     try {
       const res = await fetch(`https://www.googleapis.com/pagespeedonline/v2/runPagespeed?${searchParams}`)
       const json = await res.json()
+      const score = json.ruleGroups.SPEED.score
 
-      this.setState({ hasError: false, isLoading: false, score: json.ruleGroups.SPEED.score })
+      this.setState({
+        score,
+        hasError: false,
+        isLoading: false,
+        alertSeverity: severity(score, alert)
+      })
     } catch (err) {
-      this.setState({ hasError: true, isLoading: false })
+      this.setState({ hasError: true, isLoading: false, alertSeverity: NONE })
     } finally {
       this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
     }
   }
 
   render () {
-    const { hasError, isLoading, score } = this.state
+    const { hasError, isLoading, score, alertSeverity } = this.state
     const { title } = this.props
+
     return (
-      <Widget title={title} isLoading={isLoading} hasError={hasError}>
+      <Widget title={title} isLoading={isLoading} hasError={hasError} alertSeverity={alertSeverity}>
         <CircleProgress value={score} />
       </Widget>
     )
