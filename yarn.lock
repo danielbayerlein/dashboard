@@ -4114,14 +4114,13 @@ stylelint-config-standard@^17.0.0:
   dependencies:
     stylelint-config-recommended "^1.0.0"
 
-stylelint-processor-styled-components@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/stylelint-processor-styled-components/-/stylelint-processor-styled-components-0.3.0.tgz#74fcfc600079bb80e83005e6e89dc75de53b7d95"
+stylelint-processor-styled-components@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/stylelint-processor-styled-components/-/stylelint-processor-styled-components-0.4.0.tgz#6d9ebc25543d085f847ed32191ef994c6858fa54"
   dependencies:
     babel-traverse "^6.16.0"
     babylon "^6.12.0"
-    typescript "~2.3.2"
-    typescript-eslint-parser "^5.0.0"
+    typescript-eslint-parser "^7.0.0"
 
 stylelint@^8.0.0:
   version "8.0.0"
@@ -4335,16 +4334,12 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript-eslint-parser@^5.0.0:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/typescript-eslint-parser/-/typescript-eslint-parser-5.0.1.tgz#0a11b7c944dc56d4bd3826dcbd3d52a885098f3e"
+typescript-eslint-parser@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/typescript-eslint-parser/-/typescript-eslint-parser-7.0.0.tgz#be57d8768e37707af825e339ea2af18d7393cabb"
   dependencies:
     lodash.unescape "4.0.1"
     semver "5.3.0"
-
-typescript@~2.3.2:
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.3.4.tgz#3d38321828231e434f287514959c37a82b629f42"
 
 ua-parser-js@^0.7.9:
   version "0.7.14"
