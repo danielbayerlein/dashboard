@@ -35,7 +35,7 @@ export default class JiraSprintDaysRemaining extends Component {
   }
 
   componentWillUnmount () {
-    clearInterval(this.interval)
+    clearTimeout(this.timeout)
   }
 
   calculateDays (date) {
@@ -60,7 +60,7 @@ export default class JiraSprintDaysRemaining extends Component {
     } catch (error) {
       this.setState({ error: true, loading: false })
     } finally {
-      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
+      this.timeout = setTimeout(() => this.fetchInformation(), this.props.interval)
     }
   }
 
