@@ -36,7 +36,7 @@ export default class PageSpeedInsightsStats extends Component {
   }
 
   componentWillUnmount () {
-    clearInterval(this.interval)
+    clearTimeout(this.timeout)
   }
 
   bytesToKilobytes (bytes) {
@@ -73,7 +73,7 @@ export default class PageSpeedInsightsStats extends Component {
     } catch (err) {
       this.setState({ hasError: true, isLoading: false })
     } finally {
-      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
+      this.timeout = setTimeout(() => this.fetchInformation(), this.props.interval)
     }
   }
 

@@ -41,7 +41,7 @@ export default class JiraIssueCount extends Component {
   }
 
   componentWillUnmount () {
-    clearInterval(this.interval)
+    clearTimeout(this.timeout)
   }
 
   async fetchInformation () {
@@ -62,7 +62,7 @@ export default class JiraIssueCount extends Component {
     } catch (err) {
       this.setState({ hasError: true, isLoading: false, alertSeverity: NONE })
     } finally {
-      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
+      this.timeout = setTimeout(() => this.fetchInformation(), this.props.interval)
     }
   }
 
