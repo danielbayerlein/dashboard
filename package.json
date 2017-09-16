@@ -41,7 +41,7 @@
     "yup": "^0.22.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^8.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "snazzy": "^7.0.0",
