@@ -324,6 +324,8 @@ import EurekaHealthStatus from '../components/widgets/eureka/health-status'
   url='http://127.0.0.1:8080/http://eurekahost:8761'
   healthQuery='/management/health'
   appsQuery='/eureka/apps'
+  appNamePattern='SERVICE-X'
+  minimumInstances={2}
 />
 ```
 
@@ -335,6 +337,8 @@ import EurekaHealthStatus from '../components/widgets/eureka/health-status'
 * `healthQuery`: Relative Path to Spring Boot Actuator Health endpoint
 * `appsQuery`: Relative Path to Eureka Apps API endpoint  [Eureka REST operations](https://github.com/Netflix/eureka/wiki/Eureka-REST-operations)
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
+* `appNamePattern`: Name pattern the service-names have to start with
+* `minimumInstances`: Number of instances for each service which are expected to run to be fine
 
 ## Available Themes
 

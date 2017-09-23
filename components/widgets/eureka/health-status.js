@@ -11,6 +11,8 @@ const schema = yup.object().shape({
   appsQuery: yup.string(),
   healthQuery: yup.string(),
   title: yup.string(),
+  minimumInstances: yup.number(),
+  appNamePattern: yup.string(),
   authKey: yup.string()
 })
 
@@ -21,7 +23,9 @@ const EurekaDiv = styled.div`
 export default class EurekaHealthStatus extends Component {
   static defaultProps = {
     interval: 1000 * 60 * 60,
-    title: 'Eureka Health Status'
+    title: 'Eureka Health Status',
+    minimumInstances: 2,
+    appNamePattern: ''
   }
 
   state = {
@@ -54,7 +58,7 @@ export default class EurekaHealthStatus extends Component {
   }
 
   async fetchInformation () {
-    const { authKey, url, healthQuery, appsQuery } = this.props
+    const { authKey, url, healthQuery, appsQuery, appNamePattern, minimumInstances } = this.props
     let opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
@@ -85,6 +89,15 @@ export default class EurekaHealthStatus extends Component {
             statusLine1 = `${appsStatus[0]}: ${appsStatus[1]}`
             statusLine2 = `${appsStatus[2]}: ${appsStatus[3]}`
           }
+
+          jsonApps.applications.application.forEach (function(entry) {
+            if ( entry.name.startsWith(appNamePattern) && entry.instance.length < minimumInstances) {
+              console.log(entry.name + ' - ' + entry.instance.length)
+              hasError = true
+              statusLine2 += entry.name + ' '
+            }
+          });
+
         } catch (error) {
           hasError = true
         }
