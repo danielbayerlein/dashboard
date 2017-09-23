@@ -30,21 +30,22 @@
     "dotenv-webpack": "^1.5.4",
     "isomorphic-unfetch": "^2.0.0",
     "js-base64": "^2.1.9",
-    "next": "^2.4.7",
-    "polished": "^1.3.0",
+    "next": "^3.0.6",
+    "polished": "^1.6.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "styled-components": "^2.1.1",
+    "styled-components": "^2.1.2",
     "tinytime": "^0.2.6",
-    "yup": "^0.21.3"
+    "yup": "^0.22.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^8.0.0",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.2",
+    "standard": "^10.0.3",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
-    "stylelint-processor-styled-components": "^0.2.1"
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.0.0"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -65,8 +66,13 @@
     ]
   },
   "stylelint": {
-    "processors": ["stylelint-processor-styled-components"],
-    "extends": "stylelint-config-standard",
+    "processors": [
+      "stylelint-processor-styled-components"
+    ],
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-styled-components"
+    ],
     "syntax": "scss"
   }
 }
