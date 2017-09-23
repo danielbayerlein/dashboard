@@ -16,9 +16,9 @@ const schema = yup.object().shape({
   authKey: yup.string()
 })
 
-const EurekaDiv = styled.div`
-  background-color: ${props => props.hasError ? props.theme.palette.errorColor : props.theme.palette.canvasColor}
-`;
+const EurekaDiv = styled.div`
+  background-color: ${props => props.hasError ? props.theme.palette.errorColor : props.theme.palette.canvasColor};
+`
 
 export default class EurekaHealthStatus extends Component {
   static defaultProps = {
@@ -50,8 +50,8 @@ export default class EurekaHealthStatus extends Component {
   mapStatus (status) {
     let hasError = true
 
-    if ( status === 'UP' ) {
-      hasError = false;
+    if (status === 'UP') {
+      hasError = false
     }
 
     return hasError
@@ -70,7 +70,7 @@ export default class EurekaHealthStatus extends Component {
       let statusLine2 = ''
 
       if (hasError === false) {
-        opts = { headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }}
+        opts = {headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }}
         try {
           const resApps = await fetch(`${url}${appsQuery}`, opts)
           const jsonApps = await resApps.json()
@@ -82,7 +82,7 @@ export default class EurekaHealthStatus extends Component {
           }
 
           const appsStatus = jsonApps.applications.apps__hashcode.split('_')
-          if ( appsStatus.length > 0 &&  appsStatus.length < 4 ) {
+          if (appsStatus.length > 0 && appsStatus.length < 4) {
             statusLine1 = `${appsStatus[0]}: ${appsStatus[1]}`
             statusLine2 = ''
           } else {
@@ -90,14 +90,13 @@ export default class EurekaHealthStatus extends Component {
             statusLine2 = `${appsStatus[2]}: ${appsStatus[3]}`
           }
 
-          jsonApps.applications.application.forEach (function(entry) {
-            if ( entry.name.startsWith(appNamePattern) && entry.instance.length < minimumInstances) {
+          jsonApps.applications.application.forEach(function (entry) {
+            if (entry.name.startsWith(appNamePattern) && entry.instance.length < minimumInstances) {
               console.log(entry.name + ' - ' + entry.instance.length)
               hasError = true
               statusLine2 += entry.name + ' '
             }
-          });
-
+          })
         } catch (error) {
           hasError = true
         }
@@ -112,7 +111,7 @@ export default class EurekaHealthStatus extends Component {
   }
 
   render () {
-    const { days, error, loading, statusLine1, statusLine2, hasError } = this.state
+    const { error, loading, statusLine1, statusLine2, hasError } = this.state
     const { title } = this.props
     return (
       <Widget title={title} loading={loading} error={error}>
