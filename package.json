@@ -48,7 +48,8 @@
     "standard": "^10.0.3",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
-    "stylelint-processor-styled-components": "^0.4.0"
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.0.0"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -72,7 +73,10 @@
     "processors": [
       "stylelint-processor-styled-components"
     ],
-    "extends": "stylelint-config-standard",
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-styled-components"
+    ],
     "syntax": "scss"
   }
 }
