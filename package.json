@@ -33,7 +33,7 @@
     "next": "^3.0.6",
     "polished": "^1.6.1",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.0.0",
     "styled-components": "^2.1.2",
     "tinytime": "^0.2.6",
     "yup": "^0.22.0"
