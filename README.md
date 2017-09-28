@@ -44,6 +44,7 @@
   * [SonarQube](#sonarqube)
   * [Elasticsearch Hit Count](#elasticsearch-hit-count)
   * [GitHub Issue Count](#github-issue-count)
+  * [Eureka Health Status](#eureka-health-status)
 * [Available Themes](#available-themes)
   * [light](#light)
   * [dark](#dark)
