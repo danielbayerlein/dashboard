@@ -2,14 +2,16 @@ import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
 import yup from 'yup'
 import Widget from '../../widget'
+import Table, { Th, Td } from '../../table'
 import { basicAuthHeader } from '../../../lib/auth'
 import styled from 'styled-components'
 
 const schema = yup.object().shape({
   url: yup.string().url().required(),
   interval: yup.number(),
-  appsQuery: yup.string(),
-  healthQuery: yup.string(),
+  baseQuery: yup.string().required(),
+  appsQuery: yup.string().required(),
+  healthQuery: yup.string().required(),
   title: yup.string(),
   minimumInstances: yup.number(),
   appNamePattern: yup.string(),
@@ -36,43 +38,72 @@ export default class EurekaHealthStatus extends Component {
 
   componentDidMount () {
     schema.validate(this.props)
-      .then(() => this.fetchInformation())
-      .catch((err) => {
-        console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
-        this.setState({ error: true, loading: false })
-      })
+    .then(() => this.fetchInformation())
+    .catch((err) => {
+      console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
+      this.setState({ error: true, loading: false })
+    })
   }
 
   componentWillUnmount () {
     clearInterval(this.interval)
   }
 
-  mapStatus (status) {
+  mapHealthStatus (status) {
     let hasError = true
-
     if (status === 'UP') {
       hasError = false
     }
+    return hasError
+  }
 
+  checkInstanceCount (minimumInstances, appNamePattern, appList) {
+    let hasError = false
+    appList.forEach(function (entry) {
+      if (entry.name.startsWith(appNamePattern) && entry.instance.length < minimumInstances) {
+        hasError = true
+      }
+    })
+    return hasError
+  }
+
+  async checkInstanceHealth (url, appNamePattern, appList) {
+    let hasError = false
+    for (var i = 0; i < appList.length; i++) {
+      const app = appList[i]
+      if (app.name.startsWith(appNamePattern)) {
+        for (var j = 0; j < app.instance.length; j++) {
+          try {
+            const curInstance = app.instance[j]
+            let opts = {headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }}
+            const resHealth = await fetch(url + curInstance.healthCheckUrl, opts)
+            const healthJson = await resHealth.json()
+            hasError = this.mapHealthStatus(healthJson.status)
+          } catch (error) {
+            hasError = true
+          }
+        }
+      }
+    }
     return hasError
   }
 
   async fetchInformation () {
-    const { authKey, url, healthQuery, appsQuery, appNamePattern, minimumInstances } = this.props
+    const { authKey, url, baseQuery, healthQuery, appsQuery, appNamePattern, minimumInstances } = this.props
     let opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
-      const res = await fetch(`${url}${healthQuery}`, opts)
+      const res = await fetch(`${url}${baseQuery}${healthQuery}`, opts)
       const json = await res.json()
 
-      let hasError = this.mapStatus(json.status)
+      let hasError = this.mapHealthStatus(json.status)
       let statusLine1 = ''
       let statusLine2 = ''
 
       if (hasError === false) {
         opts = {headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }}
         try {
-          const resApps = await fetch(`${url}${appsQuery}`, opts)
+          const resApps = await fetch(`${url}${baseQuery}${appsQuery}`, opts)
           const jsonApps = await resApps.json()
 
           if (jsonApps.applications.apps__hashcode.includes('DOWN') === true) {
@@ -84,24 +115,30 @@ export default class EurekaHealthStatus extends Component {
           const appsStatus = jsonApps.applications.apps__hashcode.split('_')
           if (appsStatus.length > 0 && appsStatus.length < 4) {
             statusLine1 = `${appsStatus[0]}: ${appsStatus[1]}`
-            statusLine2 = ''
           } else {
             statusLine1 = `${appsStatus[0]}: ${appsStatus[1]}`
-            statusLine2 = `${appsStatus[2]}: ${appsStatus[3]}`
+            statusLine1 += ` - ${appsStatus[2]}: ${appsStatus[3]}`
           }
 
-          jsonApps.applications.application.forEach(function (entry) {
-            if (entry.name.startsWith(appNamePattern) && entry.instance.length < minimumInstances) {
-              console.log(entry.name + ' - ' + entry.instance.length)
-              hasError = true
-              statusLine2 += entry.name + ' '
+          if (hasError === false) {
+            hasError = await this.checkInstanceCount(minimumInstances, appNamePattern, jsonApps.applications.application)
+            if (hasError === true) {
+              statusLine2 = 'Instance redundancy failed'
             }
-          })
+          }
+
+          if (hasError === false) {
+            hasError = await this.checkInstanceHealth(url, appNamePattern, jsonApps.applications.application)
+            if (hasError === true) {
+              statusLine2 = 'App health check failed'
+            }
+          }
         } catch (error) {
           hasError = true
         }
+      } else {
+        statusLine2 = 'Eureka health failed'
       }
-
       this.setState({ statusLine1: statusLine1, statusLine2: statusLine2, hasError: hasError, error: false, loading: false })
     } catch (error) {
       this.setState({ error: true, loading: false })
@@ -116,8 +153,18 @@ export default class EurekaHealthStatus extends Component {
     return (
       <Widget title={title} loading={loading} error={error}>
         <EurekaDiv hasError={hasError}>
-          {statusLine1}
-          {statusLine2}
+          <Table>
+            <tbody>
+              <tr>
+                <Th>Apps</Th>
+                <Td>{statusLine1}</Td>
+              </tr>
+              <tr>
+                <Th>Info</Th>
+                <Td>{statusLine2}</Td>
+              </tr>
+            </tbody>
+          </Table>
         </EurekaDiv>
       </Widget>
     )

@@ -321,10 +321,11 @@ import EurekaHealthStatus from '../components/widgets/eureka/health-status'
 
 <EurekaHealthStatus
   title='Eureka'
-  url='http://127.0.0.1:8080/http://eurekahost:8761'
+  url='http://127.0.0.1:8080/'
+  baseQuery='http://eurekahost:8761'
   healthQuery='/management/health'
   appsQuery='/eureka/apps'
-  appNamePattern='SERVICE-X'
+  appNamePattern='SERVICE'
   minimumInstances={2}
 />
 ```
