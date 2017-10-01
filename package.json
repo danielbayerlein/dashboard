@@ -39,7 +39,7 @@
     "yup": "^0.22.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.0",
+    "babel-eslint": "^8.0.1",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
     "stylelint": "^8.1.1",
