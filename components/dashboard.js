@@ -2,6 +2,14 @@ import Head from 'next/head'
 import styled, { injectGlobal, ThemeProvider } from 'styled-components'
 import { normalize } from 'polished'
 
+injectGlobal`
+  ${normalize()}
+
+  html {
+    font-family: 'Roboto', sans-serif;
+  }
+`
+
 const Container = styled.main`
   align-items: center;
   background-color: ${props => props.theme.palette.backgroundColor};
@@ -11,14 +19,6 @@ const Container = styled.main`
   justify-content: center;
   min-height: 100vh;
   padding: 1em;
-`
-
-injectGlobal`
-  ${normalize()}
-
-  html {
-    font-family: 'Roboto', sans-serif;
-  }
 `
 
 export default ({ children, theme }) => (
