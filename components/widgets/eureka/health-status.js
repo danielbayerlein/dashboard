@@ -31,9 +31,10 @@ export default class EurekaHealthStatus extends Component {
   }
 
   state = {
-    days: 0,
     error: false,
-    loading: true
+    loading: true,
+    appStatus: '',
+    infoMessage: ''
   }
 
   componentDidMount () {
@@ -47,14 +48,6 @@ export default class EurekaHealthStatus extends Component {
 
   componentWillUnmount () {
     clearInterval(this.interval)
-  }
-
-  mapHealthStatus (status) {
-    let hasError = true
-    if (status === 'UP') {
-      hasError = false
-    }
-    return hasError
   }
 
   checkInstanceCount (minimumInstances, appNamePattern, appList) {
@@ -78,7 +71,7 @@ export default class EurekaHealthStatus extends Component {
             let opts = {headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }}
             const resHealth = await fetch(url + curInstance.healthCheckUrl, opts)
             const healthJson = await resHealth.json()
-            hasError = this.mapHealthStatus(healthJson.status)
+            hasError = healthJson.status !== 'UP'
           } catch (error) {
             hasError = true
           }
@@ -96,50 +89,47 @@ export default class EurekaHealthStatus extends Component {
       const res = await fetch(`${url}${baseQuery}${healthQuery}`, opts)
       const json = await res.json()
 
-      let hasError = this.mapHealthStatus(json.status)
-      let statusLine1 = ''
-      let statusLine2 = ''
+      let appStatus = ''
+      let infoMessage = ''
+      let hasError = json.status !== 'UP'
 
       if (hasError === false) {
         opts = {headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }}
+
         try {
           const resApps = await fetch(`${url}${baseQuery}${appsQuery}`, opts)
           const jsonApps = await resApps.json()
 
-          if (jsonApps.applications.apps__hashcode.includes('DOWN') === true) {
-            hasError = true
-          } else {
-            hasError = false
-          }
+          hasError = jsonApps.applications.apps__hashcode.includes('DOWN')
 
           const appsStatus = jsonApps.applications.apps__hashcode.split('_')
           if (appsStatus.length > 0 && appsStatus.length < 4) {
-            statusLine1 = `${appsStatus[0]}: ${appsStatus[1]}`
+            appStatus = `${appsStatus[0]}: ${appsStatus[1]}`
           } else {
-            statusLine1 = `${appsStatus[0]}: ${appsStatus[1]}`
-            statusLine1 += ` - ${appsStatus[2]}: ${appsStatus[3]}`
+            appStatus = `${appsStatus[0]}: ${appsStatus[1]}`
+            appStatus += ` - ${appsStatus[2]}: ${appsStatus[3]}`
           }
 
           if (hasError === false) {
             hasError = await this.checkInstanceCount(minimumInstances, appNamePattern, jsonApps.applications.application)
             if (hasError === true) {
-              statusLine2 = 'Instance redundancy failed'
+              infoMessage = 'Instance redundancy failed'
             }
           }
 
           if (hasError === false) {
             hasError = await this.checkInstanceHealth(url, appNamePattern, jsonApps.applications.application)
             if (hasError === true) {
-              statusLine2 = 'App health check failed'
+              infoMessage = 'App health check failed'
             }
           }
         } catch (error) {
           hasError = true
         }
       } else {
-        statusLine2 = 'Eureka health failed'
+        infoMessage = 'Eureka health failed'
       }
-      this.setState({ statusLine1: statusLine1, statusLine2: statusLine2, hasError: hasError, error: false, loading: false })
+      this.setState({ appStatus, infoMessage, hasError, error: false, loading: false })
     } catch (error) {
       this.setState({ error: true, loading: false })
     } finally {
@@ -148,8 +138,9 @@ export default class EurekaHealthStatus extends Component {
   }
 
   render () {
-    const { error, loading, statusLine1, statusLine2, hasError } = this.state
+    const { error, loading, appStatus, infoMessage, hasError } = this.state
     const { title } = this.props
+
     return (
       <Widget title={title} loading={loading} error={error}>
         <EurekaDiv hasError={hasError}>
@@ -157,11 +148,11 @@ export default class EurekaHealthStatus extends Component {
             <tbody>
               <tr>
                 <Th>Apps</Th>
-                <Td>{statusLine1}</Td>
+                <Td>{appStatus}</Td>
               </tr>
               <tr>
                 <Th>Info</Th>
-                <Td>{statusLine2}</Td>
+                <Td>{infoMessage}</Td>
               </tr>
             </tbody>
           </Table>
