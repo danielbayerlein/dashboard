@@ -36,8 +36,6 @@
     "polished": "^1.7.0",
     "preact": "^8.2.5",
     "preact-compat": "^3.17.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
     "styled-components": "^2.2.0",
     "tinytime": "^0.2.6",
     "yup": "^0.22.0"
