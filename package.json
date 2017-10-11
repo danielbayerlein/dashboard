@@ -30,7 +30,7 @@
     "dotenv-webpack": "^1.5.4",
     "isomorphic-unfetch": "^2.0.0",
     "js-base64": "^2.3.2",
-    "next": "^4.0.1",
+    "next": "^4.0.3",
     "polished": "^1.8.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
