@@ -4381,6 +4381,10 @@ svg-tags@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/svg-tags/-/svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764"
 
+synchronous-promise@^1.0.18:
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/synchronous-promise/-/synchronous-promise-1.0.18.tgz#936e8763e6554088cdcf78dc64f7473b972fcefc"
+
 table@^3.7.8:
   version "3.8.3"
   resolved "https://registry.yarnpkg.com/table/-/table-3.8.3.tgz#2bbc542f0fda9861a755d3947fefd8b3f513855f"
@@ -4793,13 +4797,14 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-yup@^0.22.0:
-  version "0.22.0"
-  resolved "https://registry.yarnpkg.com/yup/-/yup-0.22.0.tgz#d25e226fdf2508a8eea3ff1eac20c5e1bb488bc3"
+yup@0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/yup/-/yup-0.23.0.tgz#5901e80bec60c65fcfe0267f382b8ab2b27aa168"
   dependencies:
     case "^1.2.1"
     fn-name "~1.0.1"
     lodash "^4.17.0"
     property-expr "^1.2.0"
+    synchronous-promise "^1.0.18"
     toposort "^0.2.10"
     type-name "^2.0.1"
