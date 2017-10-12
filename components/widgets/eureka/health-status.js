@@ -112,8 +112,7 @@ export default class EurekaHealthStatus extends Component {
           if (appsStatus.length > 0 && appsStatus.length < 4) {
             appStatus = `${appsStatus[0]}: ${appsStatus[1]}`
           } else {
-            appStatus = `${appsStatus[0]}: ${appsStatus[1]}`
-            appStatus += ` - ${appsStatus[2]}: ${appsStatus[3]}`
+            appStatus = `${appsStatus[0]}: ${appsStatus[1]} - ${appsStatus[2]}: ${appsStatus[3]}`
           }
 
           if (!hasError) {

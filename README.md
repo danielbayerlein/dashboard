@@ -333,7 +333,7 @@ import EurekaHealthStatus from '../components/widgets/eureka/health-status'
 
 #### props
 
-* `title`: Widget title (Default: `GitHub Issue Count`)
+* `title`: Widget title (Default: `Eureka Health Status`)
 * `interval`: Refresh interval in milliseconds (Default: `360000`)
 * `url`: Cross Origin Service URL
 * `eurekaQuery`: Eureka Server URL
