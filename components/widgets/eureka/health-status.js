@@ -9,7 +9,7 @@ import styled from 'styled-components'
 const schema = yup.object().shape({
   url: yup.string().url().required(),
   interval: yup.number(),
-  baseQuery: yup.string().required(),
+  eurekaQuery: yup.string().required(),
   appsQuery: yup.string().required(),
   healthQuery: yup.string().required(),
   title: yup.string(),
@@ -37,6 +37,11 @@ export default class EurekaHealthStatus extends Component {
     infoMessage: ''
   }
 
+  constructor (props, context) {
+    super(props, context)
+    this.checkInstanceCount = this.checkInstanceCount.bind(this)
+  }
+
   componentDidMount () {
     schema.validate(this.props)
     .then(() => this.fetchInformation())
@@ -47,13 +52,14 @@ export default class EurekaHealthStatus extends Component {
   }
 
   componentWillUnmount () {
-    clearInterval(this.interval)
+    clearTimeout(this.timeout)
   }
 
-  checkInstanceCount (minimumInstances, appNamePattern, appList) {
+  checkInstanceCount (appList) {
+    const { appNamePattern, minimumInstances } = this.props
     let hasError = false
     appList.forEach(function (entry) {
-      if (entry.name.startsWith(appNamePattern) && entry.instance.length < minimumInstances) {
+      if ((appNamePattern.length === 0 || entry.name.startsWith(appNamePattern)) && entry.instance.length < minimumInstances) {
         hasError = true
       }
     })
@@ -64,7 +70,7 @@ export default class EurekaHealthStatus extends Component {
     let hasError = false
     for (var i = 0; i < appList.length; i++) {
       const app = appList[i]
-      if (app.name.startsWith(appNamePattern)) {
+      if (appNamePattern.length === 0 || app.name.startsWith(appNamePattern)) {
         for (var j = 0; j < app.instance.length; j++) {
           try {
             const curInstance = app.instance[j]
@@ -82,22 +88,22 @@ export default class EurekaHealthStatus extends Component {
   }
 
   async fetchInformation () {
-    const { authKey, url, baseQuery, healthQuery, appsQuery, appNamePattern, minimumInstances } = this.props
+    const { authKey, url, eurekaQuery, healthQuery, appsQuery, appNamePattern } = this.props
     let opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
-      const res = await fetch(`${url}${baseQuery}${healthQuery}`, opts)
+      const res = await fetch(`${url}${eurekaQuery}${healthQuery}`, opts)
       const json = await res.json()
 
       let appStatus = ''
       let infoMessage = ''
       let hasError = json.status !== 'UP'
 
-      if (hasError === false) {
+      if (!hasError) {
         opts = {headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }}
 
         try {
-          const resApps = await fetch(`${url}${baseQuery}${appsQuery}`, opts)
+          const resApps = await fetch(`${url}${eurekaQuery}${appsQuery}`, opts)
           const jsonApps = await resApps.json()
 
           hasError = jsonApps.applications.apps__hashcode.includes('DOWN')
@@ -110,16 +116,16 @@ export default class EurekaHealthStatus extends Component {
             appStatus += ` - ${appsStatus[2]}: ${appsStatus[3]}`
           }
 
-          if (hasError === false) {
-            hasError = await this.checkInstanceCount(minimumInstances, appNamePattern, jsonApps.applications.application)
-            if (hasError === true) {
+          if (!hasError) {
+            hasError = this.checkInstanceCount(jsonApps.applications.application)
+            if (hasError) {
               infoMessage = 'Instance redundancy failed'
             }
           }
 
-          if (hasError === false) {
+          if (!hasError) {
             hasError = await this.checkInstanceHealth(url, appNamePattern, jsonApps.applications.application)
-            if (hasError === true) {
+            if (hasError) {
               infoMessage = 'App health check failed'
             }
           }
@@ -133,7 +139,7 @@ export default class EurekaHealthStatus extends Component {
     } catch (error) {
       this.setState({ error: true, loading: false })
     } finally {
-      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
+      this.timeout = setTimeout(() => this.fetchInformation(), this.props.interval)
     }
   }
 

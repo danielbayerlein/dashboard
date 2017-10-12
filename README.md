@@ -321,9 +321,9 @@ import GitHubIssueCount from '../components/github/issue-count'
 import EurekaHealthStatus from '../components/widgets/eureka/health-status'
 
 <EurekaHealthStatus
-  title='Eureka'
+  title='Eureka Health Status'
   url='http://127.0.0.1:8080/'
-  baseQuery='http://eurekahost:8761'
+  eurekaQuery='http://eurekahost:8761'
   healthQuery='/management/health'
   appsQuery='/eureka/apps'
   appNamePattern='SERVICE'
@@ -334,13 +334,14 @@ import EurekaHealthStatus from '../components/widgets/eureka/health-status'
 #### props
 
 * `title`: Widget title (Default: `GitHub Issue Count`)
-* `interval`: Refresh interval in milliseconds (Default: `300000`)
-* `url`: Eureka Server Base URL
+* `interval`: Refresh interval in milliseconds (Default: `360000`)
+* `url`: Cross Origin Service URL
+* `eurekaQuery`: Eureka Server URL
 * `healthQuery`: Relative Path to Spring Boot Actuator Health endpoint
-* `appsQuery`: Relative Path to Eureka Apps API endpoint  [Eureka REST operations](https://github.com/Netflix/eureka/wiki/Eureka-REST-operations)
+* `appsQuery`: Relative Path to Eureka Apps API endpoint [Eureka REST operations](https://github.com/Netflix/eureka/wiki/Eureka-REST-operations)
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
 * `appNamePattern`: Name pattern the service-names have to start with
-* `minimumInstances`: Number of instances for each service which are expected to run to be fine
+* `minimumInstances`: Number of instances for each service which are expected to run to be fine (Default: `2`)
 
 ## Available Themes
 
