@@ -42,10 +42,10 @@
     "babel-eslint": "^8.0.1",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
-    "stylelint": "^8.2.0",
+    "stylelint": "^8.3.1",
     "stylelint-config-standard": "^18.0.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.0.0"
+    "stylelint-processor-styled-components": "^1.2.0"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -73,6 +73,9 @@
       "stylelint-config-standard",
       "stylelint-config-styled-components"
     ],
-    "syntax": "scss"
+    "syntax": "scss",
+    "rules": {
+      "value-list-max-empty-lines": null
+    }
   }
 }
