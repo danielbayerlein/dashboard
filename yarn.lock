@@ -5702,9 +5702,9 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-yup@0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/yup/-/yup-0.23.0.tgz#5901e80bec60c65fcfe0267f382b8ab2b27aa168"
+yup@0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/yup/-/yup-0.24.0.tgz#4e6000d272e7358fd0c9338cf1e7379828a89091"
   dependencies:
     case "^1.2.1"
     fn-name "~1.0.1"
