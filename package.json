@@ -31,10 +31,10 @@
     "isomorphic-unfetch": "^2.0.0",
     "js-base64": "^2.3.2",
     "next": "^4.0.3",
-    "polished": "^1.8.0",
+    "polished": "^1.9.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "styled-components": "^2.2.1",
+    "styled-components": "^2.4.0",
     "tinytime": "^0.2.6",
     "yup": "^0.24.0"
   },
@@ -42,10 +42,10 @@
     "babel-eslint": "^8.0.1",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
-    "stylelint": "^8.2.0",
-    "stylelint-config-standard": "^17.0.0",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.0.0"
+    "stylelint-processor-styled-components": "^1.2.2"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -73,6 +73,9 @@
       "stylelint-config-standard",
       "stylelint-config-styled-components"
     ],
-    "syntax": "scss"
+    "syntax": "scss",
+    "rules": {
+      "value-list-max-empty-lines": null
+    }
   }
 }

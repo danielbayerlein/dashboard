@@ -8,35 +8,37 @@ import Badge from '../../badge'
 import { basicAuthHeader } from '../../../lib/auth'
 
 const Alert = styled.span`
-  color: ${props => {
-    switch (props.children) {
-      case 'ERROR':
-        return props.theme.palette.errorColor
-      case 'WARN':
-        return props.theme.palette.warnColor
-      default: // OK
-        return props.theme.palette.successColor
-    }
-  }};
+  color:
+    ${props => {
+      switch (props.children) {
+        case 'ERROR':
+          return props.theme.palette.errorColor
+        case 'WARN':
+          return props.theme.palette.warnColor
+        default: // OK
+          return props.theme.palette.successColor
+      }
+    }};
 `
 
 const SonarBadge = styled(Badge)`
-  background-color: ${props => {
-    switch (props.children) {
-      case 'A':
-        return props.theme.palette.successColor
-      case 'B':
-        return props.theme.palette.successSecondaryColor
-      case 'C':
-        return props.theme.palette.warnColor
-      case 'D':
-        return props.theme.palette.warnSecondaryColor
-      case 'E':
-        return props.theme.palette.errorColor
-      default:
-        return 'transparent'
-    }
-  }};
+  background-color:
+    ${props => {
+      switch (props.children) {
+        case 'A':
+          return props.theme.palette.successColor
+        case 'B':
+          return props.theme.palette.successSecondaryColor
+        case 'C':
+          return props.theme.palette.warnColor
+        case 'D':
+          return props.theme.palette.warnSecondaryColor
+        case 'E':
+          return props.theme.palette.errorColor
+        default:
+          return 'transparent'
+      }
+    }};
 `
 
 const schema = yup.object().shape({

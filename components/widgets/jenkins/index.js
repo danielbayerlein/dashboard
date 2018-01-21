@@ -9,21 +9,22 @@ import LoadingIndicator from '../../loading-indicator'
 import { basicAuthHeader } from '../../../lib/auth'
 
 const JenkinsBadge = styled(Badge)`
-  background-color: ${props => {
-    switch (props.status) {
-      case 'FAILURE':
-        return props.theme.palette.errorColor
-      case 'UNSTABLE':
-        return props.theme.palette.warnColor
-      case 'SUCCESS':
-        return props.theme.palette.successColor
-      case 'ABORTED':
-      case 'NOT_BUILT':
-        return props.theme.palette.disabledColor
-      default: // null = 'In Progress'
-        return 'transparent'
-    }
-  }};
+  background-color:
+    ${props => {
+      switch (props.status) {
+        case 'FAILURE':
+          return props.theme.palette.errorColor
+        case 'UNSTABLE':
+          return props.theme.palette.warnColor
+        case 'SUCCESS':
+          return props.theme.palette.successColor
+        case 'ABORTED':
+        case 'NOT_BUILT':
+          return props.theme.palette.disabledColor
+        default: // null = 'In Progress'
+          return 'transparent'
+      }
+    }};
 `
 
 const schema = yup.object().shape({
