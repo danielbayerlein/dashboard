@@ -5464,9 +5464,9 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
 
-styled-components@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.0.2.tgz#dbcd66ee84d444ee4332a7f74027e8a675191593"
+styled-components@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.1.4.tgz#1bdc1409c9bacafee3510c573d23b73039b0d875"
   dependencies:
     buffer "^5.0.3"
     css-to-react-native "^2.0.3"
@@ -5475,6 +5475,7 @@ styled-components@^3.0.2:
     is-plain-object "^2.0.1"
     prop-types "^15.5.4"
     stylis "^3.4.0"
+    stylis-rule-sheet "^0.0.7"
     supports-color "^3.2.3"
 
 styled-jsx@2.2.1:
@@ -5556,7 +5557,7 @@ stylelint@^8.4.0:
     svg-tags "^1.0.0"
     table "^4.0.1"
 
-stylis-rule-sheet@0.0.7:
+stylis-rule-sheet@0.0.7, stylis-rule-sheet@^0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/stylis-rule-sheet/-/stylis-rule-sheet-0.0.7.tgz#5c51dc879141a61821c2094ba91d2cbcf2469c6c"
 
