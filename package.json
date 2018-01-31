@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Your Team Dashboard",
   "main": "pages/index.js",
+  "engines": {
+    "node": ">=6"
+  },
   "private": true,
   "scripts": {
     "dev": "next",
