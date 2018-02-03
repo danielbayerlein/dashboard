@@ -73,9 +73,6 @@
       "stylelint-config-standard",
       "stylelint-config-styled-components"
     ],
-    "syntax": "scss",
-    "rules": {
-      "value-list-max-empty-lines": null
-    }
+    "syntax": "scss"
   }
 }
