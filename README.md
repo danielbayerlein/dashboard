@@ -412,4 +412,4 @@ docker run -d -p 3001:8080 chrishelgert/hapi-rest-proxy
 
 ## License
 
-Copyright (c) 2017 Daniel Bayerlein. See [LICENSE](./LICENSE.md) for details.
+Copyright (c) 2017-present Daniel Bayerlein. See [LICENSE](./LICENSE.md) for details.
