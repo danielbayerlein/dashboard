@@ -8,22 +8,23 @@ import Badge from '../../badge'
 import LoadingIndicator from '../../loading-indicator'
 import { basicAuthHeader } from '../../../lib/auth'
 
+const jenkinsBadgeColor = ({ theme, status }) => {
+  switch (status) {
+    case 'FAILURE':
+      return theme.palette.errorColor
+    case 'UNSTABLE':
+      return theme.palette.warnColor
+    case 'SUCCESS':
+      return theme.palette.successColor
+    case 'ABORTED':
+    case 'NOT_BUILT':
+      return theme.palette.disabledColor
+    default: // null = 'In Progress'
+      return 'transparent'
+  }
+}
 const JenkinsBadge = styled(Badge)`
-  background-color: ${props => {
-    switch (props.status) {
-      case 'FAILURE':
-        return props.theme.palette.errorColor
-      case 'UNSTABLE':
-        return props.theme.palette.warnColor
-      case 'SUCCESS':
-        return props.theme.palette.successColor
-      case 'ABORTED':
-      case 'NOT_BUILT':
-        return props.theme.palette.disabledColor
-      default: // null = 'In Progress'
-        return 'transparent'
-    }
-  }};
+  background-color: ${jenkinsBadgeColor};
 `
 
 const schema = yup.object().shape({
@@ -102,8 +103,8 @@ export default class Jenkins extends Component {
                   <a href={build.url} title={build.result}>
                     {
                       build.result
-                      ? <JenkinsBadge status={build.result} />
-                      : <LoadingIndicator size='small' />
+                        ? <JenkinsBadge status={build.result} />
+                        : <LoadingIndicator size='small' />
                     }
                   </a>
                 </Td>
