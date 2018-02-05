@@ -32,7 +32,7 @@
     "globby": "^7.1.1",
     "isomorphic-unfetch": "^2.0.0",
     "js-base64": "^2.4.3",
-    "next": "^4.2.3",
+    "next": "^5.0.0",
     "polished": "^1.9.0",
     "preval.macro": "^1.0.1",
     "react": "^16.2.0",
@@ -77,9 +77,6 @@
       "stylelint-config-standard",
       "stylelint-config-styled-components"
     ],
-    "syntax": "scss",
-    "rules": {
-      "value-list-max-empty-lines": null
-    }
+    "syntax": "scss"
   }
 }
