@@ -45,7 +45,7 @@
     "stylelint": "^9.1.1",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.2.2"
+    "stylelint-processor-styled-components": "^1.3.0"
   },
   "standard": {
     "parser": "babel-eslint"
