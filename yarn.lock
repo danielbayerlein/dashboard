@@ -1347,10 +1347,6 @@ case-sensitive-paths-webpack-plugin@2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.1.1.tgz#3d29ced8c1f124bf6f53846fb3f5894731fdc909"
 
-case@^1.2.1:
-  version "1.5.4"
-  resolved "https://registry.yarnpkg.com/case/-/case-1.5.4.tgz#b201642aae9e374feb5750d1181a76850153830c"
-
 caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
@@ -2470,9 +2466,9 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
-fn-name@~1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/fn-name/-/fn-name-1.0.1.tgz#de8d8a15388b33cbf2145782171f73770c6030f0"
+fn-name@~2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/fn-name/-/fn-name-2.0.1.tgz#5214d7537a4d06a4a301c0cc262feb84188002e7"
 
 for-in@^1.0.1, for-in@^1.0.2:
   version "1.0.2"
@@ -3416,9 +3412,13 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash@^4.14.0, lodash@^4.17.0, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.5.1:
+lodash@^4.14.0, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.5.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
+lodash@^4.17.10:
+  version "4.17.10"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
 log-symbols@^2.0.0:
   version "2.2.0"
@@ -5474,9 +5474,9 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-toposort@^0.2.10:
-  version "0.2.12"
-  resolved "https://registry.yarnpkg.com/toposort/-/toposort-0.2.12.tgz#c7d2984f3d48c217315cc32d770888b779491e81"
+toposort@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/toposort/-/toposort-2.0.2.tgz#ae21768175d1559d48bef35420b2f4962f09c330"
 
 touch@3.1.0:
   version "3.1.0"
@@ -5529,10 +5529,6 @@ type-check@~0.3.2:
   resolved "https://registry.yarnpkg.com/type-check/-/type-check-0.3.2.tgz#5884cab512cf1d355e3fb784f30804b2b520db72"
   dependencies:
     prelude-ls "~1.1.2"
-
-type-name@^2.0.1:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/type-name/-/type-name-2.0.2.tgz#efe7d4123d8ac52afff7f40c7e4dec5266008fb4"
 
 typedarray@^0.0.6:
   version "0.0.6"
@@ -5962,14 +5958,12 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-yup@^0.24.1:
-  version "0.24.1"
-  resolved "https://registry.yarnpkg.com/yup/-/yup-0.24.1.tgz#2c8a81b5f929ef29aaf77a8b7c9acfa52ab6a7d1"
+yup@^0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/yup/-/yup-0.25.0.tgz#24543f3e110720d9ff7f58a140cab800c0737210"
   dependencies:
-    case "^1.2.1"
-    fn-name "~1.0.1"
-    lodash "^4.17.0"
+    fn-name "~2.0.1"
+    lodash "^4.17.10"
     property-expr "^1.2.0"
     synchronous-promise "^1.0.18"
-    toposort "^0.2.10"
-    type-name "^2.0.1"
+    toposort "^2.0.2"
