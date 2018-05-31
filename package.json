@@ -34,7 +34,7 @@
     "polished": "^1.9.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "styled-components": "^3.2.6",
+    "styled-components": "^3.3.0",
     "tinytime": "^0.2.6",
     "yup": "^0.25.1"
   },
