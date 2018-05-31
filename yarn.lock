@@ -3731,9 +3731,9 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-next@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/next/-/next-6.0.1.tgz#dc560b32cc3cc1cfe1ed4eba8e52fc368d021564"
+next@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/next/-/next-6.0.3.tgz#b759fde2ec4864f92116cee4fcd805aaf285136c"
   dependencies:
     "@babel/core" "7.0.0-beta.42"
     "@babel/plugin-proposal-class-properties" "7.0.0-beta.42"
