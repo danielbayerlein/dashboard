@@ -3235,12 +3235,12 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-isomorphic-unfetch@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/isomorphic-unfetch/-/isomorphic-unfetch-2.0.0.tgz#f50140a4c163d7582b5f37f1591968c4f809a645"
+isomorphic-unfetch@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/isomorphic-unfetch/-/isomorphic-unfetch-2.1.1.tgz#c321770bcd682c5c8550f31146fc7dd21ac33e7b"
   dependencies:
-    node-fetch "^1.7.1"
-    unfetch "^3.0.0"
+    node-fetch "^2.1.2"
+    unfetch "^3.1.0"
 
 isstream@~0.1.2:
   version "0.1.2"
@@ -3783,12 +3783,16 @@ next@^6.1.1:
     webpack-sources "1.1.0"
     write-file-webpack-plugin "4.2.0"
 
-node-fetch@^1.0.1, node-fetch@^1.7.1:
+node-fetch@^1.0.1:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
   dependencies:
     encoding "^0.1.11"
     is-stream "^1.0.1"
+
+node-fetch@^2.1.2:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.2.0.tgz#4ee79bde909262f9775f731e3656d0db55ced5b5"
 
 node-libs-browser@^2.0.0:
   version "2.1.0"
@@ -5566,9 +5570,13 @@ uid-number@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/uid-number/-/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
 
-unfetch@3.0.0, unfetch@^3.0.0:
+unfetch@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-3.0.0.tgz#8d1e0513a4ecd0e5ff2d41a6ba77771aae8b6482"
+
+unfetch@^3.1.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-3.1.1.tgz#4ef20a4f3c86b5e1d306b9de091ab6e5e8cd9069"
 
 unherit@^1.0.4:
   version "1.1.0"
