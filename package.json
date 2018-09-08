@@ -29,7 +29,7 @@
     "babel-plugin-styled-components": "^1.5.1",
     "dotenv-webpack": "^1.5.7",
     "isomorphic-unfetch": "^2.1.1",
-    "js-base64": "^2.4.8",
+    "js-base64": "^2.4.9",
     "next": "^6.1.1",
     "polished": "^1.9.3",
     "react": "^16.4.2",
