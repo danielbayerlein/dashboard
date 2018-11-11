@@ -1,18 +1,18 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
-import yup from 'yup'
+import { object, string, number, array } from 'yup'
 import Widget from '../../widget'
 import Counter from '../../counter'
 import { basicAuthHeader } from '../../../lib/auth'
 
-const schema = yup.object().shape({
-  url: yup.string().url().required(),
-  project: yup.string().required(),
-  repository: yup.string().required(),
-  interval: yup.number(),
-  title: yup.string(),
-  users: yup.array().of(yup.string()),
-  authKey: yup.string()
+const schema = object().shape({
+  url: string().url().required(),
+  project: string().required(),
+  repository: string().required(),
+  interval: number(),
+  title: string(),
+  users: array().of(string()),
+  authKey: string()
 })
 
 export default class BitbucketPullRequestCount extends Component {

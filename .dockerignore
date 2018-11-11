@@ -2,7 +2,6 @@
 components
 node_modules
 pages
-static
 styles
 .dockerignore
 .DS_Store
