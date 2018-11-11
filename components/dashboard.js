@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import styled, { injectGlobal, ThemeProvider } from 'styled-components'
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { normalize } from 'polished'
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   ${normalize()}
 
   html {
@@ -21,10 +21,12 @@ const Container = styled.main`
   padding: 1em;
 `
 
-export default ({ children, theme }) => (
+export default ({ children, theme, title = 'Dashboard' }) => (
   <ThemeProvider theme={theme}>
     <Container>
       <Head>
+        <title>{title}</title>
+        <link rel='icon' href='/static/favicon.png' />
         <link
           href='https://fonts.googleapis.com/css?family=Roboto:300,400,500'
           rel='stylesheet'
@@ -32,6 +34,8 @@ export default ({ children, theme }) => (
       </Head>
 
       {children}
+
+      <GlobalStyle />
     </Container>
   </ThemeProvider>
 )

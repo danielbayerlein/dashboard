@@ -1,16 +1,16 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
-import yup from 'yup'
+import { object, string, number } from 'yup'
 import Widget from '../../widget'
 import Counter from '../../counter'
 import { basicAuthHeader } from '../../../lib/auth'
 
-const schema = yup.object().shape({
-  owner: yup.string().required(),
-  repository: yup.string().required(),
-  interval: yup.number(),
-  title: yup.string(),
-  authKey: yup.string()
+const schema = object().shape({
+  owner: string().required(),
+  repository: string().required(),
+  interval: number(),
+  title: string(),
+  authKey: string()
 })
 
 export default class GitHubIssueCount extends Component {

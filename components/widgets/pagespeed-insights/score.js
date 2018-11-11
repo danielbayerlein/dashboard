@@ -1,15 +1,15 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
-import yup from 'yup'
+import { object, string, number, boolean } from 'yup'
 import CircleProgress from '../../circle-progress'
 import Widget from '../../widget'
 
-const schema = yup.object().shape({
-  url: yup.string().url().required(),
-  filterThirdPartyResources: yup.boolean(),
-  interval: yup.number(),
-  strategy: yup.string(),
-  title: yup.string()
+const schema = object().shape({
+  url: string().url().required(),
+  filterThirdPartyResources: boolean(),
+  interval: number(),
+  strategy: string(),
+  title: string()
 })
 
 export default class PageSpeedInsightsScore extends Component {
