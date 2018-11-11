@@ -1,16 +1,16 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
-import yup from 'yup'
+import { object, string, number } from 'yup'
 import Widget from '../../widget'
 import Counter from '../../counter'
 import { basicAuthHeader } from '../../../lib/auth'
 
-const schema = yup.object().shape({
-  url: yup.string().url().required(),
-  index: yup.string().required(),
-  query: yup.string().required(),
-  interval: yup.number(),
-  title: yup.string()
+const schema = object().shape({
+  url: string().url().required(),
+  index: string().required(),
+  query: string().required(),
+  interval: number(),
+  title: string()
 })
 
 export default class ElasticsearchHitCount extends Component {
@@ -35,7 +35,7 @@ export default class ElasticsearchHitCount extends Component {
   }
 
   componentWillUnmount () {
-    clearInterval(this.interval)
+    clearTimeout(this.timeout)
   }
 
   async fetchInformation () {
@@ -49,9 +49,8 @@ export default class ElasticsearchHitCount extends Component {
       this.setState({ count: json.hits.total, error: false, loading: false })
     } catch (error) {
       this.setState({ error: true, loading: false })
-      console.log(error)
     } finally {
-      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
+      this.timeout = setTimeout(() => this.fetchInformation(), this.props.interval)
     }
   }
 

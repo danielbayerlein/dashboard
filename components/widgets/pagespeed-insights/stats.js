@@ -1,15 +1,15 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
-import yup from 'yup'
+import { object, string, boolean, number } from 'yup'
 import Table, { Th, Td } from '../../table'
 import Widget from '../../widget'
 
-const schema = yup.object().shape({
-  url: yup.string().url().required(),
-  filterThirdPartyResources: yup.boolean(),
-  interval: yup.number(),
-  strategy: yup.string(),
-  title: yup.string()
+const schema = object().shape({
+  url: string().url().required(),
+  filterThirdPartyResources: boolean(),
+  interval: number(),
+  strategy: string(),
+  title: string()
 })
 
 export default class PageSpeedInsightsStats extends Component {
@@ -36,7 +36,7 @@ export default class PageSpeedInsightsStats extends Component {
   }
 
   componentWillUnmount () {
-    clearInterval(this.interval)
+    clearTimeout(this.timeout)
   }
 
   bytesToKilobytes (bytes) {
@@ -73,7 +73,7 @@ export default class PageSpeedInsightsStats extends Component {
     } catch (error) {
       this.setState({ error: true, loading: false })
     } finally {
-      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
+      this.timeout = setTimeout(() => this.fetchInformation(), this.props.interval)
     }
   }
 

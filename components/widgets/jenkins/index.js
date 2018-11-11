@@ -1,40 +1,41 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
-import yup from 'yup'
+import { object, string, array, number } from 'yup'
 import Widget from '../../widget'
 import Table, { Th, Td } from '../../table'
 import Badge from '../../badge'
 import LoadingIndicator from '../../loading-indicator'
 import { basicAuthHeader } from '../../../lib/auth'
 
+const jenkinsBadgeColor = ({ theme, status }) => {
+  switch (status) {
+    case 'FAILURE':
+      return theme.palette.errorColor
+    case 'UNSTABLE':
+      return theme.palette.warnColor
+    case 'SUCCESS':
+      return theme.palette.successColor
+    case 'ABORTED':
+    case 'NOT_BUILT':
+      return theme.palette.disabledColor
+    default: // null = 'In Progress'
+      return 'transparent'
+  }
+}
 const JenkinsBadge = styled(Badge)`
-  background-color: ${props => {
-    switch (props.status) {
-      case 'FAILURE':
-        return props.theme.palette.errorColor
-      case 'UNSTABLE':
-        return props.theme.palette.warnColor
-      case 'SUCCESS':
-        return props.theme.palette.successColor
-      case 'ABORTED':
-      case 'NOT_BUILT':
-        return props.theme.palette.disabledColor
-      default: // null = 'In Progress'
-        return 'transparent'
-    }
-  }};
+  background-color: ${jenkinsBadgeColor};
 `
 
-const schema = yup.object().shape({
-  url: yup.string().url().required(),
-  jobs: yup.array(yup.object({
-    label: yup.string().required(),
-    path: yup.string().required()
+const schema = object().shape({
+  url: string().url().required(),
+  jobs: array(object({
+    label: string().required(),
+    path: string().required()
   })).required(),
-  interval: yup.number(),
-  title: yup.string(),
-  authKey: yup.string()
+  interval: number(),
+  title: string(),
+  authKey: string()
 })
 
 export default class Jenkins extends Component {
@@ -58,7 +59,7 @@ export default class Jenkins extends Component {
   }
 
   componentWillUnmount () {
-    clearInterval(this.interval)
+    clearTimeout(this.timeout)
   }
 
   async fetchInformation () {
@@ -83,7 +84,7 @@ export default class Jenkins extends Component {
     } catch (error) {
       this.setState({ error: true, loading: false })
     } finally {
-      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
+      this.timeout = setTimeout(() => this.fetchInformation(), this.props.interval)
     }
   }
 
@@ -102,8 +103,8 @@ export default class Jenkins extends Component {
                   <a href={build.url} title={build.result}>
                     {
                       build.result
-                      ? <JenkinsBadge status={build.result} />
-                      : <LoadingIndicator size='small' />
+                        ? <JenkinsBadge status={build.result} />
+                        : <LoadingIndicator size='small' />
                     }
                   </a>
                 </Td>

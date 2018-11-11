@@ -1,50 +1,52 @@
 import { Component } from 'react'
 import styled from 'styled-components'
 import fetch from 'isomorphic-unfetch'
-import yup from 'yup'
+import { object, string, number } from 'yup'
 import Widget from '../../widget'
 import Table, { Th, Td } from '../../table'
 import Badge from '../../badge'
 import { basicAuthHeader } from '../../../lib/auth'
 
+const alertColor = ({ theme, children }) => {
+  switch (children) {
+    case 'ERROR':
+      return theme.palette.errorColor
+    case 'WARN':
+      return theme.palette.warnColor
+    default: // OK
+      return theme.palette.successColor
+  }
+}
 const Alert = styled.span`
-  color: ${props => {
-    switch (props.children) {
-      case 'ERROR':
-        return props.theme.palette.errorColor
-      case 'WARN':
-        return props.theme.palette.warnColor
-      default: // OK
-        return props.theme.palette.successColor
-    }
-  }};
+  color: ${alertColor};
 `
 
+const sonarBadgeColor = ({ theme, children }) => {
+  switch (children) {
+    case 'A':
+      return theme.palette.successColor
+    case 'B':
+      return theme.palette.successSecondaryColor
+    case 'C':
+      return theme.palette.warnColor
+    case 'D':
+      return theme.palette.warnSecondaryColor
+    case 'E':
+      return theme.palette.errorColor
+    default:
+      return 'transparent'
+  }
+}
 const SonarBadge = styled(Badge)`
-  background-color: ${props => {
-    switch (props.children) {
-      case 'A':
-        return props.theme.palette.successColor
-      case 'B':
-        return props.theme.palette.successSecondaryColor
-      case 'C':
-        return props.theme.palette.warnColor
-      case 'D':
-        return props.theme.palette.warnSecondaryColor
-      case 'E':
-        return props.theme.palette.errorColor
-      default:
-        return 'transparent'
-    }
-  }};
+  background-color: ${sonarBadgeColor};
 `
 
-const schema = yup.object().shape({
-  url: yup.string().url().required(),
-  componentKey: yup.string().required(),
-  interval: yup.number(),
-  title: yup.string(),
-  authKey: yup.string()
+const schema = object().shape({
+  url: string().url().required(),
+  componentKey: string().required(),
+  interval: number(),
+  title: string(),
+  authKey: string()
 })
 
 export default class SonarQube extends Component {
@@ -69,7 +71,7 @@ export default class SonarQube extends Component {
   }
 
   componentWillUnmount () {
-    clearInterval(this.interval)
+    clearTimeout(this.timeout)
   }
 
   async fetchInformation () {
@@ -91,7 +93,7 @@ export default class SonarQube extends Component {
     } catch (error) {
       this.setState({ error: true, loading: false })
     } finally {
-      this.interval = setInterval(() => this.fetchInformation(), this.props.interval)
+      this.timeout = setTimeout(() => this.fetchInformation(), this.props.interval)
     }
   }
 
