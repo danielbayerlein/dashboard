@@ -1,20 +1,20 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
-import yup from 'yup'
+import { array, object, string, number } from 'yup'
 import Widget from '../../widget'
 import Counter from '../../counter'
 import { basicAuthHeader } from '../../../lib/auth'
 import { severity, NONE } from '../../../lib/alert'
 
-const schema = yup.object().shape({
-  url: yup.string().url().required(),
-  query: yup.string().required(),
-  interval: yup.number(),
-  title: yup.string(),
-  authKey: yup.string(),
-  alert: yup.array(yup.object({
-    severity: yup.string().required(),
-    value: yup.number().required()
+const schema = object().shape({
+  url: string().url().required(),
+  query: string().required(),
+  interval: number(),
+  title: string(),
+  authKey: string(),
+  alert: array(object({
+    severity: string().required(),
+    value: number().required()
   }))
 })
 

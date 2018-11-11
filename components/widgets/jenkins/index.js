@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
-import yup from 'yup'
+import { object, string, array, number } from 'yup'
 import Widget from '../../widget'
 import Table, { Th, Td } from '../../table'
 import Badge from '../../badge'
@@ -27,15 +27,15 @@ const JenkinsBadge = styled(Badge)`
   background-color: ${jenkinsBadgeColor};
 `
 
-const schema = yup.object().shape({
-  url: yup.string().url().required(),
-  jobs: yup.array(yup.object({
-    label: yup.string().required(),
-    path: yup.string().required()
+const schema = object().shape({
+  url: string().url().required(),
+  jobs: array(object({
+    label: string().required(),
+    path: string().required()
   })).required(),
-  interval: yup.number(),
-  title: yup.string(),
-  authKey: yup.string()
+  interval: number(),
+  title: string(),
+  authKey: string()
 })
 
 export default class Jenkins extends Component {

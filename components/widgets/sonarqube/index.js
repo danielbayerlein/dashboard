@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import styled from 'styled-components'
 import fetch from 'isomorphic-unfetch'
-import yup from 'yup'
+import { object, string, number } from 'yup'
 import Widget from '../../widget'
 import Table, { Th, Td } from '../../table'
 import Badge from '../../badge'
@@ -41,12 +41,12 @@ const SonarBadge = styled(Badge)`
   background-color: ${sonarBadgeColor};
 `
 
-const schema = yup.object().shape({
-  url: yup.string().url().required(),
-  componentKey: yup.string().required(),
-  interval: yup.number(),
-  title: yup.string(),
-  authKey: yup.string()
+const schema = object().shape({
+  url: string().url().required(),
+  componentKey: string().required(),
+  interval: number(),
+  title: string(),
+  authKey: string()
 })
 
 export default class SonarQube extends Component {
