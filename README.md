@@ -35,7 +35,9 @@
 * [Create a Dashboard](#create-a-dashboard)
 * [Available Widgets](#available-widgets)
   * [DateTime](#datetime)
-  * [Jenkins](#jenkins)
+  * [Jenkins Job Status](#jenkins-job-status)
+  * [Jenkins Job Health](#jenkins-job-health)
+  * [Jenkins Build Duration](#jenkins-build-duration)
   * [JIRA Issue Count](#jira-issue-count)
   * [JIRA Sprint Days Remaining](#jira-sprint-days-remaining)
   * [Bitbucket PullRequest Count](#bitbucket-pullrequest-count)
@@ -113,26 +115,80 @@ import DateTime from '../components/widgets/datetime'
 
 * `interval`: Refresh interval in milliseconds (Default: `10000`)
 
-### [Jenkins](./components/widgets/jenkins/index.js)
+### [Jenkins Job Status](./components/widgets/jenkins/job-status.js)
 
 #### Example
 
 ```javascript
-import Jenkins from '../components/widgets/jenkins'
+import JenkinsJobStatus from '../components/widgets/jenkins/job-status'
 
-<Jenkins
+<JenkinsJobStatus
   url='https://builds.apache.org'
   jobs={[
-    { label: 'Hadoop', path: 'Hadoop-trunk-Commit' },
-    { label: 'Jackrabbit', path: 'Jackrabbit-trunk' },
-    { label: 'JMeter', path: 'JMeter-trunk' }
+    { label: 'JMeter', path: 'JMeter-trunk' },
+    { label: 'Log4j Kotlin', path: 'Log4jKotlin', branch: 'master' }
   ]}
 />
 ```
 
+For Jenkins multibranch projects add `branch` to the object.
+
 #### props
 
-* `title`: Widget title (Default: `Jenkins`)
+* `title`: Widget title (Default: `'Job Status'`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
+* `url`: Jenkins URL
+* `jobs`: List of all jobs
+* `authKey`: Credential key, defined in [auth.js](./auth.js)
+
+### [Jenkins Job Health](./components/widgets/jenkins/job-health.js)
+
+#### Example
+
+```javascript
+import JenkinsJobHealth from '../components/widgets/jenkins/job-health'
+
+<JenkinsJobHealth
+  url='https://builds.apache.org'
+  jobs={[
+    { label: 'JMeter', path: 'JMeter-trunk' },
+    { label: 'Log4j Kotlin', path: 'Log4jKotlin', branch: 'master' }
+  ]}
+/>
+```
+
+For Jenkins multibranch projects add `branch` to the object.
+
+#### props
+
+* `title`: Widget title (Default: `'Job Health'`)
+* `interval`: Refresh interval in milliseconds (Default: `300000`)
+* `url`: Jenkins URL
+* `jobs`: List of all jobs
+* `authKey`: Credential key, defined in [auth.js](./auth.js)
+
+
+### [Jenkins Build Duration](./components/widgets/jenkins/build-duration.js)
+
+#### Example
+
+```javascript
+import JenkinsBuildDuration from '../components/widgets/jenkins/build-duration'
+
+<JenkinsBuildDuration
+  url='https://builds.apache.org'
+  jobs={[
+    { label: 'JMeter', path: 'JMeter-trunk' },
+    { label: 'Log4j Kotlin', path: 'Log4jKotlin', branch: 'master' }
+  ]}
+/>
+```
+
+For Jenkins multibranch projects add `branch` to the object.
+
+#### props
+
+* `title`: Widget title (Default: `'Build Duration'`)
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Jenkins URL
 * `jobs`: List of all jobs
@@ -151,6 +207,8 @@ import JiraIssueCount from '../components/widgets/jira/issue-count'
   query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
 />
 ```
+
+For Jenkins multibranch projects add `branch` to the object.
 
 #### props
 
