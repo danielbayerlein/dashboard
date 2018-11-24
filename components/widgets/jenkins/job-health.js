@@ -86,10 +86,10 @@ export default class JenkinsJobHealth extends Component {
 
   renderHealth (build) {
     return build.map((b, index, array) => (
-        <Link key={index} href={build.url} title={b.score}>
-          <KPI value={b.score}>{b.score}</KPI>
-          { index < array.length -1 && <span> / </span>}
-        </Link>
+      <Link key={index} href={build.url} title={b.score}>
+        <KPI value={b.score}>{b.score}</KPI>
+        { index < array.length - 1 && <span> / </span>}
+      </Link>
     ))
   }
 
@@ -109,7 +109,7 @@ export default class JenkinsJobHealth extends Component {
                     build.health
                       ? this.renderHealth(build.health)
                       : <LoadingIndicator size='small' />
-                  }                
+                  }
                 </Td>
               </tr>
             ))}
