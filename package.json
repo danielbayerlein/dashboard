@@ -32,9 +32,9 @@
     "js-base64": "^2.4.9",
     "next": "^7.0.2",
     "polished": "^2.3.0",
-    "react": "^16.6.1",
-    "react-dom": "^16.6.1",
-    "styled-components": "^4.0.3",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "styled-components": "^4.1.1",
     "tinytime": "^0.2.6",
     "yup": "^0.26.6"
   },
@@ -45,7 +45,7 @@
     "stylelint": "^9.8.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.5.0"
+    "stylelint-processor-styled-components": "^1.5.1"
   },
   "standard": {
     "parser": "babel-eslint"

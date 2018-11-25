@@ -31,17 +31,18 @@ const schema = object().shape({
   url: string().url().required(),
   jobs: array(object({
     label: string().required(),
-    path: string().required()
+    path: string().required(),
+    branch: string()
   })).required(),
   interval: number(),
   title: string(),
   authKey: string()
 })
 
-export default class Jenkins extends Component {
+export default class JenkinsJobStatus extends Component {
   static defaultProps = {
     interval: 1000 * 60 * 5,
-    title: 'Jenkins'
+    title: 'Job Status'
   }
 
   state = {
@@ -69,7 +70,8 @@ export default class Jenkins extends Component {
     try {
       const builds = await Promise.all(
         jobs.map(async job => {
-          const res = await fetch(`${url}/job/${job.path}/lastBuild/api/json`, opts)
+          const branch = job.branch ? `job/${job.branch}/` : ''
+          const res = await fetch(`${url}/job/${job.path}/${branch}lastBuild/api/json`, opts)
           const json = await res.json()
 
           return {
