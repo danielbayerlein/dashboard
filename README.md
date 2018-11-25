@@ -135,7 +135,7 @@ For Jenkins multibranch projects add `branch` to the object.
 
 #### props
 
-* `title`: Widget title (Default: `'Job Status'`)
+* `title`: Widget title (Default: `Job Status`)
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Jenkins URL
 * `jobs`: List of all jobs
@@ -161,7 +161,7 @@ For Jenkins multibranch projects add `branch` to the object.
 
 #### props
 
-* `title`: Widget title (Default: `'Job Health'`)
+* `title`: Widget title (Default: `Job Health`)
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Jenkins URL
 * `jobs`: List of all jobs
@@ -188,7 +188,7 @@ For Jenkins multibranch projects add `branch` to the object.
 
 #### props
 
-* `title`: Widget title (Default: `'Build Duration'`)
+* `title`: Widget title (Default: `Build Duration`)
 * `interval`: Refresh interval in milliseconds (Default: `300000`)
 * `url`: Jenkins URL
 * `jobs`: List of all jobs
