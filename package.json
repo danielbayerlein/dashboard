@@ -31,7 +31,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "js-base64": "^2.4.9",
     "next": "^7.0.2",
-    "polished": "^2.3.0",
+    "polished": "^2.3.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "styled-components": "^4.1.1",
