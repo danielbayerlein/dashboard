@@ -46,6 +46,7 @@
   * [SonarQube](#sonarqube)
   * [Elasticsearch Hit Count](#elasticsearch-hit-count)
   * [GitHub Issue Count](#github-issue-count)
+  * [Eureka Health Status](#eureka-health-status)
 * [Available Themes](#available-themes)
   * [light](#light)
   * [dark](#dark)
@@ -369,6 +370,36 @@ import GitHubIssueCount from '../components/github/issue-count'
 * `owner`: Owner of the repository
 * `repository`: Name of the repository
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
+
+### [Eureka Health Status](./components/widgets/eureka/health-status.js)
+
+#### Example
+
+```javascript
+import EurekaHealthStatus from '../components/widgets/eureka/health-status'
+
+<EurekaHealthStatus
+  title='Eureka Health Status'
+  url='http://127.0.0.1:8080/'
+  eurekaQuery='http://eurekahost:8761'
+  healthQuery='/management/health'
+  appsQuery='/eureka/apps'
+  appNamePattern='SERVICE'
+  minimumInstances={2}
+/>
+```
+
+#### props
+
+* `title`: Widget title (Default: `Eureka Health Status`)
+* `interval`: Refresh interval in milliseconds (Default: `360000`)
+* `url`: Cross Origin Service URL
+* `eurekaQuery`: Eureka Server URL
+* `healthQuery`: Relative Path to Spring Boot Actuator Health endpoint
+* `appsQuery`: Relative Path to Eureka Apps API endpoint [Eureka REST operations](https://github.com/Netflix/eureka/wiki/Eureka-REST-operations)
+* `authKey`: Credential key, defined in [auth.js](./auth.js)
+* `appNamePattern`: Name pattern the service-names have to start with
+* `minimumInstances`: Number of instances for each service which are expected to run to be fine (Default: `2`)
 
 ## Available Themes
 
