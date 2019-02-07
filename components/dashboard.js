@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const Container = styled.main`
+  align-content: center;
   align-items: center;
   background-color: ${props => props.theme.palette.backgroundColor};
   color: ${props => props.theme.palette.textColor};
