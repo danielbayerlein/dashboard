@@ -18,7 +18,6 @@ const Container = styled.main`
   flex-flow: row wrap;
   justify-content: center;
   min-height: 100vh;
-  padding: 1em;
 `
 
 export default ({ children, theme, title = 'Dashboard' }) => (
