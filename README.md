@@ -46,6 +46,7 @@
   * [SonarQube](#sonarqube)
   * [Elasticsearch Hit Count](#elasticsearch-hit-count)
   * [GitHub Issue Count](#github-issue-count)
+  * [Title](#title)
 * [Available Themes](#available-themes)
   * [light](#light)
   * [dark](#dark)
@@ -369,6 +370,16 @@ import GitHubIssueCount from '../components/github/issue-count'
 * `owner`: Owner of the repository
 * `repository`: Name of the repository
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
+
+### [Title](./components/widgets/title/index.js)
+
+#### Example
+
+```javascript
+import Title from '../components/github/title'
+
+<Title>API Status</Title>
+```
 
 ## Available Themes
 
