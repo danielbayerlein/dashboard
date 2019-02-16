@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 const Title = styled.h1`
   flex: 1 1 100%;
-  font-size: 60px;
+  font-size: 4em;
   margin: 0;
-  padding-bottom: 20px;
+  padding: 0;
   text-align: center;
 `
 
