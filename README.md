@@ -355,7 +355,7 @@ import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count
 #### Example
 
 ```javascript
-import GitHubIssueCount from '../components/github/issue-count'
+import GitHubIssueCount from '../components/widgets/github/issue-count'
 
 <GitHubIssueCount
   owner='danielbayerlein'
