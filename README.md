@@ -376,7 +376,7 @@ import GitHubIssueCount from '../components/github/issue-count'
 #### Example
 
 ```javascript
-import Title from '../components/github/title'
+import Title from '../components/widgets/title'
 
 <Title>API Status</Title>
 ```
