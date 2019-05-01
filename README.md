@@ -355,7 +355,7 @@ import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count
 #### Example
 
 ```javascript
-import GitHubIssueCount from '../components/github/issue-count'
+import GitHubIssueCount from '../components/widgets/github/issue-count'
 
 <GitHubIssueCount
   owner='danielbayerlein'
@@ -376,7 +376,7 @@ import GitHubIssueCount from '../components/github/issue-count'
 #### Example
 
 ```javascript
-import Title from '../components/github/title'
+import Title from '../components/widgets/title'
 
 <Title>API Status</Title>
 ```
