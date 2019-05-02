@@ -116,6 +116,29 @@ import DateTime from '../components/widgets/datetime'
 
 * `interval`: Refresh interval in milliseconds (Default: `10000`)
 
+### [DateTimeMultipleTimezones](./components/widgets/datetime/multiple-timezones.js)
+
+#### Example
+
+```javascript
+import DateTimeMultipleTimezones from '../components/widgets/datetime/multiple-timezones'
+
+	<DateTimeMultipleTimezones 	
+	  timeZones={[
+		{ name: 'Asia/Colombo', flag: 'India.png' },
+		{ name: "Europe/Copenhagen", flag: "Denmark.png" },
+      ]}
+	  format24={false},
+	  interval={10000}
+	  />
+```
+
+#### props
+
+* `timeZones`: List of all timezones selected timezones from moment.js (https://momentjs.com/timezone/). Possible flags can be found in static/flags/ 
+* `format24`: Show time in 24 hour format instead of AM/PM (Default: `false`)
+* `interval`: Refresh interval in milliseconds (Default: `10000`)
+
 ### [Jenkins Job Status](./components/widgets/jenkins/job-status.js)
 
 #### Example
