@@ -21,13 +21,14 @@ import lightTheme from '../styles/light-theme'
 export default () => (
   <Dashboard theme={lightTheme}>
     <DateTime />
-	<DateTimeMultipleTimezones 	
-	  timeZones={[
-		{ name: 'Asia/Colombo', flag: 'India.png' },
-		{ name: "Europe/Copenhagen", flag: "Denmark.png" },
+    
+    <DateTimeMultipleTimezones	
+      timeZones={[
+        { name: 'Asia/Colombo', flag: 'India.png' },
+        { name: "Europe/Copenhagen", flag: "Denmark.png" }
       ]}
-	  format24={false}
-	  />
+      format24={false}
+    />
 
     <PageSpeedInsightsScore url='https://github.com' />
 
