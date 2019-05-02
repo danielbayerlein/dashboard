@@ -35,13 +35,13 @@ export default class MultipleTimezones extends Component {
 
   componentDidMount () {
     const { interval } = this.props
-    
+
     schema.validate(this.props).then(() =>
       this.setState({ loading: false }),
-      this.timeout = setTimeout(() => this.setState({ date: new Date() }), interval))
+    this.timeout = setTimeout(() => this.setState({ date: new Date() }), interval))
       .catch((err) => {
         console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
-        this.setState({ error: true , loading: false })
+        this.setState({ error: true, loading: false })
       })
   }
 
@@ -55,7 +55,7 @@ export default class MultipleTimezones extends Component {
 
     function Flag (props) {
       let image = '/static/flags/' + props.flag
-      return <img src={ image } />
+      return <img src={image} />
     }
 
     const format = format24 ? 'HH mm' : 'LT'
