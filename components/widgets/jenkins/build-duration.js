@@ -55,7 +55,7 @@ export default class JenkinsBuildDuration extends Component {
     const s = ms / 1000
 
     if (s > 60) {
-      const min = Math.round(s / 60)
+      const min = Math.floor(s / 60)
       let minSec = Math.round(s - (min * 60))
       minSec = minSec.toString().length === 1 ? `0${minSec}` : minSec
 
