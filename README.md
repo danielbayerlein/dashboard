@@ -125,17 +125,19 @@ import DateTimeMultipleTimezones from '../components/widgets/datetime/multiple-t
 
 	<DateTimeMultipleTimezones 	
 	  timeZones={[
-      { name: 'Asia/Colombo', flag: 'India.png' },
-      { name: "Europe/Copenhagen", flag: "Denmark.png" },
+      { name: 'Asia/Colombo', flag: 'IN' },
+      { name: "Europe/Copenhagen", flag: "DK" },
     ]},
 	  format24={false},
 	  interval={10000}
 	  />
 ```
 
+Prior to using the module, it is nessesary to copy the folder node_modules/react-flags/vendor/flags to static/flags
+
 #### props
 
-* `timeZones`: List of all timezones selected timezones from moment.js (https://momentjs.com/timezone/). Possible flags can be found in static/flags/ 
+* `timeZones`: List of all timezones selected timezones from moment.js (https://momentjs.com/timezone/). Flags should be in ISO 3166-1 alpha-2 or alpha-3 format 
 * `format24`: Show time in 24 hour format instead of AM/PM (Default: `false`)
 * `interval`: Refresh interval in milliseconds (Default: `10000`)
 
