@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Widget from '../../widget'
 import moment from 'moment-timezone'
 import Table from '../../table'
-import Flag from "react-flags"
+import Flag from 'react-flags'
 import { object, string, array, number, boolean } from 'yup'
 
 const TimeItem = styled.div`
@@ -38,12 +38,12 @@ export default class MultipleTimezones extends Component {
     const { interval } = this.props
 
     schema.validate(this.props).then(() => {
-      this.setState({ loading: false }),
+      this.setState({ loading: false })
       this.timeout = setTimeout(() => this.setState({ date: new Date() }), interval)
-      .catch((err) => {
-        console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
-        this.setState({ error: true, loading: false })
-      })
+        .catch((err) => {
+          console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
+          this.setState({ error: true, loading: false })
+        })
     })
   }
 
@@ -66,9 +66,8 @@ export default class MultipleTimezones extends Component {
                 <td>
                   <Flag
                     name={zone.flag}
-                    format="png"
+                    format='png'
                     pngSize={48}
-                    shiny={true}
                     basePath='/static/flags'
                   />
                 </td>

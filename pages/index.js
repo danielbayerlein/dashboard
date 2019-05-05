@@ -29,7 +29,7 @@ export default () => (
       ]}
       format24={false}
     />
-    
+
     <PageSpeedInsightsScore url='https://github.com' />
 
     <PageSpeedInsightsStats url='https://github.com' />
