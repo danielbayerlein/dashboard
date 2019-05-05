@@ -125,9 +125,9 @@ import DateTimeMultipleTimezones from '../components/widgets/datetime/multiple-t
 
 	<DateTimeMultipleTimezones 	
 	  timeZones={[
-		{ name: 'Asia/Colombo', flag: 'India.png' },
-		{ name: "Europe/Copenhagen", flag: "Denmark.png" },
-      ]}
+      { name: 'Asia/Colombo', flag: 'India.png' },
+      { name: "Europe/Copenhagen", flag: "Denmark.png" },
+    ]},
 	  format24={false},
 	  interval={10000}
 	  />

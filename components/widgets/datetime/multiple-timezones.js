@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import Widget from '../../widget'
 import moment from 'moment-timezone'
 import Table from '../../table'
+import Flag from "react-flags"
 import { object, string, array, number, boolean } from 'yup'
+
 
 const TimeItem = styled.div`
   font-size: 3em;
@@ -23,7 +25,7 @@ const schema = object().shape({
 export default class MultipleTimezones extends Component {
   static defaultProps = {
     interval: 1000 * 10,
-    timeZones: [{ name: 'Asia/Colombo', flag: 'India.png' }, { name: 'Europe/Copenhagen', flag: 'Denmark.png' }],
+    timeZones: [{ name: 'Asia/Colombo', flag: 'IN' }, { name: 'Europe/Copenhagen', flag: 'DK' }],
     format24: false
   }
 
@@ -36,13 +38,14 @@ export default class MultipleTimezones extends Component {
   componentDidMount () {
     const { interval } = this.props
 
-    schema.validate(this.props).then(() =>
+    schema.validate(this.props).then(() => {
       this.setState({ loading: false }),
-    this.timeout = setTimeout(() => this.setState({ date: new Date() }), interval))
+      this.timeout = setTimeout(() => this.setState({ date: new Date() }), interval)
       .catch((err) => {
         console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
         this.setState({ error: true, loading: false })
       })
+    })
   }
 
   componentWillUnmount () {
@@ -53,11 +56,6 @@ export default class MultipleTimezones extends Component {
     const { date, error, loading } = this.state
     const { timeZones, format24 } = this.props
 
-    function Flag (props) {
-      let image = '/static/flags/' + props.flag
-      return <img src={image} />
-    }
-
     const format = format24 ? 'HH mm' : 'LT'
 
     return (
@@ -67,7 +65,13 @@ export default class MultipleTimezones extends Component {
             { timeZones && timeZones.map((zone) =>
               <tr key={zone.name}>
                 <td>
-                  <Flag flag={zone.flag} />
+                  <Flag
+                    name={zone.flag}
+                    format="png"
+                    pngSize={48}
+                    shiny={true}
+                    basePath='/static/flags'
+                  />
                 </td>
                 <td>
                   <TimeItem>
