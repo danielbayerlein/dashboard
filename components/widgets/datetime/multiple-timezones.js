@@ -6,7 +6,6 @@ import Table from '../../table'
 import Flag from "react-flags"
 import { object, string, array, number, boolean } from 'yup'
 
-
 const TimeItem = styled.div`
   font-size: 3em;
   text-align: center;

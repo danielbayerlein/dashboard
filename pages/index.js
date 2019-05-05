@@ -24,12 +24,12 @@ export default () => (
 
     <DateTimeMultipleTimezones
       timeZones={[
-        { name: 'Asia/Colombo', flag: 'India.png' },
-        { name: 'Europe/Copenhagen', flag: 'Denmark.png' }
+        { name: 'Asia/Colombo', flag: 'IN' },
+        { name: 'Europe/Copenhagen', flag: 'DK' }
       ]}
       format24={false}
     />
-
+    
     <PageSpeedInsightsScore url='https://github.com' />
 
     <PageSpeedInsightsStats url='https://github.com' />
