@@ -24,7 +24,12 @@ export default class DateTime extends Component {
 
   componentDidMount () {
     const { interval } = this.props
-    this.timeout = setTimeout(() => this.setState({ date: new Date() }), interval)
+    this.timeout = setTimeout(() => {
+      this.setState({
+          date: new Date()
+      });
+      this.componentDidMount();
+    }, interval);
   }
 
   componentWillUnmount () {
