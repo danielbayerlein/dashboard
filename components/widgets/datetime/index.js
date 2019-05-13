@@ -24,11 +24,16 @@ export default class DateTime extends Component {
 
   componentDidMount () {
     const { interval } = this.props
-    this.timeout = setTimeout(() => this.setState({ date: new Date() }), interval)
+
+    this.interval = setInterval(() => this.updateTime(), interval)
+  }
+
+  updateTime () {
+    this.setState({ date: new Date() })
   }
 
   componentWillUnmount () {
-    clearTimeout(this.timeout)
+    clearInterval(this.interval)
   }
 
   render () {
