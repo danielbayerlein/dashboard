@@ -55,11 +55,12 @@ export default class JenkinsBuildDuration extends Component {
     const s = ms / 1000
 
     if (s > 60) {
-      const min = Math.floor(s / 60)
-      let minSec = Math.round(s - (min * 60))
-      minSec = minSec.toString().length === 1 ? `0${minSec}` : minSec
+      const min = s / 60
+      const fullMin = Math.floor(min)
+      let leftMin = Math.round((min - fullMin) * 60)
+      leftMin = leftMin.toString().length === 1 ? `0${leftMin}` : leftMin
 
-      return <Fragment><KPI>{min}:{minSec}</KPI> min</Fragment>
+      return <Fragment><KPI>{fullMin}:{leftMin}</KPI> min</Fragment>
     }
 
     return <Fragment><KPI>{Math.round(s)}</KPI> sec</Fragment>
