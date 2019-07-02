@@ -40,10 +40,6 @@ export default class MultipleTimezones extends Component {
     schema.validate(this.props).then(() => {
       this.setState({ loading: false })
       this.timeout = setTimeout(() => this.setState({ date: new Date() }), interval)
-        .catch((err) => {
-          console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
-          this.setState({ error: true, loading: false })
-        })
     })
   }
 
