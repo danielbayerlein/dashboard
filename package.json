@@ -32,11 +32,11 @@
     "js-base64": "^2.5.1",
     "moment-timezone": "^0.5.25",
     "next": "^8.0.3",
-    "polished": "^3.2.0",
+    "polished": "^3.4.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-flags": "^0.1.17",
-    "styled-components": "^4.2.0",
+    "styled-components": "^4.3.1",
     "tinytime": "^0.2.6",
     "yup": "^0.27.0"
   },
@@ -44,10 +44,10 @@
     "babel-eslint": "^10.0.1",
     "snazzy": "^8.0.0",
     "standard": "^12.0.1",
-    "stylelint": "^10.0.1",
+    "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.6.0"
+    "stylelint-processor-styled-components": "^1.8.0"
   },
   "standard": {
     "parser": "babel-eslint"
