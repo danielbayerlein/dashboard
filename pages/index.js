@@ -2,6 +2,7 @@ import Dashboard from '../components/dashboard'
 
 // Widgets
 import DateTime from '../components/widgets/datetime'
+import DateTimeMultipleTimezones from '../components/widgets/datetime/multiple-timezones'
 import PageSpeedInsightsScore from '../components/widgets/pagespeed-insights/score'
 import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/stats'
 import JiraIssueCount from '../components/widgets/jira/issue-count'
@@ -20,6 +21,14 @@ import lightTheme from '../styles/light-theme'
 export default () => (
   <Dashboard theme={lightTheme}>
     <DateTime />
+
+    <DateTimeMultipleTimezones
+      timeZones={[
+        { name: 'Asia/Colombo', flag: 'IN' },
+        { name: 'Europe/Copenhagen', flag: 'DK' }
+      ]}
+      format24={false}
+    />
 
     <PageSpeedInsightsScore url='https://github.com' />
 

@@ -30,10 +30,12 @@
     "dotenv-webpack": "^1.7.0",
     "isomorphic-unfetch": "^3.0.0",
     "js-base64": "^2.5.1",
+    "moment-timezone": "^0.5.25",
     "next": "^8.0.3",
     "polished": "^3.4.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-flags": "^0.1.17",
     "styled-components": "^4.3.1",
     "tinytime": "^0.2.6",
     "yup": "^0.27.0"
