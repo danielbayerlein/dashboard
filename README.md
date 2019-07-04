@@ -436,7 +436,7 @@ Any widget can authenticate itself, should your server expect this. We use
      query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
    />
    ```
-3. Create a `.env` file in the root directory of your project. Add
+3. Create a `.env` file or rename `.env.example` to `.env` in the root directory of your project. Add
    environment-specific variables on new lines in the form of `NAME=VALUE`.
    For example:
    ```dosini
