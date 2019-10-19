@@ -17,8 +17,8 @@
   <a href="https://standardjs.com">
     <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg">
   </a>
-  <a href="https://greenkeeper.io/">
-    <img alt="Greenkeeper badge" src="https://badges.greenkeeper.io/danielbayerlein/dashboard.svg">
+  <a href="https://dependabot.com">
+    <img alt="Dependabot Status" src="https://api.dependabot.com/badges/status?host=github&repo=danielbayerlein/dashboard">
   </a>
   <a href="https://deploy.now.sh/?repo=https://github.com/danielbayerlein/dashboard">
     <img alt="Deploy to now" src="https://deploy.now.sh/static/button.svg" height="20">
