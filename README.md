@@ -11,8 +11,8 @@
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.org">
-    <img alt="Travis build status" src="https://travis-ci.org/danielbayerlein/dashboard.svg?branch=master">
+  <a href="https://github.com/danielbayerlein/vallox-api/actions">
+    <img alt="Actions Status" src="https://github.com/danielbayerlein/dashboard/workflows/CI/badge.svg">
   </a>
   <a href="https://standardjs.com">
     <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg">
