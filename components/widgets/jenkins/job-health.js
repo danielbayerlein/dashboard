@@ -15,7 +15,7 @@ const jenkinsKpiColor = ({ theme, value }) => {
   return theme.palette.successColor
 }
 
-const KPI = styled.span`
+const Kpi = styled.span`
   color: ${jenkinsKpiColor};
   font-weight: 700;
   font-size: 20px;
@@ -87,8 +87,8 @@ export default class JenkinsJobHealth extends Component {
   renderHealth (build) {
     return build.map((b, index, array) => (
       <Link key={index} href={build.url} title={b.score}>
-        <KPI value={b.score}>{b.score}</KPI>
-        { index < array.length - 1 && <span> / </span>}
+        <Kpi value={b.score}>{b.score}</Kpi>
+        {index < array.length - 1 && <span> / </span>}
       </Link>
     ))
   }
