@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react'
+import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components'
 import { object, string, array, number } from 'yup'
@@ -9,7 +9,7 @@ import Table, { Th, Td } from '../../table'
 import LoadingIndicator from '../../loading-indicator'
 import { basicAuthHeader } from '../../../lib/auth'
 
-const KPI = styled.span`
+const Kpi = styled.span`
   color: ${props => props.theme.palette.primaryColor};
   font-weight: 700;
   font-size: 20px;
@@ -59,10 +59,10 @@ export default class JenkinsBuildDuration extends Component {
       let minSec = Math.round(s - (min * 60))
       minSec = minSec.toString().length === 1 ? `0${minSec}` : minSec
 
-      return <Fragment><KPI>{min}:{minSec}</KPI> min</Fragment>
+      return <><Kpi>{min}:{minSec}</Kpi> min</>
     }
 
-    return <Fragment><KPI>{Math.round(s)}</KPI> sec</Fragment>
+    return <><Kpi>{Math.round(s)}</Kpi> sec</>
   }
 
   async fetchInformation () {
