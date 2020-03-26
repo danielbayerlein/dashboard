@@ -2,13 +2,14 @@
   "name": "dashboard",
   "version": "1.0.0",
   "description": "Your Team Dashboard",
-  "main": "pages/index.js",
+  "main": "pages/index.tsx",
   "private": true,
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "standard --verbose | snazzy && stylelint '**/*.js'",
+    "lint": "prettier --check *.js **/*.tsx **/**/*.tsx **/**/*.ts",
+    "format": "prettier --write *.js **/*.tsx **/**/*.tsx **/**/*.ts",
     "test": "npm run lint"
   },
   "repository": {
@@ -26,6 +27,8 @@
   },
   "homepage": "https://github.com/danielbayerlein/dashboard#readme",
   "dependencies": {
+    "@types/node": "^13.9.2",
+    "@types/react": "^16.9.25",
     "babel-plugin-styled-components": "^1.10.7",
     "dotenv-webpack": "^1.7.0",
     "isomorphic-unfetch": "^3.0.0",
@@ -36,7 +39,9 @@
     "react-dom": "^16.13.1",
     "styled-components": "^4.4.1",
     "tinytime": "^0.2.6",
-    "yup": "^0.28.1"
+    "typescript": "^3.8.3",
+    "yup": "^0.28.1",
+    "prettier": "^2.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

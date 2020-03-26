@@ -21,6 +21,7 @@ jobs:
       run: |
         yarn install
         yarn build
+        yarn run format
         yarn test
       env:
         CI: true

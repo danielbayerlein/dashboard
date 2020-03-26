@@ -102,7 +102,7 @@ For an example, see [pages/index.js](./pages/index.js).
 
 ## Available Widgets
 
-### [DateTime](./components/widgets/datetime/index.js)
+### [DateTime](components/widgets/datetime/DateTime.tsx)
 
 #### Example
 
@@ -116,7 +116,7 @@ import DateTime from '../components/widgets/datetime'
 
 * `interval`: Refresh interval in milliseconds (Default: `10000`)
 
-### [Jenkins Job Status](./components/widgets/jenkins/job-status.js)
+### [Jenkins Job Status](components/widgets/jenkins/JenkinsJobStatus.tsx)
 
 #### Example
 
@@ -142,7 +142,7 @@ For Jenkins multibranch projects add `branch` to the object.
 * `jobs`: List of all jobs
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
 
-### [Jenkins Job Health](./components/widgets/jenkins/job-health.js)
+### [Jenkins Job Health](components/widgets/jenkins/JenkinsJobHealth.tsx)
 
 #### Example
 
@@ -169,7 +169,7 @@ For Jenkins multibranch projects add `branch` to the object.
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
 
 
-### [Jenkins Build Duration](./components/widgets/jenkins/build-duration.js)
+### [Jenkins Build Duration](components/widgets/jenkins/JenkinsBuildBuration.tsx)
 
 #### Example
 
@@ -195,7 +195,7 @@ For Jenkins multibranch projects add `branch` to the object.
 * `jobs`: List of all jobs
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
 
-### [JIRA Issue Count](./components/widgets/jira/issue-count.js)
+### [JIRA Issue Count](components/widgets/jira/JiraIssueCount.tsx)
 
 #### Example
 
@@ -219,7 +219,7 @@ For Jenkins multibranch projects add `branch` to the object.
 * `query`: JIRA search query (`jql`)
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
 
-### [JIRA Sprint Days Remaining](./components/widgets/jira/sprint-days-remaining.js)
+### [JIRA Sprint Days Remaining](components/widgets/jira/JiraSprintDaysRemaining.tsx)
 
 #### Example
 
@@ -241,7 +241,7 @@ import JiraSprintDaysRemaining from '../components/widgets/jira/sprint-days-rema
 * `boardId`: JIRA board id
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
 
-### [Bitbucket PullRequest Count](./components/widgets/bitbucket/pull-request-count.js)
+### [Bitbucket PullRequest Count](components/widgets/bitbucket/BitbucketPullRequestCount.tsx)
 
 #### Example
 
@@ -267,7 +267,7 @@ import BitbucketPullRequestCount from '../components/widgets/bitbucket/pull-requ
 * `users`: Bitbucket user slugs as an array
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
 
-### [PageSpeed Insights Score](./components/widgets/pagespeed-insights/score.js)
+### [PageSpeed Insights Score](components/widgets/pagespeed-insights/PageSpeedInsideScore.tsx)
 
 #### Example
 
@@ -286,7 +286,7 @@ import PageSpeedInsightsScore from '../components/widgets/pagespeed-insights/sco
   * Acceptable values: `desktop` | `mobile`
 * `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `false`)
 
-### [PageSpeed Insights Stats](./components/widgets/pagespeed-insights/stats.js)
+### [PageSpeed Insights Stats](components/widgets/pagespeed-insights/PageSpeedInsightsStats.tsx)
 
 #### Example
 
@@ -305,7 +305,7 @@ import PageSpeedInsightsStats from '../components/widgets/pagespeed-insights/sta
   * Acceptable values: `desktop` | `mobile`
 * `filterThirdPartyResources`: Indicates if third party resources should be filtered out (Default: `false`)
 
-### [SonarQube](./components/widgets/sonarqube/index.js)
+### [SonarQube](components/widgets/sonarqube/SonarQube.tsx)
 
 #### Example
 
@@ -326,7 +326,7 @@ import SonarQube from '../components/widgets/sonarqube'
 * `componentKey`: SonarQube project key
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
 
-### [Elasticsearch Hit Count](./components/widgets/elasticsearch/hit-count.js)
+### [Elasticsearch Hit Count](components/widgets/elasticsearch/ElasticsearchHitCount.tsx)
 
 #### Example
 
@@ -350,7 +350,7 @@ import ElasticsearchHitCount from '../components/widgets/elasticsearch/hit-count
 * `query`: Elasticsearch query
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
 
-### [GitHub Issue Count](./components/widgets/github/issue-count.js)
+### [GitHub Issue Count](components/widgets/github/GitHubIssueCount.tsx)
 
 #### Example
 
@@ -371,7 +371,7 @@ import GitHubIssueCount from '../components/widgets/github/issue-count'
 * `repository`: Name of the repository
 * `authKey`: Credential key, defined in [auth.js](./auth.js)
 
-### [Title](./components/widgets/title/index.js)
+### [Title](components/widgets/title/Title.tsx)
 
 #### Example
 
@@ -383,7 +383,7 @@ import Title from '../components/widgets/title'
 
 ## Available Themes
 
-### [light](./styles/light-theme.js)
+### [light](styles/light-theme.ts)
 
 #### Example
 
@@ -399,7 +399,7 @@ import lightTheme from '../styles/light-theme'
 
 ![dashboard-light](https://cloud.githubusercontent.com/assets/457834/26214930/8c065dce-3bfe-11e7-9da0-2d6ebba2dfb8.png)
 
-### [dark](./styles/dark-theme.js)
+### [dark](styles/dark-theme.ts)
 
 #### Example
 
