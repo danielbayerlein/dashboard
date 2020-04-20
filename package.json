@@ -36,7 +36,7 @@
     "react-dom": "^16.13.1",
     "styled-components": "^4.4.1",
     "tinytime": "^0.2.6",
-    "yup": "^0.28.1"
+    "yup": "^0.28.3"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
