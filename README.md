@@ -25,6 +25,8 @@
   </a>
 </p>
 
+[![Run on Repl.it](https://repl.it/badge/github/bryanchappell/dashboard)](https://repl.it/github/bryanchappell/dashboard)
+
 ## Table of Contents
 
 * [Installation](#installation)
