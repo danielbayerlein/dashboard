@@ -1166,10 +1166,10 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.6.3", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
-  version "7.9.6"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
-  integrity sha512-64AF1xY3OAkFHqOb9s4jpgk1Mm5vDZ4L3acHvAml+53nO1XbXLuDodsVpO4OIUsmemlUHMxNdYMNJmsvOwLrvQ==
+"@babel/runtime@^7.10.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.9.2":
+  version "7.10.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.5.tgz#303d8bd440ecd5a491eae6117fd3367698674c5c"
+  integrity sha512-otddXKhdNn7d0ptoFRHtMLa8LqDxLYwTjB4nYgM1yy5N6gU/MUf8zqyyLltCH3yAVitBzmwK4us+DD0l/MauAg==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -8079,10 +8079,10 @@ svg-tags@^1.0.0:
   resolved "https://registry.yarnpkg.com/svg-tags/-/svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764"
   integrity sha1-WPcc7jvVGbWdSyqEO2x95krAR2Q=
 
-synchronous-promise@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/synchronous-promise/-/synchronous-promise-2.0.10.tgz#e64c6fd3afd25f423963353043f4a68ebd397fd8"
-  integrity sha512-6PC+JRGmNjiG3kJ56ZMNWDPL8hjyghF5cMXIFOKg+NiwwEZZIvxTWd0pinWKyD227odg9ygF8xVhhz7gb8Uq7A==
+synchronous-promise@^2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/synchronous-promise/-/synchronous-promise-2.0.13.tgz#9d8c165ddee69c5a6542862b405bc50095926702"
+  integrity sha512-R9N6uDkVsghHePKh1TEqbnLddO2IY25OcsksyFp/qBe7XYd0PVbKEWxhcdMhpLzE1I6skj5l4aEZ3CRxcbArlA==
 
 table@^5.2.3, table@^5.4.6:
   version "5.4.6"
@@ -8783,15 +8783,15 @@ yargs-parser@^18.1.3:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
 
-yup@^0.29.1:
-  version "0.29.1"
-  resolved "https://registry.yarnpkg.com/yup/-/yup-0.29.1.tgz#35d25aab470a0c3950f66040ba0ff4b1b6efe0d9"
-  integrity sha512-U7mPIbgfQWI6M3hZCJdGFrr+U0laG28FxMAKIgNvgl7OtyYuUoc4uy9qCWYHZjh49b8T7Ug8NNDdiMIEytcXrQ==
+yup@^0.29.2:
+  version "0.29.2"
+  resolved "https://registry.yarnpkg.com/yup/-/yup-0.29.2.tgz#5302abd9024cca335b987793f8df868e410b7b67"
+  integrity sha512-FbAAeopli+TnpZ8Lzv2M72wltLw58iWBT7wW8FuAPFPb3CelXmSKCXQbV1o4keywpIK1BZ0ULTLv2s3w1CfOwA==
   dependencies:
-    "@babel/runtime" "^7.9.6"
+    "@babel/runtime" "^7.10.5"
     fn-name "~3.0.0"
     lodash "^4.17.15"
     lodash-es "^4.17.11"
     property-expr "^2.0.2"
-    synchronous-promise "^2.0.10"
+    synchronous-promise "^2.0.13"
     toposort "^2.0.2"
