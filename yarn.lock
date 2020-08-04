@@ -4797,10 +4797,10 @@ jest-worker@24.9.0:
     merge-stream "^2.0.0"
     supports-color "^6.1.0"
 
-js-base64@^3.4.2:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-3.4.2.tgz#d4b92da412d140846960f89f63540d53a35c021b"
-  integrity sha512-JZYRVBMY2LHnCqUfB4xAj8rLBHNCrUL31ycv8jCnEWrgRlH6n17ybWY8SJofT1uTfBXt3BPPimO/DGEqCq6RiQ==
+js-base64@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-3.4.3.tgz#75b762ad8402622bf512d17ef4bfcfc16b046883"
+  integrity sha512-SNMgYrBASovuSPsaZaoZ3g+u0ZLuSGGOIkTDT1u+WI4e8Ch7FnHdrvNqQm8CHGpoOhCmGKuDVr50Yw4VHMI/Eg==
 
 js-levenshtein@^1.1.3:
   version "1.1.4"
