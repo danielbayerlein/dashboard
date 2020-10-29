@@ -3421,10 +3421,10 @@ eslint-config-standard-jsx@9.0.0:
   resolved "https://registry.yarnpkg.com/eslint-config-standard-jsx/-/eslint-config-standard-jsx-9.0.0.tgz#a65d879157406e74a3be53201882d471bbda05ff"
   integrity sha512-e9ezaClB5YdTYqGUd3wReKC1si8XRn234tmME+3qebQ+KHtH92B6dr4LE6qPjK9AYe9XfwDK/xgQSwyCKQwv5Q==
 
-eslint-config-standard@15.0.0:
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-15.0.0.tgz#459f823b47ac0541b0a22b1d0a161a9da543f687"
-  integrity sha512-MZ8KRhUJLtMbjQo9PsEzFG29vqbQJfLoLBHrTaAaFMtDx9PIm1GZgyUanOLgf1xOE1aWrtZZSbxBYCy8dJCCBg==
+eslint-config-standard@15.0.1:
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-15.0.1.tgz#1262eafaba66f4f03fdf3cf655a28aa8b40868b7"
+  integrity sha512-UGorkix49kBium7Y124o2U9Qy7Lpa+nO0FsaqQSIPeno5hGNxZtSBJbqJX6gtpYfDFWCtqCAN9wyK+oDd9jT7Q==
 
 eslint-import-resolver-node@^0.3.4:
   version "0.3.4"
@@ -7810,13 +7810,13 @@ standard-json@^1.0.0:
   dependencies:
     concat-stream "^1.5.0"
 
-standard@^15.0.0:
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/standard/-/standard-15.0.0.tgz#4a07c6c9dc56830a89e3b1ab2221dee33f5a56a9"
-  integrity sha512-VoyBbvaC6r+PO/M+PMh8J6Ie7eOf1xpk6comMg0tq+O4XUSzGsnFgV2yMnmDu90BMjR2ro4w1nxPe63Hr1e4Yg==
+standard@^15.0.1:
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/standard/-/standard-15.0.1.tgz#c81204c7c91521f96188fea34abda287cb38d612"
+  integrity sha512-iMBSYGe/dhCPjK9Gwh0X7d4S88Mk1ty3HmZkq0A0PBbr30qfKMswraMvQVrdhMoUjVkVbBsjbjX0zV6OQl7WbQ==
   dependencies:
     eslint "~7.11.0"
-    eslint-config-standard "15.0.0"
+    eslint-config-standard "15.0.1"
     eslint-config-standard-jsx "9.0.0"
     eslint-plugin-import "~2.22.1"
     eslint-plugin-node "~11.1.0"
