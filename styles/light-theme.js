@@ -28,5 +28,12 @@ export default {
     successColor: colors.greenA700,
     successSecondaryColor: colors.lightGreenA700,
     disabledColor: colors.grey400
+  },
+  atoms: {
+    Widget: {
+      none: { border: colors.grey200 },
+      warning: { border: colors.amberA700 },
+      critical: { border: colors.redA700 }
+    }
   }
 }

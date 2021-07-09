@@ -22,8 +22,8 @@ export default class PageSpeedInsightsStats extends Component {
 
   state = {
     stats: {},
-    loading: true,
-    error: false
+    isLoading: true,
+    hasError: false
   }
 
   componentDidMount () {
@@ -31,7 +31,7 @@ export default class PageSpeedInsightsStats extends Component {
       .then(() => this.fetchInformation())
       .catch((err) => {
         console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
-        this.setState({ error: true, loading: false })
+        this.setState({ hasError: true, isLoading: false })
       })
   }
 
@@ -69,19 +69,19 @@ export default class PageSpeedInsightsStats extends Component {
         otherSize: this.bytesToKilobytes(pageStats.otherResponseBytes)
       }
 
-      this.setState({ error: false, loading: false, stats })
-    } catch (error) {
-      this.setState({ error: true, loading: false })
+      this.setState({ hasError: false, isLoading: false, stats })
+    } catch (err) {
+      this.setState({ hasError: true, isLoading: false })
     } finally {
       this.timeout = setTimeout(() => this.fetchInformation(), this.props.interval)
     }
   }
 
   render () {
-    const { error, loading, stats } = this.state
+    const { hasError, isLoading, stats } = this.state
     const { title } = this.props
     return (
-      <Widget title={title} loading={loading} error={error}>
+      <Widget title={title} isLoading={isLoading} hasError={hasError}>
         <Table>
           <tbody>
             <tr>

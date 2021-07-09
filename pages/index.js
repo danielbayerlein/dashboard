@@ -29,6 +29,10 @@ export default () => (
       title='JIRA Open Bugs'
       url='https://crossorigin.me/https://jira.atlassian.com'
       query='type=Bug AND project="Bitbucket Server" AND resolution=Unresolved ORDER BY priority DESC,created DESC'
+      alert={[
+        { severity: 'warning', value: 5 },
+        { severity: 'critical', value: 10 }
+      ]}
     />
 
     <BitbucketPullRequestCount
