@@ -32,7 +32,7 @@
     "js-base64": "^3.7.2",
     "next": "^9.2.2",
     "polished": "^3.6.7",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-dom": "^16.13.1",
     "styled-components": "^4.4.1",
     "tinytime": "^0.2.6",
