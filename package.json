@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/danielbayerlein/dashboard#readme",
   "dependencies": {
-    "babel-plugin-styled-components": "^1.13.3",
+    "babel-plugin-styled-components": "^2.0.7",
     "dotenv-webpack": "^2.0.0",
     "isomorphic-unfetch": "^3.1.0",
     "js-base64": "^3.7.2",
