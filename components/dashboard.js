@@ -2,24 +2,13 @@ import Head from 'next/head'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { normalize } from 'polished'
 
-const GlobalStyle = createGlobalStyle`
-  ${normalize()}
 
-  html {
-    font-family: 'Roboto', sans-serif;
-  }
-`
 
-const Container = styled.main`
-  align-content: center;
-  align-items: center;
-  background-color: ${props => props.theme.palette.backgroundColor};
-  color: ${props => props.theme.palette.textColor};
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  min-height: 100vh;
-`
+const Container = ({ children }) => (
+  <main className="flex items-center justify-center flex-flow-row wrap min-h-screen bg-gray-100 text-gray-900">
+    {children}
+  </main>
+)
 
 export default ({ children, theme, title = 'Dashboard' }) => (
   <ThemeProvider theme={theme}>

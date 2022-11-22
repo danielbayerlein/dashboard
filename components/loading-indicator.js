@@ -26,22 +26,23 @@ const turn = keyframes`
   }
 `
 
-const Svg = styled.svg`
-  animation: ${rotation} 1.4s linear infinite;
-  height: ${props => props.size};
-  width: ${props => props.size};
-`
+const Svg = ({ children, size }) => (
+  <svg
+    className="animation-rotation duration-1400 linear infinite"
+    height={size}
+    width={size}
+  >
+    {children}
+  </svg>
+)
 
-const Circle = styled.circle`
-  animation: ${turn} 1.4s ease-in-out infinite;
-  fill: none;
-  stroke: ${props => props.theme.palette.primaryColor};
-  stroke-dasharray: 187;
-  stroke-dashoffset: 0;
-  stroke-linecap: round;
-  stroke-width: 6;
-  transform-origin: center;
-`
+const Circle = ({ children }) => (
+  <circle
+    className="animation-turn duration-1400 ease-in-out infinite fill-none stroke-primary stroke-dasharray-187 stroke-dashoffset-0 stroke-linecap-round stroke-width-6 transform-origin-center"
+  >
+    {children}
+  </circle>
+)
 
 export default ({ size = 'medium' }) => {
   const svgSize = size === 'small' ? '1.75em' : '5em'

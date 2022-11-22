@@ -1,32 +1,24 @@
 import styled from 'styled-components'
 import { size } from 'polished'
 
-const Svg = styled.svg`
-  ${size('14em')}
-  fill: transparent;
-  margin: auto;
-`
+const Svg = ({ children }) => (
+  <svg className="w-14 h-14 fill-transparent mx-auto">
+    {children}
+  </svg>
+)
 
-const Circle = styled.circle`
-  stroke-linecap: round;
-  stroke-width: 10;
-  transform: translate(100px, 100px) rotate(-89.9deg);
-  transition: stroke-dashoffset 0.3s linear;
+const Circle = ({ className, ...props }) => (
+  <circle
+    className={`stroke-linecap-round stroke-width-10 transform-translate-100-100 rotate-90 ${className}`}
+    {...props}
+  />
+)
 
-  &.background {
-    stroke: ${props => props.theme.palette.borderColor};
-  }
-
-  &.progress {
-    stroke: ${props => props.theme.palette.primaryColor};
-  }
-`
-
-const Text = styled.text`
-  fill: ${props => props.theme.palette.textColor};
-  font-size: 4em;
-  text-anchor: middle;
-`
+const Text = ({ children }) => (
+  <text className="text-gray-800 text-4xl text-center">
+    {children}
+  </text>
+)
 
 export default ({ max = 100, radius = 90, unit = '', value }) => {
   const strokeDasharray = 2 * radius * Math.PI

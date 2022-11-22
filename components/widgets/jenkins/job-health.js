@@ -15,11 +15,11 @@ const jenkinsKpiColor = ({ theme, value }) => {
   return theme.palette.successColor
 }
 
-const Kpi = styled.span`
-  color: ${jenkinsKpiColor};
-  font-weight: 700;
-  font-size: 20px;
-`
+const Kpi = ({ children }) => (
+  <span className={`text-${jenkinsKpiColor} font-bold text-2xl`}>
+    {children}
+  </span>
+)
 
 const schema = object().shape({
   url: string().url().required(),
