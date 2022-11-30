@@ -3,21 +3,17 @@ import { size } from 'polished'
 import LoadingIndicator from './loading-indicator'
 import ErrorIcon from './error-icon'
 
-const Container = styled.div`
-  ${size('20em')}
-  align-items: center;
-  background-color: ${props => props.theme.palette.canvasColor};
-  border: 1px solid ${props => props.theme.palette.borderColor};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 1em;
-  padding: 1em;
-`
+const Container = ({ children }) => (
+  <div className="w-20em h-20em flex items-center justify-center bg-gray-100 border-1 border-gray-300 p-3 m-3">
+    {children}
+  </div>
+)
 
-const Title = styled.h1`
-  text-align: center;
-`
+const Title = ({ children }) => (
+  <h1 className="text-center">
+    {children}
+  </h1>
+)
 
 export default ({ children, error = false, loading = false, title = '' }) => {
   let content

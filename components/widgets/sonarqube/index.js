@@ -17,9 +17,11 @@ const alertColor = ({ theme, children }) => {
       return theme.palette.successColor
   }
 }
-const Alert = styled.span`
-  color: ${alertColor};
-`
+const Alert = ({ children }) => (
+  <span className="text-red-500">
+    {children}
+  </span>
+)
 
 const sonarBadgeColor = ({ theme, children }) => {
   switch (children) {

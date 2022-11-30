@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 import { size } from 'polished'
 
-const Svg = styled.svg`
-  ${size('5em')}
-  fill: ${props => props.theme.palette.errorColor};
-`
+const Svg = ({ children }) => (
+  <svg className="w-5 h-5 fill-current text-red-500">
+    {children}
+  </svg>
+)
 
 export default () => (
   <Svg viewBox='0 0 24 24'>

@@ -3,15 +3,17 @@ import tinytime from 'tinytime'
 import styled from 'styled-components'
 import Widget from '../../widget'
 
-const TimeItem = styled.div`
-  font-size: 4em;
-  text-align: center;
-`
+const TimeItem = ({ children }) => (
+  <div className="text-center text-4xl">
+    {children}
+  </div>
+)
 
-const DateItem = styled.div`
-  font-size: 1.5em;
-  text-align: center;
-`
+const DateItem = ({ children }) => (
+  <div className="text-center text-xl">
+    {children}
+  </div>
+)
 
 export default class DateTime extends Component {
   static defaultProps = {

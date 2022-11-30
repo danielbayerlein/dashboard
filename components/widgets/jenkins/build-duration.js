@@ -9,11 +9,11 @@ import Table, { Th, Td } from '../../table'
 import LoadingIndicator from '../../loading-indicator'
 import { basicAuthHeader } from '../../../lib/auth'
 
-const Kpi = styled.span`
-  color: ${props => props.theme.palette.primaryColor};
-  font-weight: 700;
-  font-size: 20px;
-`
+const Kpi = ({ children }) => (
+  <span className="text-blue-500 font-bold text-2xl">
+    {children}
+  </span>
+)
 
 const schema = object().shape({
   url: string().url().required(),
