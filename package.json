@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "snazzy": "^8.0.0",
+    "snazzy": "^9.0.0",
     "standard": "^16.0.4",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^19.0.0",
