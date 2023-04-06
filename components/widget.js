@@ -2,12 +2,13 @@ import styled from 'styled-components'
 import { size } from 'polished'
 import LoadingIndicator from './loading-indicator'
 import ErrorIcon from './error-icon'
+import { NONE } from '../lib/alert'
 
 const Container = styled.div`
   ${size('20em')}
   align-items: center;
   background-color: ${props => props.theme.palette.canvasColor};
-  border: 1px solid ${props => props.theme.palette.borderColor};
+  border: 1px solid ${props => props.theme.atoms.Widget[props.alertSeverity].border};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,19 +20,19 @@ const Title = styled.h1`
   text-align: center;
 `
 
-export default ({ children, error = false, loading = false, title = '' }) => {
+export default ({ children, hasError = false, isLoading = false, alertSeverity = NONE, title = '' }) => {
   let content
 
-  if (loading) {
+  if (isLoading) {
     content = <LoadingIndicator />
-  } else if (error) {
+  } else if (hasError) {
     content = <ErrorIcon />
   } else {
     content = <div>{children}</div>
   }
 
   return (
-    <Container>
+    <Container alertSeverity={alertSeverity}>
       {title ? <Title>{title}</Title> : ''}
       {content}
     </Container>

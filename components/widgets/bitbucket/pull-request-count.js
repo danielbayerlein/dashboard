@@ -1,9 +1,10 @@
 import { Component } from 'react'
 import fetch from 'isomorphic-unfetch'
-import { object, string, number, array } from 'yup'
+import { array, object, string, number } from 'yup'
 import Widget from '../../widget'
 import Counter from '../../counter'
 import { basicAuthHeader } from '../../../lib/auth'
+import { severity, NONE } from '../../../lib/alert'
 
 const schema = object().shape({
   url: string().url().required(),
@@ -12,7 +13,11 @@ const schema = object().shape({
   interval: number(),
   title: string(),
   users: array().of(string()),
-  authKey: string()
+  authKey: string(),
+  alert: array(object({
+    severity: string().required(),
+    value: number().required()
+  }))
 })
 
 export default class BitbucketPullRequestCount extends Component {
@@ -24,8 +29,9 @@ export default class BitbucketPullRequestCount extends Component {
 
   state = {
     count: 0,
-    error: false,
-    loading: true
+    hasError: false,
+    isLoading: true,
+    alertSeverity: NONE
   }
 
   componentDidMount () {
@@ -33,7 +39,7 @@ export default class BitbucketPullRequestCount extends Component {
       .then(() => this.fetchInformation())
       .catch((err) => {
         console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
-        this.setState({ error: true, loading: false })
+        this.setState({ hasError: true, isLoading: false })
       })
   }
 
@@ -42,7 +48,7 @@ export default class BitbucketPullRequestCount extends Component {
   }
 
   async fetchInformation () {
-    const { authKey, url, project, repository, users } = this.props
+    const { authKey, url, project, repository, users, alert } = this.props
     const opts = authKey ? { headers: basicAuthHeader(authKey) } : {}
 
     try {
@@ -56,19 +62,24 @@ export default class BitbucketPullRequestCount extends Component {
         count = json.size
       }
 
-      this.setState({ count, error: false, loading: false })
-    } catch (error) {
-      this.setState({ error: true, loading: false })
+      this.setState({
+        count,
+        hasError: false,
+        isLoading: false,
+        alertSeverity: severity(count, alert)
+      })
+    } catch (err) {
+      this.setState({ hasError: true, isLoading: false, alertSeverity: NONE })
     } finally {
       this.timeout = setTimeout(() => this.fetchInformation(), this.props.interval)
     }
   }
 
   render () {
-    const { count, error, loading } = this.state
+    const { count, hasError, isLoading, alertSeverity } = this.state
     const { title } = this.props
     return (
-      <Widget title={title} loading={loading} error={error}>
+      <Widget title={title} isLoading={isLoading} hasError={hasError} alertSeverity={alertSeverity}>
         <Counter value={count} />
       </Widget>
     )

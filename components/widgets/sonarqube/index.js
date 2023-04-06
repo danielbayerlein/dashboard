@@ -57,8 +57,8 @@ export default class SonarQube extends Component {
 
   state = {
     measures: [],
-    loading: true,
-    error: false
+    isLoading: true,
+    hasError: false
   }
 
   componentDidMount () {
@@ -66,7 +66,7 @@ export default class SonarQube extends Component {
       .then(() => this.fetchInformation())
       .catch((err) => {
         console.error(`${err.name} @ ${this.constructor.name}`, err.errors)
-        this.setState({ error: true, loading: false })
+        this.setState({ hasError: true, isLoading: false })
       })
   }
 
@@ -89,9 +89,9 @@ export default class SonarQube extends Component {
       const res = await fetch(`${url}/api/measures/component?componentKey=${componentKey}&metricKeys=${metricKeys}`, opts)
       const json = await res.json()
 
-      this.setState({ error: false, loading: false, measures: json.component.measures })
-    } catch (error) {
-      this.setState({ error: true, loading: false })
+      this.setState({ hasError: false, isLoading: false, measures: json.component.measures })
+    } catch (err) {
+      this.setState({ hasError: true, isLoading: false })
     } finally {
       this.timeout = setTimeout(() => this.fetchInformation(), this.props.interval)
     }
@@ -122,7 +122,7 @@ export default class SonarQube extends Component {
   }
 
   render () {
-    const { error, loading, measures } = this.state
+    const { hasError, isLoading, measures } = this.state
     const { title } = this.props
 
     const alertStatus = this.getMetricValue(measures, 'alert_status')
@@ -136,7 +136,7 @@ export default class SonarQube extends Component {
     const duplicatedLinesDensity = this.getMetricValue(measures, 'duplicated_lines_density')
 
     return (
-      <Widget title={title} loading={loading} error={error}>
+      <Widget title={title} isLoading={isLoading} hasError={hasError}>
         <Table>
           <tbody>
             <tr>
